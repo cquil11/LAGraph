@@ -123,7 +123,7 @@ int LAGr_PeerPressureClustering(
         GRB_TRY(GrB_Matrix_build_FP64(A_san, AI, AJ, AX, nz, GrB_PLUS_FP64));
 
         A = A_san;
-        GxB_print(A, GxB_SHORT);
+        GxB_print(A, GxB_COMPLETE);
     }
     else
     {
@@ -180,7 +180,7 @@ int LAGr_PeerPressureClustering(
         LAGRAPH_TRY(LAGraph_Cached_NSelfEdges(G, msg));
         // printf("nself edges %d\n", G->nself_edges);
 #ifdef DEBUG
-        GxB_print(A, GxB_SHORT);
+        GxB_print(A, GxB_COMPLETE);
 #endif
     }
 
@@ -282,28 +282,15 @@ int LAGr_PeerPressureClustering(
         // row of the current iteration of the cluster matrix
         GRB_TRY(GrB_reduce(verts_per_cluster, NULL, NULL, GrB_PLUS_MONOID_INT64, C_temp, GrB_DESC_R));
 
-        // GxB_print(verts_per_cluster, GxB_SHORT);
-        // GxB_print(last_vpc, GxB_SHORT);
-        // GxB_print(diff_vpc, GxB_SHORT);
+        // GxB_print(verts_per_cluster, GxB_COMPLETE);
+        // GxB_print(last_vpc, GxB_COMPLETE);
+        // GxB_print(diff_vpc, GxB_COMPLETE);
 
         LAGRAPH_TRY(GxB_eWiseUnion(diff_vpc, NULL, NULL, GrB_MINUS_INT64, verts_per_cluster, zero_INT64, last_vpc, zero_INT64, NULL));
         GRB_TRY(GrB_select(diff_vpc, NULL, NULL, GrB_VALUENE_INT64, diff_vpc, 0, GrB_DESC_R));
 
         GrB_Index num_changed = NULL;
         GRB_TRY(GrB_Vector_nvals(&num_changed, diff_vpc));
-
-        // Re-use w_temp and W workspaces
-        GRB_TRY(GrB_assign(w_temp, NULL, NULL, 1, GrB_ALL, n, GrB_DESC_R));
-        // GxB_print(verts_per_cluster, GxB_COMPLETE);
-//         GxB_print(w_temp, GxB_COMPLETE);
-        GRB_TRY(GrB_apply(w_temp, verts_per_cluster, NULL, GxB_POW_FP64, verts_per_cluster, p, GrB_DESC_S));
-        // GxB_print(w_temp, GxB_COMPLETE);
-
-        GRB_TRY(GxB_Matrix_diag(W, w_temp, 0, GrB_DESC_R));
-        // GxB_print(W, GxB_COMPLETE);
-        // GxB_print(A, GxB_COMPLETE);
-        GRB_TRY(GrB_mxm(A, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP64, W, A, NULL));
-        // GxB_print(A, GxB_COMPLETE);
 
         LAGraph_Free((void **)&m_index_values, NULL);
         LAGraph_Free((void **)&m_index_indices, NULL);
@@ -318,12 +305,12 @@ int LAGr_PeerPressureClustering(
 
         printf("Number of clusters updated since last iteration: %i\n", num_changed);
         printf("%2.3f %% of all cluster assignments have been updated since last iteration\n", percent_updated * 100);
-        GxB_print(C_temp, GxB_SHORT);
-        GxB_print(verts_per_cluster, GxB_SHORT);
-        // GxB_print(last_vpc, GxB_SHORT);
-        // GxB_print(diff_vpc, GxB_SHORT);
-        GxB_print(m_index, GxB_SHORT);
-        GxB_print(T, GxB_SHORT);
+        GxB_print(C_temp, GxB_COMPLETE);
+        GxB_print(verts_per_cluster, GxB_COMPLETE);
+        // GxB_print(last_vpc, GxB_COMPLETE);
+        // GxB_print(diff_vpc, GxB_COMPLETE);
+        GxB_print(m_index, GxB_COMPLETE);
+        GxB_print(T, GxB_COMPLETE);
         printf("--------------------------------------------------\n\n\n");
 #endif
 
@@ -360,10 +347,10 @@ int LAGr_PeerPressureClustering(
            "--------------------------------------------------\n"
            "Final tally matrix T where T[i][j] = k means there are "
            "k votes from cluster i for vertex j to be in cluster i:\n");
-    GxB_print(T, GxB_SHORT);
+    GxB_print(T, GxB_COMPLETE);
     printf("Final cluster matrix C_temp where C_temp[i][j] == 1 means "
            "vertex j is in cluster i:\n");
-    GxB_print(C_temp, GxB_SHORT);
+    GxB_print(C_temp, GxB_COMPLETE);
     printf("Number of vertices per cluster:\n");
     GxB_print(verts_per_cluster, GxB_COMPLETE);
 
