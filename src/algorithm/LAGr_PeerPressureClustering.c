@@ -14,6 +14,7 @@
         GrB_free(&m_index);              \
         GrB_free(&D);                    \
         GrB_free(&E);                    \
+        GrB_free(&alphas);                    \
         GrB_free(&Identity_B);           \
         GrB_free(&Identity_F);           \
         GrB_free(&verts_per_cluster);    \
@@ -82,6 +83,9 @@ int LAGr_PeerPressureClustering(
     double *AX = NULL;
 
     double p = .9;
+    double alpha = 0.1;
+
+    GrB_Vector alphas = NULL;
 
     //--------------------------------------------------------------------------
     // check inputs
@@ -146,6 +150,7 @@ int LAGr_PeerPressureClustering(
     GRB_TRY(GrB_Matrix_new(&Identity_B, GrB_BOOL, n, n));
     GRB_TRY(GrB_Matrix_new(&Identity_F, GrB_FP64, n, n)); // [?] Is this necessary?
     GRB_TRY(GrB_Vector_new(&w_temp, GrB_FP64, n));
+    GRB_TRY(GrB_Vector_new(&alphas, GrB_FP64, n));
     GRB_TRY(GrB_Vector_new(&m, GrB_FP64, n));
     GRB_TRY(GrB_Vector_new(&m_index, GrB_INT64, n));
 
@@ -155,6 +160,8 @@ int LAGr_PeerPressureClustering(
 
     GRB_TRY(GrB_Scalar_new(&zero_INT64, GrB_INT64));
     GRB_TRY(GrB_Scalar_setElement(zero_INT64, 0));
+
+    GRB_TRY(GrB_assign(alphas, NULL, NULL, alpha, GrB_ALL, n, NULL));
 
     // Used below
     GrB_Vector ones, trues;
@@ -294,10 +301,13 @@ int LAGr_PeerPressureClustering(
 
         // Re-use w_temp and W workspaces
         GRB_TRY(GrB_assign(w_temp, NULL, NULL, 1, GrB_ALL, n, GrB_DESC_R));
+        GxB_print(w_temp, GxB_COMPLETE);
+        GRB_TRY(GrB_Vector_apply_BinaryOp2nd_FP64(w_temp, verts_per_cluster, NULL, GrB_PLUS_FP64, verts_per_cluster, alpha, NULL));
+        GRB_TRY(GrB_Vector_apply_BinaryOp2nd_FP64(w_temp, verts_per_cluster, NULL, GrB_PLUS_FP64, w_temp, alpha, GrB_DESC_SC));
         // GxB_print(verts_per_cluster, GxB_COMPLETE);
-//         GxB_print(w_temp, GxB_COMPLETE);
-        GRB_TRY(GrB_apply(w_temp, verts_per_cluster, NULL, GxB_POW_FP64, verts_per_cluster, p, GrB_DESC_S));
-        // GxB_print(w_temp, GxB_COMPLETE);
+        GxB_print(w_temp, GxB_COMPLETE);
+        GRB_TRY(GrB_apply(w_temp, NULL, NULL, GxB_LOG_FP64, w_temp, NULL));
+        GxB_print(w_temp, GxB_COMPLETE);
 
         GRB_TRY(GxB_Matrix_diag(W, w_temp, 0, GrB_DESC_R));
         // GxB_print(W, GxB_COMPLETE);
