@@ -8,6 +8,7 @@
     {                                    \
         GrB_free(&T);                    \
         GrB_free(&C);                    \
+        GrB_free(&C_T);                  \
         GrB_free(&W);                    \
         GrB_free(&w_temp);               \
         GrB_free(&m);                    \
@@ -54,6 +55,8 @@ int LAGr_PeerPressureClustering(
 
     // The newly computed cluster matrix at the end of each loop
     GrB_Matrix C_temp = NULL;
+
+    GrB_Matrix C_T = NULL;
 
     // Used for normalizing weights and assuring that vertices have equal votes
     GrB_Matrix W = NULL;
@@ -140,6 +143,7 @@ int LAGr_PeerPressureClustering(
     GRB_TRY(GrB_Matrix_new(&T, GrB_FP64, n, n));
     GRB_TRY(GrB_Matrix_new(&C, GrB_BOOL, n, n));
     GRB_TRY(GrB_Matrix_new(&C_temp, GrB_BOOL, n, n));
+    GRB_TRY(GrB_Matrix_new(&C_T, GrB_BOOL, n, n));
     GRB_TRY(GrB_Matrix_new(&W, GrB_FP64, n, n));
     GRB_TRY(GrB_Matrix_new(&D, GrB_FP64, n, n));
     GRB_TRY(GrB_Matrix_new(&E, GrB_BOOL, n, n));
@@ -351,6 +355,12 @@ int LAGr_PeerPressureClustering(
     printf("Final cluster matrix C_temp where C_temp[i][j] == 1 means "
            "vertex j is in cluster i:\n");
     GxB_print(C_temp, GxB_COMPLETE);
+
+    GRB_TRY(GrB_transpose(C_T, NULL, NULL, C_temp, NULL));
+    printf("Cluster matrix transposed so C_T[i][j] = 1 means "
+           "vertex i is in cluster j (easier to read)");
+    GxB_print(C_T, GxB_COMPLETE);
+
     printf("Number of vertices per cluster:\n");
     GxB_print(verts_per_cluster, GxB_COMPLETE);
 
