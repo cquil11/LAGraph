@@ -107,8 +107,6 @@ int LAGr_MarkovClustering(
     GRB_TRY(GrB_Matrix_dup(&C_temp, A));
     GRB_TRY(GrB_Matrix_dup(&C, C_temp));
 
-    printf("Hi\n");
-
     GrB_Index iter = 0;
     while (true)
     {
