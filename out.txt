@@ -3,7 +3,7 @@ library: SuiteSparse:GraphBLAS v7.4.4 [Mar 25, 2023]
 matrix: /home/quilicam/mat/Harvard500/Harvard500.mtx
 [.mtx]
 Reading matrix market file: /home/quilicam/mat/Harvard500/Harvard500.mtx
-read time: 0.00124334
+read time: 0.0018179
 Input Matrix:
 Terminated after 1001 iterations
 

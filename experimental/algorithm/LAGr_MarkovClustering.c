@@ -6,6 +6,7 @@
         GrB_free(&I);                    \
         GrB_free(&ones);                 \
         GrB_free(&CC);                   \
+        GrB_free(&vpc);                   \
         LAGraph_Free((void *)&CI, NULL); \
         LAGraph_Free((void *)&CJ, NULL); \
         LAGraph_Free((void *)&CX, NULL); \
@@ -46,6 +47,8 @@ int LAGr_MarkovClustering(
     GrB_Matrix CC = NULL;
     GrB_Vector* C_rows = NULL;
 
+    GrB_Vector vpc = NULL;
+
     GrB_Index* CI = NULL;
     GrB_Index* CJ = NULL;
     double* CX = NULL;
@@ -77,6 +80,7 @@ int LAGr_MarkovClustering(
     GRB_TRY(GrB_Matrix_new(&W, GrB_FP64, n, n))
         GRB_TRY(GrB_Matrix_new(&I, GrB_FP64, n, n));
     GRB_TRY(GrB_Vector_new(&ones, GrB_FP64, n));
+    GRB_TRY(GrB_Vector_new(&vpc, GrB_INT16, n));
 
     // GxB_print(C_temp, GxB_COMPLETE);
 
@@ -148,7 +152,7 @@ int LAGr_MarkovClustering(
         iter++;
     }
 
-    GxB_print(C_temp, GxB_COMPLETE);
+    // GxB_print(C_temp, GxB_COMPLETE);
 
     // Post-processing searching for clusters
 
@@ -200,28 +204,29 @@ int LAGr_MarkovClustering(
         }
     }
 
-    GxB_print(C_temp, GxB_COMPLETE);
+    GxB_print(C_temp, GxB_SHORT);
 
     // for (int i = 0; i < n; i++)
     //     printf("  %i  ", to_remove[i]);
 
     // CC matrix represents the actual clustering based on attractors. It can be
     // interpreted as CC[i][j] == 1 ==> vertex j is in cluster i
-    GRB_TRY(GrB_Matrix_new(&CC, GrB_BOOL, nvals_C, nvals_C));
+    GRB_TRY(GrB_Matrix_new(&CC, GrB_BOOL, n, n));
 
-    LAGRAPH_TRY(LAGraph_Malloc((void**)&CI, nvals_C, sizeof(GrB_Index), msg));
-    LAGRAPH_TRY(LAGraph_Malloc((void**)&CJ, nvals_C, sizeof(GrB_Index), msg));
-    LAGRAPH_TRY(LAGraph_Malloc((void**)&CX, nvals_C, sizeof(double), msg));
+    // LAGRAPH_TRY(LAGraph_Malloc((void**)&CI, nvals_C, sizeof(GrB_Index), msg));
+    // LAGRAPH_TRY(LAGraph_Malloc((void**)&CJ, nvals_C, sizeof(GrB_Index), msg));
+    // LAGRAPH_TRY(LAGraph_Malloc((void**)&CX, nvals_C, sizeof(double), msg));
 
-    GRB_TRY(GrB_Matrix_extractTuples_FP64(CI, CJ, CX, &nvals_C, C_temp));
+    // GRB_TRY(GrB_Matrix_extractTuples_FP64(CI, CJ, CX, &nvals_C, C_temp));
 
-    for (int ii = 0; ii < nvals_C; ii++)
-    {
-        GRB_TRY(GrB_Matrix_setElement_BOOL(CC, 1, CI[ii], CJ[ii]));
-    }
+    // for (int ii = 0; ii < nvals_C; ii++)
+    // {
+    //     GRB_TRY(GrB_Matrix_setElement_BOOL(CC, 1, CI[ii], CJ[ii]));
+    // }
 
-    GRB_TRY(GrB_Matrix_wait(CC, GrB_MATERIALIZE));
+    GRB_TRY(GrB_assign(CC, C_temp, NULL, 1, GrB_ALL, n, GrB_ALL, n, GrB_DESC_S));
 
+    // GRB_TRY(GrB_Matrix_wait(CC, GrB_MATERIALIZE));
 
 
     GxB_print(CC, GxB_COMPLETE);
