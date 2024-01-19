@@ -3,10 +3,14 @@
         GrB_free(&C);                    \
         GrB_free(&w);                    \
         GrB_free(&W);                    \
-        GrB_free(&I);                    \
+        GrB_free(&D);                    \
         GrB_free(&ones);                 \
         GrB_free(&CC);                   \
-        GrB_free(&vpc);                   \
+        GrB_free(&C_scaled);             \
+        GrB_free(&cs_row_vals);          \
+        GrB_free(&vpc);                  \
+        GrB_free(&col_seeds);            \
+        GrB_free(&empty);                \
         LAGraph_Free((void *)&CI, NULL); \
         LAGraph_Free((void *)&CJ, NULL); \
         LAGraph_Free((void *)&CX, NULL); \
@@ -20,6 +24,9 @@
 
 #include "LG_internal.h"
 #include <LAGraphX.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 int LAGr_MarkovClustering(
     // output:
@@ -34,19 +41,28 @@ int LAGr_MarkovClustering(
 {
     char MATRIX_TYPE[LAGRAPH_MSG_LEN];
 
-    GxB_set(GxB_PRINT_1BASED, true);
+    srand(time(NULL));
+
+    // GxB_set(GxB_PRINT_1BASED, true);
 
     GrB_Matrix C = NULL;      // Cluster workspace matrix
     GrB_Matrix C_temp = NULL; // The newly computed cluster matrix at the end of each loop
+    GrB_Matrix C_scaled = NULL;
+    GrB_Vector cs_row_vals = NULL; // Row reductions of C_scaled "c-scaled-values" 
 
     GrB_Vector w = NULL; // weight vector to normalize C matrix
     GrB_Matrix W = NULL;
 
-    GrB_Matrix I = NULL;    // Identity workspace matrix
+    GrB_Matrix D = NULL;    // Diagonal workspace matrix
     GrB_Vector ones = NULL; // Vector of all 1's, used primarily to create identity
 
     GrB_Matrix CC = NULL;
     GrB_Vector* C_rows = NULL;
+
+    GrB_Vector empty = NULL;
+
+
+    GrB_Vector col_seeds = NULL;
 
     GrB_Vector vpc = NULL;
 
@@ -75,23 +91,28 @@ int LAGr_MarkovClustering(
     // initializations
     //--------------------------------------------------------------------------
 
+
     GRB_TRY(GrB_Matrix_new(&C, GrB_FP64, n, n));
     GRB_TRY(GrB_Matrix_new(&C_temp, GrB_FP64, n, n));
     GRB_TRY(GrB_Vector_new(&w, GrB_FP64, n));
     GRB_TRY(GrB_Matrix_new(&W, GrB_FP64, n, n))
-        GRB_TRY(GrB_Matrix_new(&I, GrB_FP64, n, n));
+        GRB_TRY(GrB_Matrix_new(&D, GrB_FP64, n, n));
     GRB_TRY(GrB_Vector_new(&ones, GrB_FP64, n));
     GRB_TRY(GrB_Vector_new(&vpc, GrB_INT16, n));
+    GRB_TRY(GrB_Vector_new(&col_seeds, GrB_UINT64, n));
+    GRB_TRY(GrB_Matrix_new(&C_scaled, GrB_FP64, n, n));
+    GRB_TRY(GrB_Vector_new(&cs_row_vals, GrB_FP64, n));
+    GRB_TRY(GrB_Vector_new(&empty, GrB_FP64, n));
 
     // GxB_print(C_temp, GxB_COMPLETE);
 
     GRB_TRY(GrB_assign(ones, NULL, NULL, 1, GrB_ALL, n, NULL));
-    GRB_TRY(GrB_Matrix_diag(&I, ones, 0));
+    GRB_TRY(GrB_Matrix_diag(&D, ones, 0));
 
     // Add self-edge to each vertex
     if (G->nself_edges != n)
     {
-        GRB_TRY(GrB_assign(A, A, NULL, I, GrB_ALL, n, GrB_ALL, n, GrB_DESC_SC));
+        GRB_TRY(GrB_assign(A, A, NULL, D, GrB_ALL, n, GrB_ALL, n, GrB_DESC_SC));
         G->A = A;
         G->out_degree = NULL;
         G->in_degree = NULL;
@@ -111,7 +132,6 @@ int LAGr_MarkovClustering(
     double norm = 0;
     double last_norm = 0;
     GrB_Index streak = 0;
-
     GrB_Index iter = 0;
     while (true)
     {
@@ -176,8 +196,79 @@ int LAGr_MarkovClustering(
 
 
 
-    // GrB_Index nvals_C;
-    // GRB_TRY(GrB_Matrix_nvals(&nvals_C, C_temp));
+    for (int i = 0; i < n; i++)
+    {
+        uint64_t seed = (uint64_t)rand() % 10000;
+        GRB_TRY(GrB_Vector_setElement(col_seeds, seed, i));
+    }
+
+    GRB_TRY(GrB_Matrix_diag(&D, col_seeds, 0));
+    GRB_TRY(GrB_mxm(C_scaled, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP64, C_temp, D, NULL));
+    // GxB_print(C_scaled, GxB_COMPLETE);
+    GRB_TRY(GrB_reduce(cs_row_vals, NULL, NULL, GrB_PLUS_MONOID_FP64, C_scaled, NULL));
+
+    // GxB_print(col_seeds, GxB_COMPLETE);
+    // GxB_print(C_scaled, GxB_COMPLETE);
+    // GxB_print(cs_row_vals, GxB_COMPLETE);
+
+    GrB_Index* csrvI;
+    double* csrvX;
+    GrB_Index csrv_nvals;
+    GRB_TRY(GrB_Vector_nvals(&csrv_nvals, cs_row_vals));
+
+    LAGRAPH_TRY(LAGraph_Malloc((void**)&csrvI, csrv_nvals, sizeof(GrB_Index), msg));
+    LAGRAPH_TRY(LAGraph_Malloc((void**)&csrvX, csrv_nvals, sizeof(double), msg));
+
+    GRB_TRY(GrB_Vector_extractTuples_FP64(csrvI, csrvX, &csrv_nvals, cs_row_vals));
+
+    //csrvI = 0,4,8,10
+    //csrvX = v1,v2,v3,v4
+
+    bool keepX[csrv_nvals];
+    GrB_Index keepI[csrv_nvals];
+    memset(keepX, 1, sizeof(keepX));
+
+    int numDup = 0;
+    for (int i = 0; i < csrv_nvals; i++)
+    {
+        for (int j = i + 1; j < csrv_nvals; j++)
+        {
+            if (csrvX[i] == csrvX[j])
+            {
+                keepX[j] = 0;
+                numDup++;
+            }
+        }
+    }
+
+
+
+
+
+    // for (int i = 0; i < csrv_nvals; i++)
+    // {
+    //     printf("  %i  ", csrvI[i]);
+    // }
+    // printf("\n");
+    // for (int i = 0; i < csrv_nvals; i++)
+    // {
+    //     printf("  %i  ", keepX[i]);
+    // }
+    // printf("\n");
+
+    // GxB_print(C_temp, GxB_COMPLETE);
+    // GxB_print(empty, GxB_COMPLETE);
+    for (int i = 0; i < csrv_nvals; i++)
+    {
+        if (keepX[i] == 0)
+        {
+            GRB_TRY(GrB_Row_assign(C_temp, NULL, NULL, empty, csrvI[i], GrB_ALL, n, GrB_DESC_R));
+        }
+    }
+
+    // GxB_print(C_temp, GxB_COMPLETE);
+
+
 
     // LAGRAPH_TRY(LAGraph_Malloc((void**)&C_rows, n, sizeof(GrB_Vector), msg));
 
@@ -231,22 +322,27 @@ int LAGr_MarkovClustering(
     // interpreted as CC[i][j] == 1 ==> vertex j is in cluster i
     GRB_TRY(GrB_Matrix_new(&CC, GrB_BOOL, n, n));
 
+    // GrB_Index nvals_C;
+    // GRB_TRY(GrB_Matrix_nvals(&nvals_C, C_temp));
+
     // LAGRAPH_TRY(LAGraph_Malloc((void**)&CI, nvals_C, sizeof(GrB_Index), msg));
     // LAGRAPH_TRY(LAGraph_Malloc((void**)&CJ, nvals_C, sizeof(GrB_Index), msg));
     // LAGRAPH_TRY(LAGraph_Malloc((void**)&CX, nvals_C, sizeof(double), msg));
 
     // GRB_TRY(GrB_Matrix_extractTuples_FP64(CI, CJ, CX, &nvals_C, C_temp));
+    // GRB_TRY(GrB_Matrix_build(CC, CI, CJ, CX, nvals_C, GxB_IGNORE_DUP));
 
-    // for (int ii = 0; ii < nvals_C; ii++)
-    // {
-    //     GRB_TRY(GrB_Matrix_setElement_BOOL(CC, 1, CI[ii], CJ[ii]));
-    // }
+    // // for (int ii = 0; ii < nvals_C; ii++)
+    // // {
+    // //     GRB_TRY(GrB_Matrix_setElement_BOOL(CC, 1, CI[ii], CJ[ii]));
+    // // }
 
+    // GxB_print(C_temp, GxB_COMPLETE);
+    // printf("APPLES\n");
+    // GxB_print(CC, GxB_COMPLETE);
 
 
     GRB_TRY(GrB_assign(CC, C_temp, NULL, 1, GrB_ALL, n, GrB_ALL, n, GrB_DESC_S));
-
-    // GRB_TRY(GrB_Matrix_wait(CC, GrB_MATERIALIZE));
 
 
     GRB_TRY(GrB_reduce(vpc, NULL, NULL, GrB_PLUS_MONOID_INT16, CC, NULL));
