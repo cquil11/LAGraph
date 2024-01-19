@@ -158,53 +158,53 @@ int LAGr_MarkovClustering(
 
 
 
-    GrB_Index nvals_C;
-    GRB_TRY(GrB_Matrix_nvals(&nvals_C, C_temp));
+    // GrB_Index nvals_C;
+    // GRB_TRY(GrB_Matrix_nvals(&nvals_C, C_temp));
 
-    LAGRAPH_TRY(LAGraph_Malloc((void**)&C_rows, n, sizeof(GrB_Vector), msg));
+    // LAGRAPH_TRY(LAGraph_Malloc((void**)&C_rows, n, sizeof(GrB_Vector), msg));
 
-    bool to_remove[n];
-    memset(to_remove, 0, sizeof(to_remove));
+    // bool to_remove[n];
+    // memset(to_remove, 0, sizeof(to_remove));
 
-    for (int i = 0; i < n; i++)
-    {
-        GRB_TRY(GrB_Vector_new(&C_rows[i], GrB_FP64, n));
+    // for (int i = 0; i < n; i++)
+    // {
+    //     GRB_TRY(GrB_Vector_new(&C_rows[i], GrB_FP64, n));
 
-        GRB_TRY(GrB_Col_extract(C_rows[i], NULL, NULL, C_temp, GrB_ALL, n, i, GrB_DESC_T0));
-        // GxB_print(C_rows[i], GxB_COMPLETE);
-    }
+    //     GRB_TRY(GrB_Col_extract(C_rows[i], NULL, NULL, C_temp, GrB_ALL, n, i, GrB_DESC_T0));
+    //     // GxB_print(C_rows[i], GxB_COMPLETE);
+    // }
 
-    for (int i = 0; i < n; i++)
-    {
-        if (to_remove[i] == 1) continue;
+    // for (int i = 0; i < n; i++)
+    // {
+    //     if (to_remove[i] == 1) continue;
 
-        GrB_Vector cur = C_rows[i];
-        for (int j = i + 1; j < n; j++)
-        {
-            if (to_remove[j] == 1) continue;
+    //     GrB_Vector cur = C_rows[i];
+    //     for (int j = i + 1; j < n; j++)
+    //     {
+    //         if (to_remove[j] == 1) continue;
 
-            bool res;
-            LAGRAPH_TRY(LAGraph_Vector_IsEqual(&res, cur, C_rows[j], msg));
-            if (res)
-            {
-                to_remove[j] = 1;
-            }
-        }
-    }
+    //         bool res;
+    //         LAGRAPH_TRY(LAGraph_Vector_IsEqual(&res, cur, C_rows[j], msg));
+    //         if (res)
+    //         {
+    //             to_remove[j] = 1;
+    //         }
+    //     }
+    // }
 
-    // Iterate over each row to clear the ones marked for removal
-    for (GrB_Index i = 0; i < n; i++)
-    {
-        if (to_remove[i] == 1)
-        {
-            for (int j = 0; j < n; j++)
-            {
-                GRB_TRY(GrB_Matrix_removeElement(C_temp, i, j));
-            }
-        }
-    }
+    // // Iterate over each row to clear the ones marked for removal
+    // for (GrB_Index i = 0; i < n; i++)
+    // {
+    //     if (to_remove[i] == 1)
+    //     {
+    //         for (int j = 0; j < n; j++)
+    //         {
+    //             GRB_TRY(GrB_Matrix_removeElement(C_temp, i, j));
+    //         }
+    //     }
+    // }
 
-    GxB_print(C_temp, GxB_SHORT);
+    // GxB_print(C_temp, GxB_SHORT);
 
     // for (int i = 0; i < n; i++)
     //     printf("  %i  ", to_remove[i]);
