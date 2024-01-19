@@ -3,6 +3,7 @@
         "lg_alg_internal.h": "c",
         "lg_internal.h": "c",
         "lagraphx.h": "c",
-        "lagraph.h": "c"
+        "lagraph.h": "c",
+        "lagraph_demo.h": "c"
     }
 }
