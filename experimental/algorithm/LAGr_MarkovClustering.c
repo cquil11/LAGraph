@@ -126,7 +126,7 @@ int LAGr_MarkovClustering(
 
         bool res = NULL;
         LAGRAPH_TRY(LAGraph_Matrix_IsEqual(&res, C, C_temp, msg));
-        if (res || iter > 1000)
+        if (res || iter > 50)
         {
             printf("Terminated after %i iterations\n", iter);
             break;
