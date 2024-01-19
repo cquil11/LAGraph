@@ -10,32 +10,32 @@
     GrB_free (&C_f) ;                     \
 }
 
-int main (int argc, char**argv)
+int main(int argc, char** argv)
 {
-    char msg [LAGRAPH_MSG_LEN] ;
+    char msg[LAGRAPH_MSG_LEN];
 
-    LAGraph_Graph G = NULL ;
-    GrB_Matrix A = NULL ;
+    LAGraph_Graph G = NULL;
+    GrB_Matrix A = NULL;
     GrB_Matrix C_f = NULL;         // Clustering result vector
 
     // start GraphBLAS and LAGraph
-    bool burble = false ;
-    demo_init (burble) ;
+    bool burble = false;
+    demo_init(burble);
 
     // FILE *f ;
 
-    char *matrix_name = (argc > 1) ? argv [1] : "stdin" ;
-    LAGRAPH_TRY (readproblem (&G, NULL,
-        false, false, false, GrB_FP64, false, argc, argv)) ;
+    char* matrix_name = (argc > 1) ? argv[1] : "stdin";
+    LAGRAPH_TRY(readproblem(&G, NULL,
+        false, false, false, GrB_FP64, false, argc, argv));
 
     // compute G->out_degree
-    LAGRAPH_TRY (LAGraph_Cached_OutDegree (G, msg)) ;
+    LAGRAPH_TRY(LAGraph_Cached_OutDegree(G, msg));
 
     // compute G->in_degree, just to test it (not needed for any tests)
-    LAGRAPH_TRY (LAGraph_Cached_InDegree (G, msg)) ;
+    LAGRAPH_TRY(LAGraph_Cached_InDegree(G, msg));
 
     // compute G->nself_edges
-    LAGRAPH_TRY (LAGraph_Cached_NSelfEdges (G, msg)) ;
+    LAGRAPH_TRY(LAGraph_Cached_NSelfEdges(G, msg));
 
     // GrB_Index n ;
     // GRB_TRY (GrB_Matrix_nrows (&n, G->A)) ;
@@ -44,7 +44,7 @@ int main (int argc, char**argv)
     // GxB_print (G->A, GxB_SHORT);
 
     // Run Markov Clustering algorithm
-    GRB_TRY(LAGr_MarkovClustering(&C_f, 2, 2, 0.001, G, msg));
+    GRB_TRY(LAGr_MarkovClustering(&C_f, 2, 2, 0.001, 250, G, msg));
 
     // GxB_print (C_f, GxB_SHORT);
 
@@ -64,7 +64,7 @@ int main (int argc, char**argv)
     // f = NULL;
 
 
-    LG_FREE_ALL ;
-    LAGRAPH_TRY (LAGraph_Finalize (msg)) ;
-    return (GrB_SUCCESS) ;
+    LG_FREE_ALL;
+    LAGRAPH_TRY(LAGraph_Finalize(msg));
+    return (GrB_SUCCESS);
 }

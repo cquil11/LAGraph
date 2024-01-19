@@ -28,6 +28,7 @@ int LAGr_MarkovClustering(
     int e,            // expansion coefficient
     int i,            // inflation coefficient
     double threshold, // threshold for pruning values
+    int max_iter,     // maximum iterations
     LAGraph_Graph G,  // input graph
     char* msg)
 {
@@ -107,7 +108,9 @@ int LAGr_MarkovClustering(
     GRB_TRY(GrB_Matrix_dup(&C_temp, A));
     GRB_TRY(GrB_Matrix_dup(&C, C_temp));
 
-    double total;
+    double norm = 0;
+    double last_norm = 0;
+    GrB_Index streak = 0;
 
     GrB_Index iter = 0;
     while (true)
@@ -126,7 +129,7 @@ int LAGr_MarkovClustering(
 
         bool res = NULL;
         LAGRAPH_TRY(LAGraph_Matrix_IsEqual(&res, C, C_temp, msg));
-        if (res || iter > 50)
+        if (res || iter > max_iter || streak >= 10)
         {
             printf("Terminated after %i iterations\n", iter);
             break;
@@ -150,9 +153,20 @@ int LAGr_MarkovClustering(
         // printf("C_temp after inflation\n");
         // GxB_print(C_temp, GxB_COMPLETE);
 
-        GRB_TRY(GrB_reduce(&total, NULL, GrB_PLUS_MONOID_FP64, C_temp, NULL));
+        GRB_TRY(GrB_reduce(&norm, NULL, GrB_PLUS_MONOID_FP64, C_temp, NULL));
 
-        printf("End of iteration %i\nTotal = %f\n", iter, total);
+        if (norm == last_norm)
+        {
+            streak++;
+        }
+        else
+        {
+            streak = 0;
+        }
+
+        last_norm = norm;
+
+        printf("End of iteration %i\nTotal = %f\nStreak = %i\n\n", iter, norm, streak);
         iter++;
     }
 
@@ -228,7 +242,7 @@ int LAGr_MarkovClustering(
     //     GRB_TRY(GrB_Matrix_setElement_BOOL(CC, 1, CI[ii], CJ[ii]));
     // }
 
-    
+
 
     GRB_TRY(GrB_assign(CC, C_temp, NULL, 1, GrB_ALL, n, GrB_ALL, n, GrB_DESC_S));
 

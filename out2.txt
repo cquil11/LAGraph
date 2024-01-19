@@ -3,7 +3,7 @@ library: SuiteSparse:GraphBLAS v7.4.4 [Mar 25, 2023]
 matrix: /home/quilicam/mat/Harvard500/Harvard500.mtx
 [.mtx]
 Reading matrix market file: /home/quilicam/mat/Harvard500/Harvard500.mtx
-read time: 0.0020162
+read time: 0.00133601
 Input Matrix:
 End of iteration 0
 Total = 173.911874
@@ -125,7 +125,891 @@ End of iteration 29
 Total = 484.833333
 Streak = 10
 
-Terminated after 30 iterations
+End of iteration 30
+Total = 484.833333
+Streak = 11
+
+End of iteration 31
+Total = 484.833333
+Streak = 12
+
+End of iteration 32
+Total = 484.833333
+Streak = 13
+
+End of iteration 33
+Total = 484.833333
+Streak = 0
+
+End of iteration 34
+Total = 484.833333
+Streak = 0
+
+End of iteration 35
+Total = 484.833333
+Streak = 0
+
+End of iteration 36
+Total = 484.833333
+Streak = 0
+
+End of iteration 37
+Total = 484.833333
+Streak = 0
+
+End of iteration 38
+Total = 484.833333
+Streak = 0
+
+End of iteration 39
+Total = 484.833333
+Streak = 0
+
+End of iteration 40
+Total = 484.833333
+Streak = 0
+
+End of iteration 41
+Total = 484.833333
+Streak = 0
+
+End of iteration 42
+Total = 484.833333
+Streak = 0
+
+End of iteration 43
+Total = 484.833333
+Streak = 0
+
+End of iteration 44
+Total = 484.833334
+Streak = 0
+
+End of iteration 45
+Total = 484.833335
+Streak = 0
+
+End of iteration 46
+Total = 484.833339
+Streak = 0
+
+End of iteration 47
+Total = 484.833356
+Streak = 0
+
+End of iteration 48
+Total = 484.833422
+Streak = 0
+
+End of iteration 49
+Total = 484.833688
+Streak = 0
+
+End of iteration 50
+Total = 484.834745
+Streak = 0
+
+End of iteration 51
+Total = 484.838920
+Streak = 0
+
+End of iteration 52
+Total = 484.855125
+Streak = 0
+
+End of iteration 53
+Total = 484.915155
+Streak = 0
+
+End of iteration 54
+Total = 485.109398
+Streak = 0
+
+End of iteration 55
+Total = 485.561386
+Streak = 0
+
+End of iteration 56
+Total = 486.320394
+Streak = 0
+
+End of iteration 57
+Total = 487.669246
+Streak = 0
+
+End of iteration 58
+Total = 488.915392
+Streak = 0
+
+End of iteration 59
+Total = 489.161898
+Streak = 0
+
+End of iteration 60
+Total = 489.166667
+Streak = 0
+
+End of iteration 61
+Total = 489.166667
+Streak = 1
+
+End of iteration 62
+Total = 489.166667
+Streak = 2
+
+End of iteration 63
+Total = 489.166667
+Streak = 3
+
+End of iteration 64
+Total = 489.166667
+Streak = 4
+
+End of iteration 65
+Total = 489.166667
+Streak = 5
+
+End of iteration 66
+Total = 489.166667
+Streak = 6
+
+End of iteration 67
+Total = 489.166667
+Streak = 7
+
+End of iteration 68
+Total = 489.166667
+Streak = 8
+
+End of iteration 69
+Total = 489.166667
+Streak = 9
+
+End of iteration 70
+Total = 489.166667
+Streak = 10
+
+End of iteration 71
+Total = 489.166667
+Streak = 11
+
+End of iteration 72
+Total = 489.166667
+Streak = 12
+
+End of iteration 73
+Total = 489.166667
+Streak = 13
+
+End of iteration 74
+Total = 489.166667
+Streak = 14
+
+End of iteration 75
+Total = 489.166667
+Streak = 15
+
+End of iteration 76
+Total = 489.166667
+Streak = 16
+
+End of iteration 77
+Total = 489.166667
+Streak = 17
+
+End of iteration 78
+Total = 489.166667
+Streak = 18
+
+End of iteration 79
+Total = 489.166667
+Streak = 19
+
+End of iteration 80
+Total = 489.166667
+Streak = 20
+
+End of iteration 81
+Total = 489.166667
+Streak = 21
+
+End of iteration 82
+Total = 489.166667
+Streak = 22
+
+End of iteration 83
+Total = 489.166667
+Streak = 23
+
+End of iteration 84
+Total = 489.166667
+Streak = 24
+
+End of iteration 85
+Total = 489.166667
+Streak = 25
+
+End of iteration 86
+Total = 489.166667
+Streak = 26
+
+End of iteration 87
+Total = 489.166667
+Streak = 27
+
+End of iteration 88
+Total = 489.166667
+Streak = 28
+
+End of iteration 89
+Total = 489.166667
+Streak = 29
+
+End of iteration 90
+Total = 489.166667
+Streak = 30
+
+End of iteration 91
+Total = 489.166667
+Streak = 31
+
+End of iteration 92
+Total = 489.166667
+Streak = 32
+
+End of iteration 93
+Total = 489.166667
+Streak = 33
+
+End of iteration 94
+Total = 489.166667
+Streak = 34
+
+End of iteration 95
+Total = 489.166667
+Streak = 35
+
+End of iteration 96
+Total = 489.166667
+Streak = 36
+
+End of iteration 97
+Total = 489.166667
+Streak = 37
+
+End of iteration 98
+Total = 489.166667
+Streak = 38
+
+End of iteration 99
+Total = 489.166667
+Streak = 39
+
+End of iteration 100
+Total = 489.166667
+Streak = 40
+
+End of iteration 101
+Total = 489.166667
+Streak = 41
+
+End of iteration 102
+Total = 489.166667
+Streak = 42
+
+End of iteration 103
+Total = 489.166667
+Streak = 43
+
+End of iteration 104
+Total = 489.166667
+Streak = 44
+
+End of iteration 105
+Total = 489.166667
+Streak = 45
+
+End of iteration 106
+Total = 489.166667
+Streak = 46
+
+End of iteration 107
+Total = 489.166667
+Streak = 47
+
+End of iteration 108
+Total = 489.166667
+Streak = 48
+
+End of iteration 109
+Total = 489.166667
+Streak = 49
+
+End of iteration 110
+Total = 489.166667
+Streak = 50
+
+End of iteration 111
+Total = 489.166667
+Streak = 51
+
+End of iteration 112
+Total = 489.166667
+Streak = 52
+
+End of iteration 113
+Total = 489.166667
+Streak = 53
+
+End of iteration 114
+Total = 489.166667
+Streak = 54
+
+End of iteration 115
+Total = 489.166667
+Streak = 55
+
+End of iteration 116
+Total = 489.166667
+Streak = 56
+
+End of iteration 117
+Total = 489.166667
+Streak = 57
+
+End of iteration 118
+Total = 489.166667
+Streak = 58
+
+End of iteration 119
+Total = 489.166667
+Streak = 59
+
+End of iteration 120
+Total = 489.166667
+Streak = 60
+
+End of iteration 121
+Total = 489.166667
+Streak = 61
+
+End of iteration 122
+Total = 489.166667
+Streak = 62
+
+End of iteration 123
+Total = 489.166667
+Streak = 63
+
+End of iteration 124
+Total = 489.166667
+Streak = 64
+
+End of iteration 125
+Total = 489.166667
+Streak = 65
+
+End of iteration 126
+Total = 489.166667
+Streak = 66
+
+End of iteration 127
+Total = 489.166667
+Streak = 67
+
+End of iteration 128
+Total = 489.166667
+Streak = 68
+
+End of iteration 129
+Total = 489.166667
+Streak = 69
+
+End of iteration 130
+Total = 489.166667
+Streak = 70
+
+End of iteration 131
+Total = 489.166667
+Streak = 71
+
+End of iteration 132
+Total = 489.166667
+Streak = 72
+
+End of iteration 133
+Total = 489.166667
+Streak = 73
+
+End of iteration 134
+Total = 489.166667
+Streak = 74
+
+End of iteration 135
+Total = 489.166667
+Streak = 75
+
+End of iteration 136
+Total = 489.166667
+Streak = 76
+
+End of iteration 137
+Total = 489.166667
+Streak = 77
+
+End of iteration 138
+Total = 489.166667
+Streak = 78
+
+End of iteration 139
+Total = 489.166667
+Streak = 79
+
+End of iteration 140
+Total = 489.166667
+Streak = 80
+
+End of iteration 141
+Total = 489.166667
+Streak = 81
+
+End of iteration 142
+Total = 489.166667
+Streak = 82
+
+End of iteration 143
+Total = 489.166667
+Streak = 83
+
+End of iteration 144
+Total = 489.166667
+Streak = 84
+
+End of iteration 145
+Total = 489.166667
+Streak = 85
+
+End of iteration 146
+Total = 489.166667
+Streak = 86
+
+End of iteration 147
+Total = 489.166667
+Streak = 87
+
+End of iteration 148
+Total = 489.166667
+Streak = 88
+
+End of iteration 149
+Total = 489.166667
+Streak = 89
+
+End of iteration 150
+Total = 489.166667
+Streak = 90
+
+End of iteration 151
+Total = 489.166667
+Streak = 91
+
+End of iteration 152
+Total = 489.166667
+Streak = 92
+
+End of iteration 153
+Total = 489.166667
+Streak = 93
+
+End of iteration 154
+Total = 489.166667
+Streak = 94
+
+End of iteration 155
+Total = 489.166667
+Streak = 95
+
+End of iteration 156
+Total = 489.166667
+Streak = 96
+
+End of iteration 157
+Total = 489.166667
+Streak = 97
+
+End of iteration 158
+Total = 489.166667
+Streak = 98
+
+End of iteration 159
+Total = 489.166667
+Streak = 99
+
+End of iteration 160
+Total = 489.166667
+Streak = 100
+
+End of iteration 161
+Total = 489.166667
+Streak = 101
+
+End of iteration 162
+Total = 489.166667
+Streak = 102
+
+End of iteration 163
+Total = 489.166667
+Streak = 103
+
+End of iteration 164
+Total = 489.166667
+Streak = 104
+
+End of iteration 165
+Total = 489.166667
+Streak = 105
+
+End of iteration 166
+Total = 489.166667
+Streak = 106
+
+End of iteration 167
+Total = 489.166667
+Streak = 107
+
+End of iteration 168
+Total = 489.166667
+Streak = 108
+
+End of iteration 169
+Total = 489.166667
+Streak = 109
+
+End of iteration 170
+Total = 489.166667
+Streak = 110
+
+End of iteration 171
+Total = 489.166667
+Streak = 111
+
+End of iteration 172
+Total = 489.166667
+Streak = 112
+
+End of iteration 173
+Total = 489.166667
+Streak = 113
+
+End of iteration 174
+Total = 489.166667
+Streak = 114
+
+End of iteration 175
+Total = 489.166667
+Streak = 115
+
+End of iteration 176
+Total = 489.166667
+Streak = 116
+
+End of iteration 177
+Total = 489.166667
+Streak = 117
+
+End of iteration 178
+Total = 489.166667
+Streak = 118
+
+End of iteration 179
+Total = 489.166667
+Streak = 119
+
+End of iteration 180
+Total = 489.166667
+Streak = 120
+
+End of iteration 181
+Total = 489.166667
+Streak = 121
+
+End of iteration 182
+Total = 489.166667
+Streak = 122
+
+End of iteration 183
+Total = 489.166667
+Streak = 123
+
+End of iteration 184
+Total = 489.166667
+Streak = 124
+
+End of iteration 185
+Total = 489.166667
+Streak = 125
+
+End of iteration 186
+Total = 489.166667
+Streak = 126
+
+End of iteration 187
+Total = 489.166667
+Streak = 127
+
+End of iteration 188
+Total = 489.166667
+Streak = 128
+
+End of iteration 189
+Total = 489.166667
+Streak = 129
+
+End of iteration 190
+Total = 489.166667
+Streak = 130
+
+End of iteration 191
+Total = 489.166667
+Streak = 131
+
+End of iteration 192
+Total = 489.166667
+Streak = 132
+
+End of iteration 193
+Total = 489.166667
+Streak = 133
+
+End of iteration 194
+Total = 489.166667
+Streak = 134
+
+End of iteration 195
+Total = 489.166667
+Streak = 135
+
+End of iteration 196
+Total = 489.166667
+Streak = 136
+
+End of iteration 197
+Total = 489.166667
+Streak = 137
+
+End of iteration 198
+Total = 489.166667
+Streak = 138
+
+End of iteration 199
+Total = 489.166667
+Streak = 139
+
+End of iteration 200
+Total = 489.166667
+Streak = 140
+
+End of iteration 201
+Total = 489.166667
+Streak = 141
+
+End of iteration 202
+Total = 489.166667
+Streak = 142
+
+End of iteration 203
+Total = 489.166667
+Streak = 143
+
+End of iteration 204
+Total = 489.166667
+Streak = 144
+
+End of iteration 205
+Total = 489.166667
+Streak = 145
+
+End of iteration 206
+Total = 489.166667
+Streak = 146
+
+End of iteration 207
+Total = 489.166667
+Streak = 147
+
+End of iteration 208
+Total = 489.166667
+Streak = 148
+
+End of iteration 209
+Total = 489.166667
+Streak = 149
+
+End of iteration 210
+Total = 489.166667
+Streak = 150
+
+End of iteration 211
+Total = 489.166667
+Streak = 151
+
+End of iteration 212
+Total = 489.166667
+Streak = 152
+
+End of iteration 213
+Total = 489.166667
+Streak = 153
+
+End of iteration 214
+Total = 489.166667
+Streak = 154
+
+End of iteration 215
+Total = 489.166667
+Streak = 155
+
+End of iteration 216
+Total = 489.166667
+Streak = 156
+
+End of iteration 217
+Total = 489.166667
+Streak = 157
+
+End of iteration 218
+Total = 489.166667
+Streak = 158
+
+End of iteration 219
+Total = 489.166667
+Streak = 159
+
+End of iteration 220
+Total = 489.166667
+Streak = 160
+
+End of iteration 221
+Total = 489.166667
+Streak = 161
+
+End of iteration 222
+Total = 489.166667
+Streak = 162
+
+End of iteration 223
+Total = 489.166667
+Streak = 163
+
+End of iteration 224
+Total = 489.166667
+Streak = 164
+
+End of iteration 225
+Total = 489.166667
+Streak = 165
+
+End of iteration 226
+Total = 489.166667
+Streak = 166
+
+End of iteration 227
+Total = 489.166667
+Streak = 167
+
+End of iteration 228
+Total = 489.166667
+Streak = 168
+
+End of iteration 229
+Total = 489.166667
+Streak = 169
+
+End of iteration 230
+Total = 489.166667
+Streak = 170
+
+End of iteration 231
+Total = 489.166667
+Streak = 171
+
+End of iteration 232
+Total = 489.166667
+Streak = 172
+
+End of iteration 233
+Total = 489.166667
+Streak = 173
+
+End of iteration 234
+Total = 489.166667
+Streak = 174
+
+End of iteration 235
+Total = 489.166667
+Streak = 175
+
+End of iteration 236
+Total = 489.166667
+Streak = 176
+
+End of iteration 237
+Total = 489.166667
+Streak = 177
+
+End of iteration 238
+Total = 489.166667
+Streak = 178
+
+End of iteration 239
+Total = 489.166667
+Streak = 179
+
+End of iteration 240
+Total = 489.166667
+Streak = 180
+
+End of iteration 241
+Total = 489.166667
+Streak = 181
+
+End of iteration 242
+Total = 489.166667
+Streak = 182
+
+End of iteration 243
+Total = 489.166667
+Streak = 183
+
+End of iteration 244
+Total = 489.166667
+Streak = 184
+
+End of iteration 245
+Total = 489.166667
+Streak = 185
+
+End of iteration 246
+Total = 489.166667
+Streak = 186
+
+End of iteration 247
+Total = 489.166667
+Streak = 187
+
+End of iteration 248
+Total = 489.166667
+Streak = 188
+
+End of iteration 249
+Total = 489.166667
+Streak = 189
+
+End of iteration 250
+Total = 489.166667
+Streak = 190
+
+Terminated after 251 iterations
 
   500x1 GraphBLAS int16_t vector, bitmap by col
   vpc, 126 entries, memory: 1.7 KB
@@ -147,14 +1031,14 @@ Terminated after 30 iterations
     (92,1)   2
     (94,1)   1
     (100,1)   1
-    (110,1)   5
+    (110,1)   1
     (112,1)   5
     (113,1)   5
     (114,1)   5
     (122,1)   2
     (127,1)   2
     (130,1)   28
-    (132,1)   2
+    (132,1)   1
     (142,1)   1
     (143,1)   3
     (147,1)   1
@@ -168,7 +1052,7 @@ Terminated after 30 iterations
     (163,1)   2
     (166,1)   1
     (167,1)   1
-    (181,1)   10
+    (181,1)   3
     (184,1)   10
     (194,1)   5
     (216,1)   1
@@ -259,7 +1143,7 @@ Terminated after 30 iterations
 
 
   500x500 GraphBLAS bool matrix, sparse by row
-  CC, 541 entries, memory: 8.4 KB
+  CC, 529 entries, memory: 8.3 KB
   iso value:   1
 
     (6,1)   1
@@ -524,11 +1408,7 @@ Terminated after 30 iterations
     (92,182)   1
     (94,94)   1
     (100,100)   1
-    (110,11)   1
     (110,110)   1
-    (110,111)   1
-    (110,286)   1
-    (110,392)   1
     (112,11)   1
     (112,111)   1
     (112,112)   1
@@ -576,7 +1456,6 @@ Terminated after 30 iterations
     (130,434)   1
     (130,463)   1
     (130,500)   1
-    (132,131)   1
     (132,132)   1
     (142,142)   1
     (143,143)   1
@@ -599,13 +1478,6 @@ Terminated after 30 iterations
     (181,17)   1
     (181,181)   1
     (181,183)   1
-    (181,439)   1
-    (181,443)   1
-    (181,467)   1
-    (181,471)   1
-    (181,488)   1
-    (181,490)   1
-    (181,499)   1
     (184,17)   1
     (184,183)   1
     (184,184)   1
