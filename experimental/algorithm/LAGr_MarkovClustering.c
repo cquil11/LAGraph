@@ -229,8 +229,11 @@ int LAGr_MarkovClustering(
     // GRB_TRY(GrB_Matrix_wait(CC, GrB_MATERIALIZE));
 
 
-    GxB_print(CC, GxB_COMPLETE);
+    GRB_TRY(GrB_reduce(vpc, NULL, NULL, GrB_PLUS_MONOID_INT16, CC, NULL));
 
+    GxB_print(vpc, GxB_COMPLETE);
+    GxB_print(CC, GxB_COMPLETE);
+    
     (*C_f) = C_temp; // Set output matrix
 
     LG_FREE_WORK;
