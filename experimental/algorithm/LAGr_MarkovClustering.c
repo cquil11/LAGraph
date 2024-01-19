@@ -107,6 +107,8 @@ int LAGr_MarkovClustering(
     GRB_TRY(GrB_Matrix_dup(&C_temp, A));
     GRB_TRY(GrB_Matrix_dup(&C, C_temp));
 
+    double total;
+
     GrB_Index iter = 0;
     while (true)
     {
@@ -148,7 +150,9 @@ int LAGr_MarkovClustering(
         // printf("C_temp after inflation\n");
         // GxB_print(C_temp, GxB_COMPLETE);
 
-        printf("End of iteration %i\n", iter);
+        GRB_TRY(GrB_reduce(&total, NULL, GrB_PLUS_MONOID_FP64, C_temp, NULL));
+
+        printf("End of iteration %i\nTotal = %f\n", iter, total);
         iter++;
     }
 
@@ -223,6 +227,8 @@ int LAGr_MarkovClustering(
     // {
     //     GRB_TRY(GrB_Matrix_setElement_BOOL(CC, 1, CI[ii], CJ[ii]));
     // }
+
+    
 
     GRB_TRY(GrB_assign(CC, C_temp, NULL, 1, GrB_ALL, n, GrB_ALL, n, GrB_DESC_S));
 
