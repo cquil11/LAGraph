@@ -5,6 +5,7 @@
         GrB_free(&W);                    \
         GrB_free(&D);                    \
         GrB_free(&ones);                 \
+        GrB_free(&C_temp_int64);          \
         GrB_free(&CC);                   \
         GrB_free(&C_scaled);             \
         GrB_free(&cs_row_vals);          \
@@ -15,6 +16,7 @@
         LAGraph_Free((void *)&CJ, NULL); \
         LAGraph_Free((void *)&CX, NULL); \
         GrB_free(&ROUND_HUN_FP64);       \
+        GrB_free(&hash_unary_op);  \
     }
 
 #define LG_FREE_ALL    \
@@ -33,6 +35,12 @@ static void round_to_hundredths(void* z, const void* x) {
     double input = *((double*)x);
     double result = round(input * 100) / 100;
     *((double*)z) = result;
+}
+
+static void fp64_floor_to_int64(void* z, const void* x) {
+    double input = *((double*)x);   // Convert input to double
+    double floored = round(input);  // Apply the floor operation
+    *((int64_t*)z) = (int64_t)floored; // Convert to uint64_t and store in output
 }
 
 int LAGr_MarkovClustering(
@@ -54,6 +62,7 @@ int LAGr_MarkovClustering(
 
     GrB_Matrix C = NULL;      // Cluster workspace matrix
     GrB_Matrix C_temp = NULL; // The newly computed cluster matrix at the end of each loop
+    GrB_Matrix C_temp_int64 = NULL;
     GrB_Matrix C_scaled = NULL;
     GrB_Vector cs_row_vals = NULL; // Row reductions of C_scaled "c-scaled-values" 
 
@@ -69,7 +78,7 @@ int LAGr_MarkovClustering(
     GrB_Vector empty = NULL;
 
     GrB_UnaryOp ROUND_HUN_FP64 = NULL;
-
+    GrB_UnaryOp hash_unary_op = NULL;
 
     GrB_Vector col_seeds = NULL;
 
@@ -109,11 +118,15 @@ int LAGr_MarkovClustering(
     GRB_TRY(GrB_Vector_new(&ones, GrB_FP64, n));
     GRB_TRY(GrB_Vector_new(&vpc, GrB_INT16, n));
     GRB_TRY(GrB_Vector_new(&col_seeds, GrB_UINT64, n));
-    GRB_TRY(GrB_Matrix_new(&C_scaled, GrB_FP64, n, n));
-    GRB_TRY(GrB_Vector_new(&cs_row_vals, GrB_FP64, n));
+    GRB_TRY(GrB_Matrix_new(&C_scaled, GrB_INT64, n, n));
+    GRB_TRY(GrB_Vector_new(&cs_row_vals, GrB_INT64, n));
     GRB_TRY(GrB_Vector_new(&empty, GrB_FP64, n));
 
+    GRB_TRY(GrB_Matrix_new(&C_temp_int64, GrB_INT64, n, n));
+
     GRB_TRY(GrB_UnaryOp_new(&ROUND_HUN_FP64, round_to_hundredths, GrB_FP64, GrB_FP64));
+    GRB_TRY(GrB_UnaryOp_new(&hash_unary_op, fp64_floor_to_int64, GrB_INT64, GrB_FP64));
+
 
     // GxB_print(C_temp, GxB_COMPLETE);
 
@@ -196,73 +209,44 @@ int LAGr_MarkovClustering(
 
     for (int i = 0; i < n; i++)
     {
-        uint64_t seed = (uint64_t)rand() % 1000 + 1;
+        uint64_t seed = (uint64_t)rand() % 1000 + 10;
         GRB_TRY(GrB_Vector_setElement(col_seeds, seed, i));
     }
 
     GRB_TRY(GrB_Vector_wait(col_seeds, GrB_MATERIALIZE));
+    // GRB_TRY(GxB_Vector_sort(col_seeds, NULL, GrB_LT_INT64, col_seeds, NULL));
+    // GRB_TRY(GrB_Vector_wait(col_seeds, GrB_MATERIALIZE));
 
-    GRB_TRY(GxB_Vector_sort(col_seeds, NULL, GrB_LT_INT64, col_seeds, NULL));
-    GRB_TRY(GrB_Vector_wait(col_seeds, GrB_MATERIALIZE));
+    // GxB_print(col_seeds, GxB_SHORT);
 
-    GxB_print(col_seeds, GxB_SHORT);
+    // GRB_TRY(GrB_apply(C_temp, NULL, NULL, ROUND_HUN_FP64, C_temp, NULL));
+    GRB_TRY(GrB_Matrix_apply_BinaryOp1st_FP64(C_temp, NULL, NULL, GrB_TIMES_FP64, 100.0, C_temp, NULL));
+    GRB_TRY(GrB_apply(C_temp_int64, NULL, NULL, hash_unary_op, C_temp, NULL));
 
+    GxB_print(C_temp_int64, GxB_SHORT);
 
-
-    GRB_TRY(GrB_apply(C_temp, NULL, NULL, ROUND_HUN_FP64, C_temp, NULL));
 
     GRB_TRY(GrB_Matrix_diag(&D, col_seeds, 0));
-    GRB_TRY(GrB_mxm(C_scaled, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP64, C_temp, D, NULL));
+    GRB_TRY(GrB_mxm(C_scaled, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_INT64, C_temp_int64, D, NULL));
 
+    // EXPERIMENTAL!
     // GxB_print(C_scaled, GxB_COMPLETE);
-    GRB_TRY(GrB_apply(C_scaled, NULL, NULL, ROUND_HUN_FP64, C_scaled, NULL));
-
-
+    // GRB_TRY(GrB_apply(C_scaled, NULL, NULL, hash_unary_op, C_scaled, NULL));
     // GxB_print(C_scaled, GxB_COMPLETE);
-    GRB_TRY(GrB_reduce(cs_row_vals, NULL, NULL, GrB_PLUS_MONOID_FP64, C_scaled, NULL));
 
-    GRB_TRY(GrB_apply(cs_row_vals, NULL, NULL, ROUND_HUN_FP64, cs_row_vals, NULL));
+    GRB_TRY(GrB_reduce(cs_row_vals, NULL, NULL, GrB_PLUS_MONOID_INT64, C_scaled, NULL));
+
+    GxB_print(cs_row_vals, GxB_COMPLETE);
 
 
-    GrB_Index* csrvI;
-    double* csrvX;
     GrB_Index csrv_nvals;
     GRB_TRY(GrB_Vector_nvals(&csrv_nvals, cs_row_vals));
 
-    LAGRAPH_TRY(LAGraph_Malloc((void**)&csrvI, csrv_nvals, sizeof(GrB_Index), msg));
-    LAGRAPH_TRY(LAGraph_Malloc((void**)&csrvX, csrv_nvals, sizeof(double), msg));
-
-    GRB_TRY(GrB_Vector_extractTuples_FP64(csrvI, csrvX, &csrv_nvals, cs_row_vals));
-
-    bool keepX[csrv_nvals];
-    GrB_Index keepI[csrv_nvals];
-    GrB_Index indx[csrv_nvals];
-    memset(keepX, 1, sizeof(keepX));
-
-    int numDup = 0;
-    for (int i = 0; i < csrv_nvals; i++)
-    {
-        printf("duplication iteration %i/%i\n", i, csrv_nvals);
-        if (!keepX[i]) continue;
-        for (int j = i + 1; j < csrv_nvals; j++)
-        {
-            if (csrvX[i] == csrvX[j])
-            {
-                keepX[j] = 0;
-                indx[numDup] = csrvI[j];
-                numDup++;
-                printf("numdup %i csrv_nvals %i\n", numDup, csrv_nvals);
-            }
-        }
-    }
-
-
     GrB_Vector vals = NULL;
     GrB_Vector perm = NULL;
-    GRB_TRY(GrB_Vector_new(&vals, GrB_FP64, n));
+    GRB_TRY(GrB_Vector_new(&vals, GrB_INT64, n));
     GRB_TRY(GrB_Vector_new(&perm, GrB_INT64, n));
-
-    GRB_TRY(GxB_Vector_sort(vals, perm, GrB_LT_FP64, cs_row_vals, NULL));
+    GRB_TRY(GxB_Vector_sort(vals, perm, GrB_LT_INT64, cs_row_vals, NULL));
 
     GxB_print(C_temp, GxB_COMPLETE);
     GxB_print(C_scaled, GxB_SHORT);
@@ -270,18 +254,13 @@ int LAGr_MarkovClustering(
     GxB_print(vals, GxB_COMPLETE);
     GxB_print(perm, GxB_COMPLETE);
 
-    double* valsX;
+    int64_t* valsX;
     GrB_Index* permX;
 
-    // NOTE TO SELF: "Hash" each column by a random large number using
-    // srand() and then create a new unary operator to take the floor of all value in
-    // the scaled matrix and convert to int, then make an integer C_scaled
-    // matrix to avoid rounding errors. Maybe could work
-
     LAGRAPH_TRY(LAGraph_Malloc((void**)&permX, csrv_nvals, sizeof(GrB_Index), msg));
-    LAGRAPH_TRY(LAGraph_Malloc((void**)&valsX, csrv_nvals, sizeof(double), msg));
+    LAGRAPH_TRY(LAGraph_Malloc((void**)&valsX, csrv_nvals, sizeof(int64_t), msg));
 
-    GRB_TRY(GrB_Vector_extractTuples_FP64(NULL, valsX, &csrv_nvals, vals));
+    GRB_TRY(GrB_Vector_extractTuples_INT64(NULL, valsX, &csrv_nvals, vals));
     GRB_TRY(GrB_Vector_extractTuples_INT64(NULL, permX, &csrv_nvals, perm));
 
     GrB_Index dupsIt = 0; // dups iterator
@@ -290,7 +269,7 @@ int LAGr_MarkovClustering(
 
     for (int i = 0; i < csrv_nvals; i++)
     {
-        printf("  %f  ", valsX[i]);
+        printf("  %i  ", valsX[i]);
     }
     printf("\n\n\n");
 
@@ -298,7 +277,7 @@ int LAGr_MarkovClustering(
     for (int i = 1; i < csrv_nvals; i++)
     {
         // printf("(valsX[%i]) %f =? %f (curVal)\n", i, valsX[i], curVal);
-        if (abs(valsX[i] - curVal) < 0.2)
+        if (valsX[i] == curVal)
         {
             // printf("ITERATION %i: Setting index %i to %i\n", i, dupsIt, permX[i]);
             dupsIdx[dupsIt] = permX[i];
@@ -331,16 +310,16 @@ int LAGr_MarkovClustering(
     }
     printf("\nsum = %i\n", sum);
 
-    GxB_print(C_temp, GxB_COMPLETE);
+    GxB_print(C_temp_int64, GxB_COMPLETE);
 
 
-    for (int i = 0; i < csrv_nvals; i++)
-    {
-        if (keepX[i] == 0)
-        {
-            GRB_TRY(GrB_Row_assign(C_temp, NULL, NULL, empty, csrvI[i], GrB_ALL, n, GrB_DESC_R));
-        }
-    }
+    // for (int i = 0; i < csrv_nvals; i++)
+    // {
+    //     if (keepX[i] == 0)
+    //     {
+    //         GRB_TRY(GrB_Row_assign(C_temp, NULL, NULL, empty, csrvI[i], GrB_ALL, n, GrB_DESC_R));
+    //     }
+    // }
 
     // CC matrix represents the actual clustering based on attractors. It can be
     // interpreted as CC[i][j] == 1 ==> vertex j is in cluster i
