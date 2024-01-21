@@ -3,7 +3,7 @@ library: SuiteSparse:GraphBLAS v7.4.4 [Mar 25, 2023]
 matrix: data/mcl2.mtx
 [.mtx]
 Reading matrix market file: data/mcl2.mtx
-read time: 0.000492919
+read time: 0.000326863
 Input Matrix:
 End of iteration 0
 Total = 2.045480
@@ -46,18 +46,18 @@ Terminated after 9 iterations
   12x1 GraphBLAS uint64_t vector, full by col
   col_seeds, 12 entries, memory: 312 bytes
 
-    (0,0)   734
-    (1,0)   1466
-    (2,0)   1949
-    (3,0)   1975
-    (4,0)   2732
-    (5,0)   4011
-    (6,0)   4888
-    (7,0)   5037
-    (8,0)   5683
-    (9,0)   8220
-    (10,0)   8780
-    (11,0)   9125
+    (0,0)   334
+    (1,0)   5322
+    (2,0)   19952
+    (3,0)   42656
+    (4,0)   45062
+    (5,0)   49606
+    (6,0)   64309
+    (7,0)   81565
+    (8,0)   85548
+    (9,0)   89591
+    (10,0)   96680
+    (11,0)   98061
 duplication iteration 0/4
 duplication iteration 1/4
 duplication iteration 2/4
@@ -89,40 +89,40 @@ duplication iteration 3/4
   12x12 GraphBLAS double matrix, bitmap by row
   C_scaled, 17 entries, memory: 1.5 KB
 
-    (0,0)    734
-    (0,5)    4011
-    (0,6)    4888
-    (0,9)    8220
-    (4,1)    1466
-    (4,2)    1949
-    (4,4)    2732
-    (8,3)    987.5
-    (8,7)    2518.5
-    (8,8)    2841.5
-    (8,10)    4390
-    (8,11)    4562.5
-    (10,3)    987.5
-    (10,7)    2518.5
-    (10,8)    2841.5
-    (10,10)    4390
-    (10,11)    4562.5
+    (0,0)    334
+    (0,5)    49606
+    (0,6)    64309
+    (0,9)    89591
+    (4,1)    5322
+    (4,2)    19952
+    (4,4)    45062
+    (8,3)    21328
+    (8,7)    40782.5
+    (8,8)    42774
+    (8,10)    48340
+    (8,11)    49030.5
+    (10,3)    21328
+    (10,7)    40782.5
+    (10,8)    42774
+    (10,10)    48340
+    (10,11)    49030.5
 
   12x1 GraphBLAS double vector, bitmap by col
   cs_row_vals, 4 entries, memory: 324 bytes
 
-    (0,0)    17853
-    (4,0)    6147
-    (8,0)    15300
-    (10,0)    15300
+    (0,0)    203840
+    (4,0)    70336
+    (8,0)    202255
+    (10,0)    202255
 
 
   12x1 GraphBLAS double vector, bitmap by col
   vals, 4 entries, memory: 324 bytes
 
-    (0,0)    6147
-    (1,0)    15300
-    (2,0)    15300
-    (3,0)    17853
+    (0,0)    70336
+    (1,0)    202255
+    (2,0)    202255
+    (3,0)    203840
 
 
   12x1 GraphBLAS int64_t vector, bitmap by col
@@ -133,8 +133,7 @@ duplication iteration 3/4
     (2,0)   10
     (3,0)   0
 
-ITERATION 2: Setting index 0 to 10
-  10    525678272    525677424    525677320  
+  70336.000000    202255.000000    202255.000000    203840.000000  
 
 
   10    0    0    0  
@@ -143,28 +142,24 @@ ITERATION 2: Setting index 0 to 10
   10  
 sum = 10
 
-  12x1 GraphBLAS int16_t vector, bitmap by col
-  vpc, 3 entries, memory: 252 bytes
+  12x12 GraphBLAS double matrix, bitmap by row
+  C_temp, 17 entries, memory: 1.5 KB
 
-    (0,0)   4
-    (4,0)   3
-    (8,0)   5
-
-
-  12x12 GraphBLAS bool matrix, bitmap by row
-  CC, 12 entries, memory: 368 bytes
-  iso value:   1
-
-    (0,0)   1
-    (0,5)   1
-    (0,6)   1
-    (0,9)   1
-    (4,1)   1
-    (4,2)   1
-    (4,4)   1
-    (8,3)   1
-    (8,7)   1
-    (8,8)   1
-    (8,10)   1
-    (8,11)   1
+    (0,0)    1
+    (0,5)    1
+    (0,6)    1
+    (0,9)    1
+    (4,1)    1
+    (4,2)    1
+    (4,4)    1
+    (8,3)    0.5
+    (8,7)    0.5
+    (8,8)    0.5
+    (8,10)    0.5
+    (8,11)    0.5
+    (10,3)    0.5
+    (10,7)    0.5
+    (10,8)    0.5
+    (10,10)    0.5
+    (10,11)    0.5
 
