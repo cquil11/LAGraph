@@ -122,10 +122,6 @@ int LAGr_MarkovClustering(
         LAGRAPH_TRY(LAGraph_Cached_NSelfEdges(G, msg));
     }
 
-    // GxB_print(G->A, GxB_COMPLETE);
-    // GxB_print(G->out_degree, GxB_COMPLETE);
-    // GxB_print(G->in_degree, GxB_COMPLETE);
-
     GRB_TRY(GrB_Matrix_dup(&C_temp, A));
     GRB_TRY(GrB_Matrix_dup(&C, C_temp));
 
@@ -161,12 +157,7 @@ int LAGr_MarkovClustering(
         for (int i = 0; i < e - 1; i++)
         {
             GRB_TRY(GrB_mxm(C_temp, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP64, C_temp, C_temp, NULL));
-            // printf("Expansion loop #%i\n", i);
         }
-
-        // printf("C_temp after expansion\n");
-
-        // GxB_print(C_temp, GxB_COMPLETE);
 
         // Inflation step
         GRB_TRY(GrB_Matrix_apply_BinaryOp2nd_FP64(C_temp, NULL, NULL, GxB_POW_FP64, C_temp, (double)i, NULL));
@@ -190,11 +181,7 @@ int LAGr_MarkovClustering(
         iter++;
     }
 
-    // GxB_print(C_temp, GxB_COMPLETE);
-
     // Post-processing searching for clusters
-
-
 
     for (int i = 0; i < n; i++)
     {
@@ -207,10 +194,6 @@ int LAGr_MarkovClustering(
     // GxB_print(C_scaled, GxB_COMPLETE);
     GRB_TRY(GrB_reduce(cs_row_vals, NULL, NULL, GrB_PLUS_MONOID_FP64, C_scaled, NULL));
 
-    // GxB_print(col_seeds, GxB_COMPLETE);
-    // GxB_print(C_scaled, GxB_COMPLETE);
-    // GxB_print(cs_row_vals, GxB_COMPLETE);
-
     GrB_Index* csrvI;
     double* csrvX;
     GrB_Index csrv_nvals;
@@ -221,9 +204,6 @@ int LAGr_MarkovClustering(
 
     GRB_TRY(GrB_Vector_extractTuples_FP64(csrvI, csrvX, &csrv_nvals, cs_row_vals));
 
-    //csrvI = 0,4,8,10
-    //csrvX = v1,v2,v3,v4
-
     bool keepX[csrv_nvals];
     GrB_Index keepI[csrv_nvals];
     memset(keepX, 1, sizeof(keepX));
@@ -231,6 +211,7 @@ int LAGr_MarkovClustering(
     int numDup = 0;
     for (int i = 0; i < csrv_nvals; i++)
     {
+        printf("duplication iteration %i/%i\n", i, csrv_nvals);
         for (int j = i + 1; j < csrv_nvals; j++)
         {
             if (csrvX[i] == csrvX[j])
@@ -241,23 +222,6 @@ int LAGr_MarkovClustering(
         }
     }
 
-
-
-
-
-    // for (int i = 0; i < csrv_nvals; i++)
-    // {
-    //     printf("  %i  ", csrvI[i]);
-    // }
-    // printf("\n");
-    // for (int i = 0; i < csrv_nvals; i++)
-    // {
-    //     printf("  %i  ", keepX[i]);
-    // }
-    // printf("\n");
-
-    // GxB_print(C_temp, GxB_COMPLETE);
-    // GxB_print(empty, GxB_COMPLETE);
     for (int i = 0; i < csrv_nvals; i++)
     {
         if (keepX[i] == 0)
@@ -266,80 +230,9 @@ int LAGr_MarkovClustering(
         }
     }
 
-    // GxB_print(C_temp, GxB_COMPLETE);
-
-
-
-    // LAGRAPH_TRY(LAGraph_Malloc((void**)&C_rows, n, sizeof(GrB_Vector), msg));
-
-    // bool to_remove[n];
-    // memset(to_remove, 0, sizeof(to_remove));
-
-    // for (int i = 0; i < n; i++)
-    // {
-    //     GRB_TRY(GrB_Vector_new(&C_rows[i], GrB_FP64, n));
-
-    //     GRB_TRY(GrB_Col_extract(C_rows[i], NULL, NULL, C_temp, GrB_ALL, n, i, GrB_DESC_T0));
-    //     // GxB_print(C_rows[i], GxB_COMPLETE);
-    // }
-
-    // for (int i = 0; i < n; i++)
-    // {
-    //     if (to_remove[i] == 1) continue;
-
-    //     GrB_Vector cur = C_rows[i];
-    //     for (int j = i + 1; j < n; j++)
-    //     {
-    //         if (to_remove[j] == 1) continue;
-
-    //         bool res;
-    //         LAGRAPH_TRY(LAGraph_Vector_IsEqual(&res, cur, C_rows[j], msg));
-    //         if (res)
-    //         {
-    //             to_remove[j] = 1;
-    //         }
-    //     }
-    // }
-
-    // // Iterate over each row to clear the ones marked for removal
-    // for (GrB_Index i = 0; i < n; i++)
-    // {
-    //     if (to_remove[i] == 1)
-    //     {
-    //         for (int j = 0; j < n; j++)
-    //         {
-    //             GRB_TRY(GrB_Matrix_removeElement(C_temp, i, j));
-    //         }
-    //     }
-    // }
-
-    // GxB_print(C_temp, GxB_SHORT);
-
-    // for (int i = 0; i < n; i++)
-    //     printf("  %i  ", to_remove[i]);
-
     // CC matrix represents the actual clustering based on attractors. It can be
     // interpreted as CC[i][j] == 1 ==> vertex j is in cluster i
     GRB_TRY(GrB_Matrix_new(&CC, GrB_BOOL, n, n));
-
-    // GrB_Index nvals_C;
-    // GRB_TRY(GrB_Matrix_nvals(&nvals_C, C_temp));
-
-    // LAGRAPH_TRY(LAGraph_Malloc((void**)&CI, nvals_C, sizeof(GrB_Index), msg));
-    // LAGRAPH_TRY(LAGraph_Malloc((void**)&CJ, nvals_C, sizeof(GrB_Index), msg));
-    // LAGRAPH_TRY(LAGraph_Malloc((void**)&CX, nvals_C, sizeof(double), msg));
-
-    // GRB_TRY(GrB_Matrix_extractTuples_FP64(CI, CJ, CX, &nvals_C, C_temp));
-    // GRB_TRY(GrB_Matrix_build(CC, CI, CJ, CX, nvals_C, GxB_IGNORE_DUP));
-
-    // // for (int ii = 0; ii < nvals_C; ii++)
-    // // {
-    // //     GRB_TRY(GrB_Matrix_setElement_BOOL(CC, 1, CI[ii], CJ[ii]));
-    // // }
-
-    // GxB_print(C_temp, GxB_COMPLETE);
-    // printf("APPLES\n");
-    // GxB_print(CC, GxB_COMPLETE);
 
 
     GRB_TRY(GrB_assign(CC, C_temp, NULL, 1, GrB_ALL, n, GrB_ALL, n, GrB_DESC_S));
