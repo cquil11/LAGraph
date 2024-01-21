@@ -222,6 +222,17 @@ int LAGr_MarkovClustering(
         }
     }
 
+    GrB_Vector vals = NULL;
+    GrB_Vector perm = NULL;
+    GRB_TRY(GrB_Vector_new(&vals, GrB_FP64, n));
+    GRB_TRY(GrB_Vector_new(&perm, GrB_INT64, n));
+
+    GRB_TRY(GxB_Vector_sort(vals, perm, GrB_LT_FP64, cs_row_vals, NULL));
+
+    GxB_print(cs_row_vals, GxB_COMPLETE);
+    GxB_print(vals, GxB_COMPLETE);
+    GxB_print(perm, GxB_COMPLETE);
+
     for (int i = 0; i < csrv_nvals; i++)
     {
         if (keepX[i] == 0)
