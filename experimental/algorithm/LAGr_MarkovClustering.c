@@ -1,8 +1,8 @@
 #define LG_FREE_WORK                     \
     {                                    \
         GrB_free(&C);                    \
-        GrB_free(&CC);                   \
-        GrB_free(&vpc);                   \
+        GrB_free(&C_temp);               \
+        GrB_free(&vpc);                  \
         GrB_free(&w);                    \
         GrB_free(&D);                    \
         GrB_free(&ones);                 \
