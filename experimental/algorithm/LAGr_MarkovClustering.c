@@ -2,6 +2,8 @@
     {                                    \
         GrB_free(&C);                    \
         GrB_free(&C_temp);               \
+        GrB_free(&C_sortedV);             \
+        GrB_free(&C_sortedP);             \
         GrB_free(&vpc);                  \
         GrB_free(&w);                    \
         GrB_free(&D);                    \
@@ -30,7 +32,7 @@ int LAGr_MarkovClustering(
     // input
     int e,                          // expansion coefficient
     int i,                          // inflation coefficient
-    double pruning_threshold,       // threshold for pruning values
+    int max_k_vals,                          // max nonzero entries per column in each iteration of C_temp
     double convergence_threshold,   // MSE threshold for convergence
     int max_iter,                   // maximum iterations
     LAGraph_Graph G,                // input graph
@@ -40,6 +42,8 @@ int LAGr_MarkovClustering(
 
     GrB_Matrix C = NULL;         // Cluster workspace matrix
     GrB_Matrix C_temp = NULL;    // The newly computed cluster matrix at the end of each loop
+    GrB_Matrix C_sortedV = NULL;
+    GrB_Matrix C_sortedP = NULL;
     GrB_Matrix CC = NULL;
     GrB_Vector vpc = NULL;       // vertices per cluster
 
@@ -55,6 +59,9 @@ int LAGr_MarkovClustering(
 
     GrB_Scalar zero_INT64 = NULL;
     GrB_Scalar true_BOOL = NULL;
+
+    GrB_Index* PX, * VJ = NULL;
+    double* VX = NULL;
 
 
     //--------------------------------------------------------------------------
@@ -87,6 +94,8 @@ int LAGr_MarkovClustering(
     GRB_TRY(GrB_Matrix_new(&C, GrB_FP64, n, n));
     GRB_TRY(GrB_Matrix_new(&CC, GrB_BOOL, n, n));
     GRB_TRY(GrB_Matrix_new(&C_temp, GrB_FP64, n, n));
+    GRB_TRY(GrB_Matrix_new(&C_sortedV, GrB_FP64, n, n));
+    GRB_TRY(GrB_Matrix_new(&C_sortedP, GrB_INT64, n, n));
     GRB_TRY(GrB_Vector_new(&vpc, GrB_INT64, n));
     GRB_TRY(GrB_Matrix_new(&MSE, GrB_FP64, n, n));
     GRB_TRY(GrB_Matrix_new(&D, GrB_FP64, n, n));
@@ -123,40 +132,68 @@ int LAGr_MarkovClustering(
     GrB_Index iter = 0;
     GrB_Index nvals;
 
-    double tt, t0;
+    double t[8];
+    int tidx;
 
     while (true)
     {
-        tt = LAGraph_WallClockTime();
-
-        t0 = LAGraph_WallClockTime();
+        tidx = 0;
+        t[tidx] = LAGraph_WallClockTime();
+        tidx++;
         printf("Iteration %lu\n", iter);
 
         // Normalization step: Scale each column in C_temp to add up to 1
         // w = 1 ./ sum(A(:j))
         // D = diag(w)
+        t[tidx] = LAGraph_WallClockTime();
         GRB_TRY(GrB_reduce(w, NULL, NULL, GrB_PLUS_MONOID_FP64, C_temp, GrB_DESC_RT0));
         GRB_TRY(GrB_apply(w, NULL, NULL, GrB_MINV_FP64, w, GrB_DESC_R));
         GRB_TRY(GrB_Matrix_diag(&D, w, 0));
         GRB_TRY(GrB_mxm(C_temp, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP64, C_temp, D, GrB_DESC_R));
-        t0 = LAGraph_WallClockTime() - t0;
-        printf("\tNormalization %f\n", t0);
+        t[tidx] = LAGraph_WallClockTime() - t[tidx];
+        tidx++;
 
-        t0 = LAGraph_WallClockTime();
-        // Prune values less than some small threshold
-        GRB_TRY(GrB_select(C_temp, NULL, NULL, GrB_VALUEGT_FP64, C_temp, pruning_threshold, NULL));
-        t0 = LAGraph_WallClockTime() - t0;
-        printf("\tPrune %f\n", t0);
 
-        t0 = LAGraph_WallClockTime();
+        t[tidx] = LAGraph_WallClockTime();
+        // Experimental: only keep largest k elements in a column
+        GRB_TRY(GxB_Matrix_sort(C_sortedV, C_sortedP, GrB_GT_FP64, C_temp, GrB_DESC_T0));
+        GRB_TRY(GrB_select(C_sortedV, NULL, NULL, GrB_ROWLE, C_sortedV, max_k_vals, GrB_DESC_R));
+        GRB_TRY(GrB_select(C_sortedP, NULL, NULL, GrB_ROWLE, C_sortedP, max_k_vals, GrB_DESC_R));
+
+        GrB_Index nvalsP;
+        GRB_TRY(GrB_Matrix_nvals(&nvalsP, C_sortedP));
+
+        // VI, VJ, and VX are the tuples of sorted columns of C_temp
+        // PI, PJ, and PX are 
+
+        LAGRAPH_TRY(LAGraph_Malloc((void**)&PX, nvalsP, sizeof(GrB_Index), msg));
+        LAGRAPH_TRY(LAGraph_Malloc((void**)&VJ, nvalsP, sizeof(GrB_Index), msg));
+        LAGRAPH_TRY(LAGraph_Malloc((void**)&VX, nvalsP, sizeof(double), msg));
+
+        GRB_TRY(GrB_Matrix_extractTuples_INT64(NULL, NULL, PX, &nvalsP, C_sortedP));
+        GRB_TRY(GrB_Matrix_extractTuples_FP64(NULL, VJ, VX, &nvalsP, C_sortedV));
+
+        GRB_TRY(GrB_Matrix_clear(C_temp));
+        GRB_TRY(GrB_Matrix_build_FP64(C_temp, PX, VJ, VX, nvalsP, NULL));
+
+        LAGraph_Free((void**)&PX, msg);
+        LAGraph_Free((void**)&VJ, msg);
+        LAGraph_Free((void**)&VX, msg);
+
+        t[tidx] = LAGraph_WallClockTime() - t[tidx];
+        tidx++;
+
+
+        t[tidx] = LAGraph_WallClockTime();
         // Compute mean squared error between subsequent iterations
         GRB_TRY(GxB_Matrix_eWiseUnion(MSE, NULL, NULL, GrB_MINUS_FP64, C_temp, zero_INT64, C, zero_INT64, NULL));
         GRB_TRY(GrB_eWiseMult(MSE, NULL, NULL, GrB_TIMES_FP64, MSE, MSE, NULL));
         GRB_TRY(GrB_reduce(&mse, NULL, GrB_PLUS_MONOID_FP64, MSE, NULL));
         GRB_TRY(GrB_Matrix_nvals(&nvals, C_temp));
         mse /= nvals;
-        t0 = LAGraph_WallClockTime() - t0;
-        printf("\tMSE %f\n", t0);
+        t[tidx] = LAGraph_WallClockTime() - t[tidx];
+        tidx++;
+
 
 
 #ifdef DEBUG
@@ -177,23 +214,35 @@ int LAGr_MarkovClustering(
         // Set C to the previous iteration
         GRB_TRY(GrB_Matrix_dup(&C, C_temp));
 
-        t0 = LAGraph_WallClockTime();
+        t[tidx] = LAGraph_WallClockTime();
         // Expansion step
         for (int i = 0; i < e - 1; i++)
         {
             GRB_TRY(GrB_mxm(C_temp, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP64, C_temp, C_temp, NULL));
         }
-        t0 = LAGraph_WallClockTime() - t0;
-        printf("\tExpansion %f\n", t0);
+        t[tidx] = LAGraph_WallClockTime() - t[tidx];
+        tidx++;
 
-        t0 = LAGraph_WallClockTime();
+        t[tidx] = LAGraph_WallClockTime();
         // Inflation step
         GRB_TRY(GrB_Matrix_apply_BinaryOp2nd_FP64(C_temp, NULL, NULL, GxB_POW_FP64, C_temp, (double)i, NULL));
-        t0 = LAGraph_WallClockTime() - t0;
-        printf("\tInflation %f\n\n", t0);
+        t[tidx] = LAGraph_WallClockTime() - t[tidx];
+        tidx++;
+
+        t[0] = LAGraph_WallClockTime() - t[0];
+
 
         iter++;
+
+#ifdef DEBUG
+        for (int i = 0; i < tidx; i++)
+        {
+            printf("\t%f\n", t[i]);
+        }
+#endif
     }
+
+
 
     // argmax_v = max (C_temp) where argmax_v(j) = max (C_temp (:,j))
     GRB_TRY(GrB_mxv(argmax_v, NULL, NULL, GrB_MAX_FIRST_SEMIRING_FP64, C_temp, ones, GrB_DESC_T0));
