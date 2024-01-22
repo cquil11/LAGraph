@@ -123,10 +123,15 @@ int LAGr_MarkovClustering(
     GrB_Index iter = 0;
     GrB_Index nvals;
 
+    double tt, t0;
+
     while (true)
     {
+        tt = LAGraph_WallClockTime();
+
+        t0 = LAGraph_WallClockTime();
         printf("Iteration %lu\n", iter);
-        printf("\tNormalization\n");
+
         // Normalization step: Scale each column in C_temp to add up to 1
         // w = 1 ./ sum(A(:j))
         // D = diag(w)
@@ -134,18 +139,25 @@ int LAGr_MarkovClustering(
         GRB_TRY(GrB_apply(w, NULL, NULL, GrB_MINV_FP64, w, GrB_DESC_R));
         GRB_TRY(GrB_Matrix_diag(&D, w, 0));
         GRB_TRY(GrB_mxm(C_temp, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP64, C_temp, D, GrB_DESC_R));
+        t0 = LAGraph_WallClockTime() - t0;
+        printf("\tNormalization %f\n", t0);
 
-        printf("\tPrune\n");
+        t0 = LAGraph_WallClockTime();
         // Prune values less than some small threshold
         GRB_TRY(GrB_select(C_temp, NULL, NULL, GrB_VALUEGT_FP64, C_temp, pruning_threshold, NULL));
+        t0 = LAGraph_WallClockTime() - t0;
+        printf("\tPrune %f\n", t0);
 
-        printf("\tMSE\n");
+        t0 = LAGraph_WallClockTime();
         // Compute mean squared error between subsequent iterations
         GRB_TRY(GxB_Matrix_eWiseUnion(MSE, NULL, NULL, GrB_MINUS_FP64, C_temp, zero_INT64, C, zero_INT64, NULL));
         GRB_TRY(GrB_eWiseMult(MSE, NULL, NULL, GrB_TIMES_FP64, MSE, MSE, NULL));
         GRB_TRY(GrB_reduce(&mse, NULL, GrB_PLUS_MONOID_FP64, MSE, NULL));
         GRB_TRY(GrB_Matrix_nvals(&nvals, C_temp));
         mse /= nvals;
+        t0 = LAGraph_WallClockTime() - t0;
+        printf("\tMSE %f\n", t0);
+
 
 #ifdef DEBUG
         printf("MSE at iteration %lu: %f\n", iter, mse);
@@ -165,16 +177,20 @@ int LAGr_MarkovClustering(
         // Set C to the previous iteration
         GRB_TRY(GrB_Matrix_dup(&C, C_temp));
 
-        printf("\tExpansion\n");
+        t0 = LAGraph_WallClockTime();
         // Expansion step
         for (int i = 0; i < e - 1; i++)
         {
             GRB_TRY(GrB_mxm(C_temp, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP64, C_temp, C_temp, NULL));
         }
+        t0 = LAGraph_WallClockTime() - t0;
+        printf("\tExpansion %f\n", t0);
 
-        printf("\tInflation\n");
+        t0 = LAGraph_WallClockTime();
         // Inflation step
         GRB_TRY(GrB_Matrix_apply_BinaryOp2nd_FP64(C_temp, NULL, NULL, GxB_POW_FP64, C_temp, (double)i, NULL));
+        t0 = LAGraph_WallClockTime() - t0;
+        printf("\tInflation %f\n\n", t0);
 
         iter++;
     }
