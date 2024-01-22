@@ -149,7 +149,7 @@ int LAGr_MarkovClustering(
         GRB_TRY(GrB_Matrix_diag(&D, w, 0));
         GRB_TRY(GrB_mxm(C_temp, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP64, C_temp, D, GrB_DESC_R));
         t0 = LAGraph_WallClockTime() - t0;
-        printf("Normalization time %f", t0);
+        printf("\tNormalization time %f\n", t0);
 
 
         t0 = LAGraph_WallClockTime();
@@ -158,7 +158,7 @@ int LAGr_MarkovClustering(
         GRB_TRY(GrB_select(C_sortedV, NULL, NULL, GrB_ROWLE, C_sortedV, max_k_vals, GrB_DESC_R));
         GRB_TRY(GrB_select(C_sortedP, NULL, NULL, GrB_ROWLE, C_sortedP, max_k_vals, GrB_DESC_R));
         t0 = LAGraph_WallClockTime() - t0;
-        printf("Sorting 1 time %f", t0);
+        printf("\tSorting 1 time %f\n", t0);
 
         t0 = LAGraph_WallClockTime();
         GrB_Index nvalsP;
@@ -182,7 +182,7 @@ int LAGr_MarkovClustering(
         LAGraph_Free((void**)&VX, msg);
 
         t0 = LAGraph_WallClockTime() - t0;
-        printf("Sorting 2 time %f", t0);    
+        printf("\tSorting 2 time %f\n", t0);    
 
         t0 = LAGraph_WallClockTime();
         // Compute mean squared error between subsequent iterations
@@ -192,7 +192,7 @@ int LAGr_MarkovClustering(
         GRB_TRY(GrB_Matrix_nvals(&nvals, C_temp));
         mse /= nvals;
         t0 = LAGraph_WallClockTime() - t0;
-        printf("MSE time %f", t0);
+        printf("\tMSE time %f\n", t0);
 
 
 #ifdef DEBUG
@@ -220,16 +220,16 @@ int LAGr_MarkovClustering(
             GRB_TRY(GrB_mxm(C_temp, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP64, C_temp, C_temp, NULL));
         }
         t0 = LAGraph_WallClockTime() - t0;
-        printf("Expansion time %f", t0);
+        printf("\tExpansion time %f\n", t0);
 
         t0 = LAGraph_WallClockTime();
         // Inflation step
         GRB_TRY(GrB_Matrix_apply_BinaryOp2nd_FP64(C_temp, NULL, NULL, GxB_POW_FP64, C_temp, (double)i, NULL));
         t0 = LAGraph_WallClockTime() - t0;
-        printf("Inflation 1 time %f", t0);
+        printf("\tInflation 1 time %f\n", t0);
 
         tt = LAGraph_WallClockTime() - tt;
-        printf("Iteration %lu time %f", iter, tt);
+        printf("\tIteration %lu time %f\n\n", iter, tt);
 
         iter++;
     }
