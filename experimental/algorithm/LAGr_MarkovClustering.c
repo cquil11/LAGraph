@@ -1,11 +1,16 @@
 #define LG_FREE_WORK                     \
     {                                    \
         GrB_free(&C);                    \
+        GrB_free(&CC);                   \
+        GrB_free(&vpc);                   \
         GrB_free(&w);                    \
         GrB_free(&D);                    \
         GrB_free(&ones);                 \
         GrB_free(&MSE);                  \
+        GrB_free(&argmax_v);             \
+        GrB_free(&argmax_p);             \
         GrB_free(&zero_INT64);           \
+        GrB_free(&true_BOOL);            \
     }
 
 #define LG_FREE_ALL    \
@@ -21,7 +26,7 @@
 
 int LAGr_MarkovClustering(
     // output:
-    GrB_Matrix* C_f,
+    GrB_Matrix* C_f,                // output matrix C_f(i, j) == 1 means vertex j is in cluster i
     // input
     int e,                          // expansion coefficient
     int i,                          // inflation coefficient
@@ -33,17 +38,23 @@ int LAGr_MarkovClustering(
 {
     char MATRIX_TYPE[LAGRAPH_MSG_LEN];
 
-    GrB_Matrix C = NULL;      // Cluster workspace matrix
-    GrB_Matrix C_temp = NULL; // The newly computed cluster matrix at the end of each loop
+    GrB_Matrix C = NULL;         // Cluster workspace matrix
+    GrB_Matrix C_temp = NULL;    // The newly computed cluster matrix at the end of each loop
+    GrB_Matrix CC = NULL;
+    GrB_Vector vpc = NULL;       // vertices per cluster
 
-    GrB_Vector w = NULL; // weight vector to normalize C matrix
+    GrB_Vector w = NULL;         // weight vector to normalize C matrix
 
-    GrB_Matrix D = NULL;    // Diagonal workspace matrix
-    GrB_Vector ones = NULL; // Vector of all 1's, used primarily to create identity
+    GrB_Matrix D = NULL;         // Diagonal workspace matrix
+    GrB_Vector ones = NULL;      // Vector of all 1's, used primarily to create identity
 
-    GrB_Matrix MSE = NULL; // Mean squared error between C and C_temp (between subsequent iterations)
+    GrB_Matrix MSE = NULL;       // Mean squared error between C and C_temp (between subsequent iterations)
+
+    GrB_Vector argmax_v = NULL;
+    GrB_Vector argmax_p = NULL;
 
     GrB_Scalar zero_INT64 = NULL;
+    GrB_Scalar true_BOOL = NULL;
 
 
     //--------------------------------------------------------------------------
@@ -74,14 +85,20 @@ int LAGr_MarkovClustering(
     //--------------------------------------------------------------------------
 
     GRB_TRY(GrB_Matrix_new(&C, GrB_FP64, n, n));
+    GRB_TRY(GrB_Matrix_new(&CC, GrB_BOOL, n, n));
     GRB_TRY(GrB_Matrix_new(&C_temp, GrB_FP64, n, n));
+    GRB_TRY(GrB_Vector_new(&vpc, GrB_INT64, n));
     GRB_TRY(GrB_Matrix_new(&MSE, GrB_FP64, n, n));
     GRB_TRY(GrB_Matrix_new(&D, GrB_FP64, n, n));
     GRB_TRY(GrB_Vector_new(&w, GrB_FP64, n));
     GRB_TRY(GrB_Vector_new(&ones, GrB_FP64, n));
+    GRB_TRY(GrB_Vector_new(&argmax_v, GrB_FP64, n));
+    GRB_TRY(GrB_Vector_new(&argmax_p, GrB_INT64, n));
     GRB_TRY(GrB_Scalar_new(&zero_INT64, GrB_INT64));
+    GRB_TRY(GrB_Scalar_new(&true_BOOL, GrB_BOOL));
 
     GRB_TRY(GrB_Scalar_setElement(zero_INT64, 0));
+    GRB_TRY(GrB_Scalar_setElement(true_BOOL, 1));
 
     // Create identity
     GRB_TRY(GrB_assign(ones, NULL, NULL, 1, GrB_ALL, n, NULL));
@@ -126,13 +143,18 @@ int LAGr_MarkovClustering(
         GRB_TRY(GrB_Matrix_nvals(&nvals, C_temp));
         mse /= nvals;
 
-        printf("MSE at iteration %lu: %f\n\n", iter, mse);
+#ifdef DEBUG
+        printf("MSE at iteration %lu: %f\n", iter, mse);
+        printf("Current size of cluster matrix (nvals): %lu\n\n", nvals);
+#endif
 
         bool res = NULL;
         LAGRAPH_TRY(LAGraph_Matrix_IsEqual(&res, C, C_temp, msg));
         if (res || iter > max_iter || mse < convergence_threshold)
         {
-            printf("Terminated after %lu iterations\n", iter);
+#ifdef DEBUG
+            printf("Terminated after %lu iterations\n\n", iter);
+#endif
             break;
         }
 
@@ -151,7 +173,36 @@ int LAGr_MarkovClustering(
         iter++;
     }
 
-    (*C_f) = C_temp; // Set output matrix
+    // argmax_v = max (C_temp) where argmax_v(j) = max (C_temp (:,j))
+    GRB_TRY(GrB_mxv(argmax_v, NULL, NULL, GrB_MAX_FIRST_SEMIRING_FP64, C_temp, ones, GrB_DESC_T0));
+    // D = daig (argmax_v)
+    GRB_TRY(GrB_Matrix_diag(&D, argmax_v, 0));
+    // 
+    GRB_TRY(GrB_mxm(CC, NULL, NULL, GxB_ANY_EQ_FP64, C_temp, D, NULL));
+    GRB_TRY(GrB_select(CC, NULL, NULL, GrB_VALUENE_BOOL, CC, 0, NULL));
+    GRB_TRY(GrB_mxv(argmax_p, NULL, NULL, GxB_MIN_SECONDI_INT64, CC, ones, GrB_DESC_T0));
+
+    // pi := array of argmax_p indices, px := array of argmax_p values
+    GrB_Index* pi, * px = NULL;
+    GrB_Index p_nvals;
+    GRB_TRY(GrB_Vector_nvals(&p_nvals, argmax_p));
+    LAGRAPH_TRY(LAGraph_Malloc((void**)&pi, n, sizeof(GrB_Index), msg));
+    LAGRAPH_TRY(LAGraph_Malloc((void**)&px, n, sizeof(GrB_Index), msg));
+    GRB_TRY(GrB_Vector_extractTuples_INT64(pi, px, &n, argmax_p));
+    // Can reuse CC matrix, this will hold the final clustering result
+    GRB_TRY(GrB_Matrix_clear(CC));
+    GRB_TRY(GxB_Matrix_build_Scalar(CC, px, pi, true_BOOL, p_nvals));
+    LAGraph_Free((void*)&pi, NULL);
+    LAGraph_Free((void*)&px, NULL);
+
+    GRB_TRY(GrB_reduce(vpc, NULL, NULL, GrB_PLUS_MONOID_INT64, CC, NULL));
+
+#ifdef DEBUG
+    printf("Vertices per cluster\n");
+    GxB_print(vpc, GxB_COMPLETE);
+#endif
+
+    (*C_f) = CC; // Set output matrix
 
     LG_FREE_WORK;
 
