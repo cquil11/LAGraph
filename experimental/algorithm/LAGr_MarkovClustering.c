@@ -161,8 +161,8 @@ int LAGr_MarkovClustering(
         t0 = LAGraph_WallClockTime();
         // Experimental: only keep largest k elements in a column
         GRB_TRY(GxB_Matrix_sort(C_sortedV, C_sortedP, GrB_GT_FP64, C_temp, GrB_DESC_T0));
-        GRB_TRY(GrB_select(C_sortedV, NULL, NULL, GrB_ROWLE, C_sortedV, max_k_vals, GrB_DESC_R));
-        GRB_TRY(GrB_select(C_sortedP, NULL, NULL, GrB_ROWLE, C_sortedP, max_k_vals, GrB_DESC_R));
+        GRB_TRY(GrB_select(C_sortedV, NULL, NULL, GrB_ROWLE, C_sortedV, max_k_vals - 1, GrB_DESC_R));
+        GRB_TRY(GrB_select(C_sortedP, NULL, NULL, GrB_ROWLE, C_sortedP, max_k_vals - 1, GrB_DESC_R));
         t0 = LAGraph_WallClockTime() - t0;
         printf("\tSorting 1 time %f\n", t0);
 
