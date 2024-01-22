@@ -135,6 +135,8 @@ int LAGr_MarkovClustering(
 
     double tt, t0;
 
+    GrB_Index nvals_exp;
+
     while (true)
     {
         tt = LAGraph_WallClockTime();
@@ -152,11 +154,18 @@ int LAGr_MarkovClustering(
         t0 = LAGraph_WallClockTime() - t0;
         printf("\tNormalization time %f\n", t0);
 
+        GRB_TRY(GrB_Matrix_nvals(&nvals_exp, C_temp));
+        printf("C_TEMP SIZE BEFORE %lu\n", nvals_exp);
+
         t0 = LAGraph_WallClockTime();
         // Prune values less than some small threshold
         GRB_TRY(GrB_select(C_temp, NULL, NULL, GrB_VALUEGT_FP64, C_temp, pruning_threshold, NULL));
         t0 = LAGraph_WallClockTime() - t0;
         printf("\tPruning time %f\n", t0);
+
+        GRB_TRY(GrB_Matrix_nvals(&nvals_exp, C_temp));
+        printf("C_TEMP SIZE AFTER PRUNING %lu\n", nvals_exp);
+
 
         t0 = LAGraph_WallClockTime();
         // Experimental: only keep largest k elements in a column
@@ -183,12 +192,16 @@ int LAGr_MarkovClustering(
         GRB_TRY(GrB_Matrix_clear(C_temp));
         GRB_TRY(GrB_Matrix_build_FP64(C_temp, PX, VJ, VX, nvalsP, NULL));
 
+        GRB_TRY(GrB_Matrix_nvals(&nvals_exp, C_temp));
+        printf("C_TEMP SIZE AFTER DROPPING %lu\n", nvals_exp);
+
+
         LAGraph_Free((void**)&PX, msg);
         LAGraph_Free((void**)&VJ, msg);
         LAGraph_Free((void**)&VX, msg);
 
         t0 = LAGraph_WallClockTime() - t0;
-        printf("\tSorting 2 time %f\n", t0);    
+        printf("\tSorting 2 time %f\n", t0);
 
         t0 = LAGraph_WallClockTime();
         // Compute mean squared error between subsequent iterations
