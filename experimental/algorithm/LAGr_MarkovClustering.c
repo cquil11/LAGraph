@@ -132,34 +132,35 @@ int LAGr_MarkovClustering(
     GrB_Index iter = 0;
     GrB_Index nvals;
 
-    double t[8];
-    int tidx;
+    double tt, t0;
 
     while (true)
     {
-        tidx = 0;
-        t[tidx] = LAGraph_WallClockTime();
-        tidx++;
+        tt = LAGraph_WallClockTime();
+
         printf("Iteration %lu\n", iter);
 
         // Normalization step: Scale each column in C_temp to add up to 1
         // w = 1 ./ sum(A(:j))
         // D = diag(w)
-        t[tidx] = LAGraph_WallClockTime();
+        t0 = LAGraph_WallClockTime();
         GRB_TRY(GrB_reduce(w, NULL, NULL, GrB_PLUS_MONOID_FP64, C_temp, GrB_DESC_RT0));
         GRB_TRY(GrB_apply(w, NULL, NULL, GrB_MINV_FP64, w, GrB_DESC_R));
         GRB_TRY(GrB_Matrix_diag(&D, w, 0));
         GRB_TRY(GrB_mxm(C_temp, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP64, C_temp, D, GrB_DESC_R));
-        t[tidx] = LAGraph_WallClockTime() - t[tidx];
-        tidx++;
+        t0 = LAGraph_WallClockTime() - t0;
+        printf("Normalization time %f", t0);
 
 
-        t[tidx] = LAGraph_WallClockTime();
+        t0 = LAGraph_WallClockTime();
         // Experimental: only keep largest k elements in a column
         GRB_TRY(GxB_Matrix_sort(C_sortedV, C_sortedP, GrB_GT_FP64, C_temp, GrB_DESC_T0));
         GRB_TRY(GrB_select(C_sortedV, NULL, NULL, GrB_ROWLE, C_sortedV, max_k_vals, GrB_DESC_R));
         GRB_TRY(GrB_select(C_sortedP, NULL, NULL, GrB_ROWLE, C_sortedP, max_k_vals, GrB_DESC_R));
+        t0 = LAGraph_WallClockTime() - t0;
+        printf("Sorting 1 time %f", t0);
 
+        t0 = LAGraph_WallClockTime();
         GrB_Index nvalsP;
         GRB_TRY(GrB_Matrix_nvals(&nvalsP, C_sortedP));
 
@@ -180,20 +181,18 @@ int LAGr_MarkovClustering(
         LAGraph_Free((void**)&VJ, msg);
         LAGraph_Free((void**)&VX, msg);
 
-        t[tidx] = LAGraph_WallClockTime() - t[tidx];
-        tidx++;
+        t0 = LAGraph_WallClockTime() - t0;
+        printf("Sorting 2 time %f", t0);    
 
-
-        t[tidx] = LAGraph_WallClockTime();
+        t0 = LAGraph_WallClockTime();
         // Compute mean squared error between subsequent iterations
         GRB_TRY(GxB_Matrix_eWiseUnion(MSE, NULL, NULL, GrB_MINUS_FP64, C_temp, zero_INT64, C, zero_INT64, NULL));
         GRB_TRY(GrB_eWiseMult(MSE, NULL, NULL, GrB_TIMES_FP64, MSE, MSE, NULL));
         GRB_TRY(GrB_reduce(&mse, NULL, GrB_PLUS_MONOID_FP64, MSE, NULL));
         GRB_TRY(GrB_Matrix_nvals(&nvals, C_temp));
         mse /= nvals;
-        t[tidx] = LAGraph_WallClockTime() - t[tidx];
-        tidx++;
-
+        t0 = LAGraph_WallClockTime() - t0;
+        printf("MSE time %f", t0);
 
 
 #ifdef DEBUG
@@ -214,23 +213,23 @@ int LAGr_MarkovClustering(
         // Set C to the previous iteration
         GRB_TRY(GrB_Matrix_dup(&C, C_temp));
 
-        t[tidx] = LAGraph_WallClockTime();
+        t0 = LAGraph_WallClockTime();
         // Expansion step
         for (int i = 0; i < e - 1; i++)
         {
             GRB_TRY(GrB_mxm(C_temp, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP64, C_temp, C_temp, NULL));
         }
-        t[tidx] = LAGraph_WallClockTime() - t[tidx];
-        tidx++;
+        t0 = LAGraph_WallClockTime() - t0;
+        printf("Expansion time %f", t0);
 
-        t[tidx] = LAGraph_WallClockTime();
+        t0 = LAGraph_WallClockTime();
         // Inflation step
         GRB_TRY(GrB_Matrix_apply_BinaryOp2nd_FP64(C_temp, NULL, NULL, GxB_POW_FP64, C_temp, (double)i, NULL));
-        t[tidx] = LAGraph_WallClockTime() - t[tidx];
-        tidx++;
+        t0 = LAGraph_WallClockTime() - t0;
+        printf("Inflation 1 time %f", t0);
 
-        t[0] = LAGraph_WallClockTime() - t[0];
-
+        tt = LAGraph_WallClockTime() - tt;
+        printf("Iteration %lu time %f", iter, tt);
 
         iter++;
 
