@@ -104,6 +104,7 @@ int LAGr_MarkovClustering(
 
     double mse = 0;
     GrB_Index iter = 0;
+    GrB_Index nvals;
 
     while (true)
     {
@@ -122,7 +123,8 @@ int LAGr_MarkovClustering(
         GRB_TRY(GxB_Matrix_eWiseUnion(MSE, NULL, NULL, GrB_MINUS_FP64, C_temp, zero_INT64, C, zero_INT64, NULL));
         GRB_TRY(GrB_eWiseMult(MSE, NULL, NULL, GrB_TIMES_FP64, MSE, MSE, NULL));
         GRB_TRY(GrB_reduce(&mse, NULL, GrB_PLUS_MONOID_FP64, MSE, NULL));
-        mse /= (n * n);
+        GRB_TRY(GrB_Matrix_nvals(&nvals, C_temp));
+        mse /= nvals;
 
         printf("MSE at iteration %lu: %f\n\n", iter, mse);
 
