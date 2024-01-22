@@ -44,9 +44,9 @@ int main(int argc, char** argv)
     // GxB_print (G->A, GxB_SHORT);
 
     // Run Markov Clustering algorithm
-    GRB_TRY(LAGr_MarkovClustering(&C_f, 2, 2, 0.001, 250, G, msg));
+    GRB_TRY(LAGr_MarkovClustering(&C_f, 2, 2, 0.001, 1.0e-8, 250, G, msg));
 
-    // GxB_print (C_f, GxB_SHORT);
+    GxB_print(C_f, GxB_COMPLETE);
 
     // char *o_file = "pp_out.mtx";
     // f = fopen(o_file, "w");

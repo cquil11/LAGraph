@@ -14,6 +14,8 @@
         GrB_free(C_f); \
     }
 
+#define DEBUG
+
 #include "LG_internal.h"
 #include <LAGraphX.h>
 
@@ -33,16 +35,11 @@ int LAGr_MarkovClustering(
 
     GrB_Matrix C = NULL;      // Cluster workspace matrix
     GrB_Matrix C_temp = NULL; // The newly computed cluster matrix at the end of each loop
-    GrB_Matrix C_scaled = NULL;
-    GrB_Vector cs_row_vals = NULL; // Row reductions of C_scaled "c-scaled-values" 
 
     GrB_Vector w = NULL; // weight vector to normalize C matrix
 
     GrB_Matrix D = NULL;    // Diagonal workspace matrix
     GrB_Vector ones = NULL; // Vector of all 1's, used primarily to create identity
-
-    GrB_Matrix CC = NULL;
-    GrB_Vector* C_rows = NULL;
 
     GrB_Matrix MSE = NULL; // Mean squared error between C and C_temp (between subsequent iterations)
 
@@ -95,8 +92,7 @@ int LAGr_MarkovClustering(
     {
         GRB_TRY(GrB_assign(A, A, NULL, D, GrB_ALL, n, GrB_ALL, n, GrB_DESC_SC));
         G->A = A;
-        G->out_degree = NULL;
-        G->in_degree = NULL;
+        G->out_degree, G->in_degree = NULL;
         G->nself_edges = LAGRAPH_UNKNOWN;
         LAGRAPH_TRY(LAGraph_Cached_OutDegree(G, msg));
         LAGRAPH_TRY(LAGraph_Cached_InDegree(G, msg));
@@ -128,11 +124,13 @@ int LAGr_MarkovClustering(
         GRB_TRY(GrB_reduce(&mse, NULL, GrB_PLUS_MONOID_FP64, MSE, NULL));
         mse /= (n * n);
 
+        printf("MSE at iteration %lu: %f\n\n", iter, mse);
+
         bool res = NULL;
         LAGRAPH_TRY(LAGraph_Matrix_IsEqual(&res, C, C_temp, msg));
         if (res || iter > max_iter || mse < convergence_threshold)
         {
-            printf("Terminated after %i iterations\n", iter);
+            printf("Terminated after %lu iterations\n", iter);
             break;
         }
 
