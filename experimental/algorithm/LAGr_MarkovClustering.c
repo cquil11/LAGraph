@@ -32,7 +32,8 @@ int LAGr_MarkovClustering(
     // input
     int e,                          // expansion coefficient
     int i,                          // inflation coefficient
-    int max_k_vals,                          // max nonzero entries per column in each iteration of C_temp
+    int max_k_vals,                 // max nonzero entries per column in each iteration of C_temp
+    double pruning_threshold,       // values less than this problem are pruned each iteration
     double convergence_threshold,   // MSE threshold for convergence
     int max_iter,                   // maximum iterations
     LAGraph_Graph G,                // input graph
@@ -151,6 +152,11 @@ int LAGr_MarkovClustering(
         t0 = LAGraph_WallClockTime() - t0;
         printf("\tNormalization time %f\n", t0);
 
+        t0 = LAGraph_WallClockTime();
+        // Prune values less than some small threshold
+        GRB_TRY(GrB_select(C_temp, NULL, NULL, GrB_VALUEGT_FP64, C_temp, pruning_threshold, NULL));
+        t0 = LAGraph_WallClockTime() - t0;
+        printf("\tPruning time %f\n", t0);
 
         t0 = LAGraph_WallClockTime();
         // Experimental: only keep largest k elements in a column

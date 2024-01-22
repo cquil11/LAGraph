@@ -1,31 +1,298 @@
-  500x1 GraphBLAS int16_t vector, bitmap by col
-  vpc, 126 entries, memory: 1.7 KB
+include: SuiteSparse:GraphBLAS v7.4.4 [Mar 25, 2023]
+library: SuiteSparse:GraphBLAS v7.4.4 [Mar 25, 2023]
+matrix: /home/quilicam/mat/Harvard500/Harvard500.mtx
+[.mtx]
+Reading matrix market file: /home/quilicam/mat/Harvard500/Harvard500.mtx
+read time: 0.00363957
+Input Matrix:
+Iteration 0
+	Normalization time 0.000381
+	Pruning time 0.000830
+	Sorting 1 time 0.000408
+	Sorting 2 time 0.000879
+	MSE time 0.000507
+MSE at iteration 0: 0.745481
+Current size of cluster matrix (nvals): 3063
+
+	Expansion time 0.001226
+	Inflation 1 time 0.000972
+	Iteration 0 time 0.005464
+
+Iteration 1
+	Normalization time 0.000407
+	Pruning time 0.000520
+	Sorting 1 time 0.004819
+	Sorting 2 time 0.005365
+	MSE time 0.001271
+MSE at iteration 1: 0.002581
+Current size of cluster matrix (nvals): 12793
+
+	Expansion time 0.012623
+	Inflation 1 time 0.006712
+	Iteration 1 time 0.032068
+
+Iteration 2
+	Normalization time 0.001704
+	Pruning time 0.000957
+	Sorting 1 time 0.001038
+	Sorting 2 time 0.001460
+	MSE time 0.000554
+MSE at iteration 2: 0.009063
+Current size of cluster matrix (nvals): 6845
+
+	Expansion time 0.000958
+	Inflation 1 time 0.000773
+	Iteration 2 time 0.007527
+
+Iteration 3
+	Normalization time 0.000143
+	Pruning time 0.000134
+	Sorting 1 time 0.000122
+	Sorting 2 time 0.000401
+	MSE time 0.000230
+MSE at iteration 3: 0.014885
+Current size of cluster matrix (nvals): 3051
+
+	Expansion time 0.000223
+	Inflation 1 time 0.000146
+	Iteration 3 time 0.001427
+
+Iteration 4
+	Normalization time 0.000043
+	Pruning time 0.000048
+	Sorting 1 time 0.000072
+	Sorting 2 time 0.000190
+	MSE time 0.000098
+MSE at iteration 4: 0.010140
+Current size of cluster matrix (nvals): 1641
+
+	Expansion time 0.000088
+	Inflation 1 time 0.000063
+	Iteration 4 time 0.000612
+
+Iteration 5
+	Normalization time 0.000028
+	Pruning time 0.000027
+	Sorting 1 time 0.000054
+	Sorting 2 time 0.000149
+	MSE time 0.000069
+MSE at iteration 5: 0.073470
+Current size of cluster matrix (nvals): 1093
+
+	Expansion time 0.000042
+	Inflation 1 time 0.000035
+	Iteration 5 time 0.000413
+
+Iteration 6
+	Normalization time 0.000023
+	Pruning time 0.000021
+	Sorting 1 time 0.000048
+	Sorting 2 time 0.000091
+	MSE time 0.000061
+MSE at iteration 6: 0.022448
+Current size of cluster matrix (nvals): 852
+
+	Expansion time 0.000037
+	Inflation 1 time 0.000023
+	Iteration 6 time 0.000312
+
+Iteration 7
+	Normalization time 0.000020
+	Pruning time 0.000018
+	Sorting 1 time 0.000041
+	Sorting 2 time 0.000061
+	MSE time 0.000057
+MSE at iteration 7: 0.001284
+Current size of cluster matrix (nvals): 577
+
+	Expansion time 0.000033
+	Inflation 1 time 0.000019
+	Iteration 7 time 0.000258
+
+Iteration 8
+	Normalization time 0.000019
+	Pruning time 0.000017
+	Sorting 1 time 0.000039
+	Sorting 2 time 0.000058
+	MSE time 0.000054
+MSE at iteration 8: 0.000619
+Current size of cluster matrix (nvals): 568
+
+	Expansion time 0.000031
+	Inflation 1 time 0.000018
+	Iteration 8 time 0.000244
+
+Iteration 9
+	Normalization time 0.000019
+	Pruning time 0.000016
+	Sorting 1 time 0.000040
+	Sorting 2 time 0.000055
+	MSE time 0.000069
+MSE at iteration 9: 0.000386
+Current size of cluster matrix (nvals): 556
+
+	Expansion time 0.000028
+	Inflation 1 time 0.000016
+	Iteration 9 time 0.000251
+
+Iteration 10
+	Normalization time 0.000018
+	Pruning time 0.000015
+	Sorting 1 time 0.000048
+	Sorting 2 time 0.000053
+	MSE time 0.000052
+MSE at iteration 10: 0.000264
+Current size of cluster matrix (nvals): 552
+
+	Expansion time 0.000028
+	Inflation 1 time 0.000015
+	Iteration 10 time 0.000238
+
+Iteration 11
+	Normalization time 0.000017
+	Pruning time 0.000015
+	Sorting 1 time 0.000047
+	Sorting 2 time 0.000057
+	MSE time 0.000055
+MSE at iteration 11: 0.000141
+Current size of cluster matrix (nvals): 548
+
+	Expansion time 0.000030
+	Inflation 1 time 0.000016
+	Iteration 11 time 0.000247
+
+Iteration 12
+	Normalization time 0.000020
+	Pruning time 0.000024
+	Sorting 1 time 0.000037
+	Sorting 2 time 0.000053
+	MSE time 0.000053
+MSE at iteration 12: 0.000103
+Current size of cluster matrix (nvals): 547
+
+	Expansion time 0.000026
+	Inflation 1 time 0.000015
+	Iteration 12 time 0.000235
+
+Iteration 13
+	Normalization time 0.000017
+	Pruning time 0.000014
+	Sorting 1 time 0.000035
+	Sorting 2 time 0.000069
+	MSE time 0.000058
+MSE at iteration 13: 0.000034
+Current size of cluster matrix (nvals): 545
+
+	Expansion time 0.000042
+	Inflation 1 time 0.000016
+	Iteration 13 time 0.000387
+
+Iteration 14
+	Normalization time 0.000031
+	Pruning time 0.000015
+	Sorting 1 time 0.000038
+	Sorting 2 time 0.000067
+	MSE time 0.000049
+MSE at iteration 14: 0.000020
+Current size of cluster matrix (nvals): 544
+
+	Expansion time 0.000024
+	Inflation 1 time 0.000019
+	Iteration 14 time 0.000250
+
+Iteration 15
+	Normalization time 0.000016
+	Pruning time 0.000013
+	Sorting 1 time 0.000035
+	Sorting 2 time 0.000052
+	MSE time 0.000048
+MSE at iteration 15: 0.000073
+Current size of cluster matrix (nvals): 543
+
+	Expansion time 0.000024
+	Inflation 1 time 0.000014
+	Iteration 15 time 0.000209
+
+Iteration 16
+	Normalization time 0.000016
+	Pruning time 0.000012
+	Sorting 1 time 0.000035
+	Sorting 2 time 0.000046
+	MSE time 0.000049
+MSE at iteration 16: 0.000137
+Current size of cluster matrix (nvals): 543
+
+	Expansion time 0.000024
+	Inflation 1 time 0.000014
+	Iteration 16 time 0.000237
+
+Iteration 17
+	Normalization time 0.000016
+	Pruning time 0.000012
+	Sorting 1 time 0.000035
+	Sorting 2 time 0.000045
+	MSE time 0.000063
+MSE at iteration 17: 0.000034
+Current size of cluster matrix (nvals): 543
+
+	Expansion time 0.000030
+	Inflation 1 time 0.000016
+	Iteration 17 time 0.000251
+
+Iteration 18
+	Normalization time 0.000019
+	Pruning time 0.000016
+	Sorting 1 time 0.000038
+	Sorting 2 time 0.000056
+	MSE time 0.000051
+MSE at iteration 18: 0.000000
+Current size of cluster matrix (nvals): 541
+
+	Expansion time 0.000027
+	Inflation 1 time 0.000014
+	Iteration 18 time 0.000229
+
+Iteration 19
+	Normalization time 0.000017
+	Pruning time 0.000015
+	Sorting 1 time 0.000036
+	Sorting 2 time 0.000080
+	MSE time 0.000057
+MSE at iteration 19: 0.000000
+Current size of cluster matrix (nvals): 541
+
+Terminated after 19 iterations
+
+Vertices per cluster
+
+  500x1 GraphBLAS int64_t vector, bitmap by col
+  vpc, 126 entries, memory: 4.6 KB
 
     (5,0)   142
     (9,0)   22
     (30,0)   5
-    (37,0)   4
-    (41,0)   70
+    (37,0)   1
+    (41,0)   69
     (42,0)   1
     (47,0)   2
-    (48,0)   2
-    (49,0)   2
-    (56,0)   2
-    (57,0)   2
-    (58,0)   2
+    (48,0)   1
+    (49,0)   1
+    (56,0)   1
+    (57,0)   1
+    (58,0)   1
     (59,0)   1
     (85,0)   1
     (91,0)   2
     (93,0)   1
     (99,0)   1
-    (109,0)   5
+    (109,0)   1
     (111,0)   5
-    (112,0)   5
-    (113,0)   5
+    (112,0)   1
+    (113,0)   1
     (121,0)   2
     (126,0)   2
     (129,0)   28
-    (131,0)   2
+    (131,0)   1
     (141,0)   1
     (142,0)   3
     (146,0)   1
@@ -35,12 +302,12 @@
     (156,0)   1
     (157,0)   1
     (158,0)   2
-    (160,0)   2
-    (162,0)   2
+    (160,0)   1
+    (162,0)   1
     (165,0)   1
     (166,0)   1
-    (180,0)   10
-    (183,0)   10
+    (180,0)   3
+    (183,0)   8
     (193,0)   5
     (215,0)   1
     (216,0)   1
@@ -48,15 +315,15 @@
     (248,0)   18
     (258,0)   1
     (260,0)   23
-    (281,0)   2
+    (281,0)   1
     (284,0)   3
     (292,0)   4
-    (293,0)   2
+    (293,0)   1
     (294,0)   2
-    (295,0)   2
-    (296,0)   2
+    (295,0)   1
+    (296,0)   1
     (297,0)   3
-    (298,0)   2
+    (298,0)   1
     (300,0)   2
     (301,0)   2
     (305,0)   1
@@ -85,7 +352,7 @@
     (368,0)   1
     (369,0)   1
     (371,0)   1
-    (372,0)   2
+    (372,0)   1
     (373,0)   2
     (374,0)   1
     (375,0)   1
@@ -117,20 +384,20 @@
     (448,0)   1
     (451,0)   1
     (455,0)   2
-    (457,0)   2
+    (457,0)   1
     (471,0)   1
     (472,0)   1
     (473,0)   1
     (479,0)   1
     (480,0)   1
     (484,0)   1
-    (486,0)   2
+    (486,0)   1
     (492,0)   1
     (493,0)   1
 
 
   500x500 GraphBLAS bool matrix, sparse by row
-  CC, 541 entries, memory: 8.4 KB
+  C_f, 500 entries, memory: 8.0 KB
   iso value:   1
 
     (5,0)   1
@@ -302,10 +569,7 @@
     (30,40)   1
     (30,403)   1
     (30,414)   1
-    (37,2)   1
     (37,37)   1
-    (37,40)   1
-    (37,403)   1
     (41,3)   1
     (41,11)   1
     (41,15)   1
@@ -364,7 +628,6 @@
     (41,358)   1
     (41,360)   1
     (41,366)   1
-    (41,377)   1
     (41,401)   1
     (41,402)   1
     (41,407)   1
@@ -379,15 +642,10 @@
     (42,42)   1
     (47,6)   1
     (47,47)   1
-    (48,6)   1
     (48,48)   1
-    (49,6)   1
     (49,49)   1
-    (56,6)   1
     (56,56)   1
-    (57,6)   1
     (57,57)   1
-    (58,6)   1
     (58,58)   1
     (59,59)   1
     (85,85)   1
@@ -395,26 +653,14 @@
     (91,181)   1
     (93,93)   1
     (99,99)   1
-    (109,10)   1
     (109,109)   1
-    (109,110)   1
-    (109,285)   1
-    (109,391)   1
     (111,10)   1
     (111,110)   1
     (111,111)   1
     (111,285)   1
     (111,391)   1
-    (112,10)   1
-    (112,110)   1
     (112,112)   1
-    (112,285)   1
-    (112,391)   1
-    (113,10)   1
-    (113,110)   1
     (113,113)   1
-    (113,285)   1
-    (113,391)   1
     (121,13)   1
     (121,121)   1
     (126,126)   1
@@ -447,7 +693,6 @@
     (129,433)   1
     (129,462)   1
     (129,499)   1
-    (131,130)   1
     (131,131)   1
     (141,141)   1
     (142,142)   1
@@ -462,23 +707,12 @@
     (158,158)   1
     (158,362)   1
     (160,160)   1
-    (160,362)   1
     (162,162)   1
-    (162,362)   1
     (165,165)   1
     (166,166)   1
     (180,16)   1
     (180,180)   1
     (180,182)   1
-    (180,438)   1
-    (180,442)   1
-    (180,466)   1
-    (180,470)   1
-    (180,487)   1
-    (180,489)   1
-    (180,498)   1
-    (183,16)   1
-    (183,182)   1
     (183,183)   1
     (183,438)   1
     (183,442)   1
@@ -537,7 +771,6 @@
     (260,278)   1
     (260,279)   1
     (260,280)   1
-    (281,26)   1
     (281,281)   1
     (284,31)   1
     (284,105)   1
@@ -546,18 +779,14 @@
     (292,287)   1
     (292,292)   1
     (292,303)   1
-    (293,32)   1
     (293,293)   1
     (294,33)   1
     (294,294)   1
-    (295,33)   1
     (295,295)   1
-    (296,33)   1
     (296,296)   1
     (297,34)   1
     (297,161)   1
     (297,297)   1
-    (298,34)   1
     (298,298)   1
     (300,35)   1
     (300,300)   1
@@ -623,7 +852,6 @@
     (368,368)   1
     (369,369)   1
     (371,371)   1
-    (372,148)   1
     (372,372)   1
     (373,373)   1
     (373,426)   1
@@ -663,14 +891,12 @@
     (455,143)   1
     (455,455)   1
     (457,457)   1
-    (457,458)   1
     (471,471)   1
     (472,472)   1
     (473,473)   1
     (479,479)   1
     (480,480)   1
     (484,484)   1
-    (486,200)   1
     (486,486)   1
     (492,492)   1
     (493,493)   1
