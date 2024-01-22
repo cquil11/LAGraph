@@ -232,13 +232,6 @@ int LAGr_MarkovClustering(
         printf("Iteration %lu time %f", iter, tt);
 
         iter++;
-
-#ifdef DEBUG
-        for (int i = 0; i < tidx; i++)
-        {
-            printf("\t%f\n", t[i]);
-        }
-#endif
     }
 
 
