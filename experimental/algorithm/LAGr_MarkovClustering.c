@@ -129,15 +129,10 @@ int LAGr_MarkovClustering(
     {
         tt = LAGraph_WallClockTime();
 
-        t0 = LAGraph_WallClockTime();
         printf("Iteration %lu\n", iter);
 
-        t0 = LAGraph_WallClockTime();
-        // Prune values less than some small threshold
-        GRB_TRY(GrB_select(C_temp, NULL, NULL, GrB_VALUEGT_FP32, C_temp, pruning_threshold, NULL));
-        t0 = LAGraph_WallClockTime() - t0;
-        printf("\tPrune %f\n", t0);
 
+        t0 = LAGraph_WallClockTime();
         // Normalization step: Scale each column in C_temp to add up to 1
         // w = 1 ./ sum(A(:j))
         // D = diag(w)
@@ -147,6 +142,15 @@ int LAGr_MarkovClustering(
         GRB_TRY(GrB_mxm(C_temp, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP32, C_temp, D, GrB_DESC_R));
         t0 = LAGraph_WallClockTime() - t0;
         printf("\tNormalization %f\n", t0);
+
+        
+        t0 = LAGraph_WallClockTime();
+        // Prune values less than some small threshold
+        GRB_TRY(GrB_select(C_temp, NULL, NULL, GrB_VALUEGT_FP32, C_temp, pruning_threshold, NULL));
+        t0 = LAGraph_WallClockTime() - t0;
+        printf("\tPrune %f\n", t0);
+
+
 
         t0 = LAGraph_WallClockTime();
         // Compute mean squared error between subsequent iterations
