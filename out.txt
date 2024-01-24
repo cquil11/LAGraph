@@ -3,157 +3,436 @@ library: SuiteSparse:GraphBLAS v7.4.4 [Mar 25, 2023]
 matrix: data/mcl2.mtx
 [.mtx]
 Reading matrix market file: data/mcl2.mtx
-read time: 0.000373573
+read time: 0.000556928
 Input Matrix:
 Iteration 0
-MSE at iteration 0: 1.026019
-Current size of cluster matrix (nvals): 36
+	Normalization time 0.000129
+	Pruning time 0.000030
+Before
 
-	0.000374
-	0.000122
-	0.000117
-	0.000061
-	0.000022
-	0.000031
+  12x12 GraphBLAS double matrix, bitmap by row
+  C_temp, 52 entries, memory: 1.5 KB
+
+    (0,0)    0.2
+    (0,1)    0.25
+    (0,5)    0.333333
+    (0,6)    0.25
+    (0,9)    0.25
+    (1,0)    0.2
+    (1,1)    0.25
+    (1,2)    0.25
+    (1,4)    0.2
+    (2,1)    0.25
+    (2,2)    0.25
+    (2,3)    0.2
+    (2,4)    0.2
+    (3,2)    0.25
+    (3,3)    0.2
+    (3,7)    0.2
+    (3,8)    0.2
+    (3,10)    0.2
+    (4,1)    0.25
+    (4,2)    0.25
+    (4,4)    0.2
+    (4,6)    0.25
+    (4,7)    0.2
+    (5,0)    0.2
+    (5,5)    0.333333
+    (5,9)    0.25
+    (6,0)    0.2
+    (6,4)    0.2
+    (6,6)    0.25
+    (6,9)    0.25
+    (7,3)    0.2
+    (7,4)    0.2
+    (7,7)    0.2
+    (7,8)    0.2
+    (7,10)    0.2
+    (8,3)    0.2
+    (8,7)    0.2
+    (8,8)    0.2
+    (8,10)    0.2
+    (8,11)    0.333333
+    (9,0)    0.2
+    (9,5)    0.333333
+    (9,6)    0.25
+    (9,9)    0.25
+    (10,3)    0.2
+    (10,7)    0.2
+    (10,8)    0.2
+    (10,10)    0.2
+    (10,11)    0.333333
+    (11,8)    0.2
+    (11,10)    0.2
+    (11,11)    0.333333
+
+	Sorting 1 time 0.000141
+After
+
+  12x12 GraphBLAS double matrix, bitmap by row
+  C_temp, 24 entries, memory: 1.5 KB
+
+    (0,0)    0.2
+    (0,1)    0.25
+    (0,5)    0.333333
+    (0,6)    0.25
+    (0,9)    0.25
+    (1,0)    0.2
+    (1,1)    0.25
+    (1,2)    0.25
+    (1,4)    0.2
+    (2,2)    0.25
+    (2,3)    0.2
+    (2,4)    0.2
+    (3,3)    0.2
+    (3,7)    0.2
+    (3,8)    0.2
+    (3,10)    0.2
+    (4,6)    0.25
+    (4,7)    0.2
+    (5,5)    0.333333
+    (5,9)    0.25
+    (7,8)    0.2
+    (7,10)    0.2
+    (8,11)    0.333333
+    (10,11)    0.333333
+
+	Sorting 2 time 0.000550
+	MSE time 0.000096
+MSE at iteration 0: 1.748241
+Current size of cluster matrix (nvals): 24
+
+	Expansion time 0.000021
+	Inflation 1 time 0.000037
+	Iteration 0 time 0.002142
+
 Iteration 1
-MSE at iteration 1: 0.039934
-Current size of cluster matrix (nvals): 36
+	Normalization time 0.000033
+	Pruning time 0.000009
+Before
 
-	0.000109
-	0.000019
-	0.000041
-	0.000012
-	0.000013
-	0.000004
+  12x12 GraphBLAS double matrix, bitmap by row
+  C_temp, 33 entries, memory: 1.5 KB
+
+    (0,0)    0.5
+    (0,1)    0.5
+    (0,2)    0.166667
+    (0,4)    0.166667
+    (0,5)    0.653061
+    (0,6)    0.166667
+    (0,9)    0.653061
+    (1,0)    0.5
+    (1,1)    0.5
+    (1,2)    0.666667
+    (1,3)    0.204918
+    (1,4)    0.666667
+    (1,5)    0.0918367
+    (1,6)    0.666667
+    (1,7)    0.166667
+    (1,9)    0.0918367
+    (2,2)    0.166667
+    (2,3)    0.663934
+    (2,4)    0.166667
+    (2,6)    0.166667
+    (2,7)    0.666667
+    (2,8)    0.166667
+    (2,10)    0.166667
+    (3,3)    0.131148
+    (3,7)    0.166667
+    (3,8)    0.666667
+    (3,10)    0.666667
+    (3,11)    0.5
+    (4,8)    0.166667
+    (4,10)    0.166667
+    (5,5)    0.255102
+    (5,9)    0.255102
+    (7,11)    0.5
+
+	Sorting 1 time 0.000042
+After
+
+  12x12 GraphBLAS double matrix, bitmap by row
+  C_temp, 24 entries, memory: 1.5 KB
+
+    (0,0)    0.5
+    (0,1)    0.5
+    (0,2)    0.166667
+    (0,4)    0.166667
+    (0,5)    0.653061
+    (0,6)    0.166667
+    (0,9)    0.653061
+    (1,0)    0.5
+    (1,1)    0.5
+    (1,2)    0.666667
+    (1,3)    0.204918
+    (1,4)    0.666667
+    (1,6)    0.666667
+    (1,7)    0.166667
+    (2,3)    0.663934
+    (2,7)    0.666667
+    (2,8)    0.166667
+    (2,10)    0.166667
+    (3,8)    0.666667
+    (3,10)    0.666667
+    (3,11)    0.5
+    (5,5)    0.255102
+    (5,9)    0.255102
+    (7,11)    0.5
+
+	Sorting 2 time 0.000356
+	MSE time 0.000021
+MSE at iteration 1: 0.157581
+Current size of cluster matrix (nvals): 24
+
+	Expansion time 0.000012
+	Inflation 1 time 0.000007
+	Iteration 1 time 0.000989
+
 Iteration 2
-MSE at iteration 2: 0.046756
-Current size of cluster matrix (nvals): 36
+	Normalization time 0.000019
+	Pruning time 0.000005
+Before
 
-	0.000075
-	0.000013
-	0.000034
-	0.000009
-	0.000009
-	0.000003
+  12x12 GraphBLAS double matrix, bitmap by row
+  C_temp, 28 entries, memory: 1.5 KB
+
+    (0,0)    0.5
+    (0,1)    0.5
+    (0,2)    0.5
+    (0,3)    0.132595
+    (0,4)    0.5
+    (0,5)    0.686873
+    (0,6)    0.5
+    (0,7)    0.119512
+    (0,8)    0.0029901
+    (0,9)    0.686873
+    (0,10)    0.0029901
+    (1,0)    0.5
+    (1,1)    0.5
+    (1,2)    0.5
+    (1,3)    0.867405
+    (1,4)    0.5
+    (1,5)    0.301165
+    (1,6)    0.5
+    (1,7)    0.880488
+    (1,8)    0.237806
+    (1,9)    0.301165
+    (1,10)    0.237806
+    (1,11)    0.0723447
+    (2,8)    0.759204
+    (2,10)    0.759204
+    (2,11)    0.927655
+    (5,5)    0.0119622
+    (5,9)    0.0119622
+
+	Sorting 1 time 0.000029
+After
+
+  12x12 GraphBLAS double matrix, bitmap by row
+  C_temp, 24 entries, memory: 1.5 KB
+
+    (0,0)    0.5
+    (0,1)    0.5
+    (0,2)    0.5
+    (0,3)    0.132595
+    (0,4)    0.5
+    (0,5)    0.686873
+    (0,6)    0.5
+    (0,7)    0.119512
+    (0,9)    0.686873
+    (1,0)    0.5
+    (1,1)    0.5
+    (1,2)    0.5
+    (1,3)    0.867405
+    (1,4)    0.5
+    (1,5)    0.301165
+    (1,6)    0.5
+    (1,7)    0.880488
+    (1,8)    0.237806
+    (1,9)    0.301165
+    (1,10)    0.237806
+    (1,11)    0.0723447
+    (2,8)    0.759204
+    (2,10)    0.759204
+    (2,11)    0.927655
+
+	Sorting 2 time 0.000346
+	MSE time 0.000027
+MSE at iteration 2: 0.236084
+Current size of cluster matrix (nvals): 24
+
+	Expansion time 0.000016
+	Inflation 1 time 0.000006
+	Iteration 2 time 0.000894
+
 Iteration 3
-MSE at iteration 3: 0.021563
-Current size of cluster matrix (nvals): 36
+	Normalization time 0.000017
+	Pruning time 0.000005
+Before
 
-	0.000066
-	0.000010
-	0.000032
-	0.000008
-	0.000007
-	0.000003
+  12x12 GraphBLAS double matrix, bitmap by row
+  C_temp, 24 entries, memory: 1.5 KB
+
+    (0,0)    0.5
+    (0,1)    0.5
+    (0,2)    0.5
+    (0,3)    0.5
+    (0,4)    0.5
+    (0,5)    0.5
+    (0,6)    0.5
+    (0,7)    0.5
+    (0,8)    0.5
+    (0,9)    0.5
+    (0,10)    0.5
+    (0,11)    0.5
+    (1,0)    0.5
+    (1,1)    0.5
+    (1,2)    0.5
+    (1,3)    0.5
+    (1,4)    0.5
+    (1,5)    0.5
+    (1,6)    0.5
+    (1,7)    0.5
+    (1,8)    0.5
+    (1,9)    0.5
+    (1,10)    0.5
+    (1,11)    0.5
+
+	Sorting 1 time 0.000121
+After
+
+  12x12 GraphBLAS double matrix, bitmap by row
+  C_temp, 24 entries, memory: 368 bytes
+  iso value:    0.5
+
+    (0,0)    0.5
+    (0,1)    0.5
+    (0,2)    0.5
+    (0,3)    0.5
+    (0,4)    0.5
+    (0,5)    0.5
+    (0,6)    0.5
+    (0,7)    0.5
+    (0,8)    0.5
+    (0,9)    0.5
+    (0,10)    0.5
+    (0,11)    0.5
+    (1,0)    0.5
+    (1,1)    0.5
+    (1,2)    0.5
+    (1,3)    0.5
+    (1,4)    0.5
+    (1,5)    0.5
+    (1,6)    0.5
+    (1,7)    0.5
+    (1,8)    0.5
+    (1,9)    0.5
+    (1,10)    0.5
+    (1,11)    0.5
+
+	Sorting 2 time 0.000495
+	MSE time 0.000036
+MSE at iteration 3: 0.158006
+Current size of cluster matrix (nvals): 24
+
+	Expansion time 0.000015
+	Inflation 1 time 0.000008
+	Iteration 3 time 0.001156
+
 Iteration 4
-MSE at iteration 4: 0.022394
-Current size of cluster matrix (nvals): 36
+	Normalization time 0.000028
+	Pruning time 0.000008
+Before
 
-	0.000071
-	0.000009
-	0.000029
-	0.000007
-	0.000006
-	0.000003
-Iteration 5
-MSE at iteration 5: 0.012855
-Current size of cluster matrix (nvals): 36
+  12x12 GraphBLAS double matrix, bitmap by row
+  C_temp, 24 entries, memory: 1.5 KB
 
-	0.000060
-	0.000009
-	0.000027
-	0.000007
-	0.000008
-	0.000003
-Iteration 6
-MSE at iteration 6: 0.006149
-Current size of cluster matrix (nvals): 36
+    (0,0)    0.5
+    (0,1)    0.5
+    (0,2)    0.5
+    (0,3)    0.5
+    (0,4)    0.5
+    (0,5)    0.5
+    (0,6)    0.5
+    (0,7)    0.5
+    (0,8)    0.5
+    (0,9)    0.5
+    (0,10)    0.5
+    (0,11)    0.5
+    (1,0)    0.5
+    (1,1)    0.5
+    (1,2)    0.5
+    (1,3)    0.5
+    (1,4)    0.5
+    (1,5)    0.5
+    (1,6)    0.5
+    (1,7)    0.5
+    (1,8)    0.5
+    (1,9)    0.5
+    (1,10)    0.5
+    (1,11)    0.5
 
-	0.000061
-	0.000009
-	0.000029
-	0.000007
-	0.000007
-	0.000003
-Iteration 7
-MSE at iteration 7: 0.001373
-Current size of cluster matrix (nvals): 36
+	Sorting 1 time 0.000066
+After
 
-	0.000055
-	0.000009
-	0.000025
-	0.000007
-	0.000005
-	0.000003
-Iteration 8
-MSE at iteration 8: 0.001174
-Current size of cluster matrix (nvals): 36
+  12x12 GraphBLAS double matrix, bitmap by row
+  C_temp, 24 entries, memory: 368 bytes
+  iso value:    0.5
 
-	0.000054
-	0.000008
-	0.000026
-	0.000006
-	0.000005
-	0.000003
-Iteration 9
-MSE at iteration 9: 0.000860
-Current size of cluster matrix (nvals): 36
+    (0,0)    0.5
+    (0,1)    0.5
+    (0,2)    0.5
+    (0,3)    0.5
+    (0,4)    0.5
+    (0,5)    0.5
+    (0,6)    0.5
+    (0,7)    0.5
+    (0,8)    0.5
+    (0,9)    0.5
+    (0,10)    0.5
+    (0,11)    0.5
+    (1,0)    0.5
+    (1,1)    0.5
+    (1,2)    0.5
+    (1,3)    0.5
+    (1,4)    0.5
+    (1,5)    0.5
+    (1,6)    0.5
+    (1,7)    0.5
+    (1,8)    0.5
+    (1,9)    0.5
+    (1,10)    0.5
+    (1,11)    0.5
 
-	0.000057
-	0.000010
-	0.000026
-	0.000006
-	0.000005
-	0.000003
-Iteration 10
-MSE at iteration 10: 0.000061
-Current size of cluster matrix (nvals): 36
+	Sorting 2 time 0.000373
+	MSE time 0.000023
+MSE at iteration 4: 0.000000
+Current size of cluster matrix (nvals): 24
 
-	0.000065
-	0.000009
-	0.000025
-	0.000007
-	0.000010
-	0.000006
-Iteration 11
-MSE at iteration 11: 0.000000
-Current size of cluster matrix (nvals): 36
-
-	0.000078
-	0.000015
-	0.000038
-	0.000009
-	0.000005
-	0.000004
-Iteration 12
-MSE at iteration 12: 0.000000
-Current size of cluster matrix (nvals): 36
-
-Terminated after 12 iterations
+Terminated after 4 iterations
 
 Vertices per cluster
 
   12x1 GraphBLAS int64_t vector, bitmap by col
-  vpc, 2 entries, memory: 324 bytes
+  vpc, 1 entry, memory: 324 bytes
 
-    (0,0)   4
-    (2,0)   8
+    (0,0)   12
 
 
-  12x12 GraphBLAS bool matrix, sparse by row
-  C_f, 12 entries, memory: 424 bytes
+  12x12 GraphBLAS bool matrix, hypersparse by row
+  C_f, 12 entries, memory: 344 bytes
   iso value:   1
 
     (0,0)   1
+    (0,1)   1
+    (0,2)   1
+    (0,3)   1
+    (0,4)   1
     (0,5)   1
     (0,6)   1
+    (0,7)   1
+    (0,8)   1
     (0,9)   1
-    (2,1)   1
-    (2,2)   1
-    (2,3)   1
-    (2,4)   1
-    (2,7)   1
-    (2,8)   1
-    (2,10)   1
-    (2,11)   1
+    (0,10)   1
+    (0,11)   1
 
