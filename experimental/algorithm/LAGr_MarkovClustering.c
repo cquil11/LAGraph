@@ -133,7 +133,7 @@ int LAGr_MarkovClustering(
         tt = LAGraph_WallClockTime();
 
         printf("Iteration %lu\n", iter);
-
+        GxB_print(C_temp, GxB_SUMMARY);
 
         t0 = LAGraph_WallClockTime();
         // Normalization step: Scale each column in C_temp to add up to 1
@@ -232,6 +232,7 @@ int LAGr_MarkovClustering(
     printf("---------------------------------\n"
         "Total program time %f\n"
         "---------------------------------\n", pt);
+
 
 #ifdef DEBUG
     printf("Vertices per cluster\n");
