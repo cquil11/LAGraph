@@ -162,7 +162,7 @@ int LAGr_MarkovClustering(
         GRB_TRY(GrB_Matrix_nvals(&nvals, C_temp));
         mse /= nvals;
         t0 = LAGraph_WallClockTime() - t0;
-        printf("\tMSE time%f\n", t0);
+        printf("\tMSE time%f \n", t0);
 
 
 #ifdef DEBUG
