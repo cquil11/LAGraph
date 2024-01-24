@@ -235,7 +235,7 @@ int LAGr_MarkovClustering(
 
 #ifdef DEBUG
     printf("Vertices per cluster\n");
-    GxB_print(vpc, GxB_COMPLETE);
+    GxB_print(vpc, GxB_SHORT);
 #endif
 
     (*C_f) = CC; // Set output matrix
