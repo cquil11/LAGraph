@@ -123,7 +123,10 @@ int LAGr_MarkovClustering(
     GrB_Index iter = 0;
     GrB_Index nvals;
 
-    double tt, t0;
+    double pt, tt, t0;
+
+    pt = LAGraph_WallClockTime();
+
 
     while (true)
     {
@@ -141,15 +144,14 @@ int LAGr_MarkovClustering(
         GRB_TRY(GrB_Matrix_diag(&D, w, 0));
         GRB_TRY(GrB_mxm(C_temp, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP32, C_temp, D, GrB_DESC_R));
         t0 = LAGraph_WallClockTime() - t0;
-        printf("\tNormalization %f\n", t0);
+        printf("\tNormalization time %f\n", t0);
 
-        
+
         t0 = LAGraph_WallClockTime();
         // Prune values less than some small threshold
         GRB_TRY(GrB_select(C_temp, NULL, NULL, GrB_VALUEGT_FP32, C_temp, pruning_threshold, NULL));
         t0 = LAGraph_WallClockTime() - t0;
-        printf("\tPrune %f\n", t0);
-
+        printf("\tPruning time %f\n", t0);
 
 
         t0 = LAGraph_WallClockTime();
@@ -160,12 +162,12 @@ int LAGr_MarkovClustering(
         GRB_TRY(GrB_Matrix_nvals(&nvals, C_temp));
         mse /= nvals;
         t0 = LAGraph_WallClockTime() - t0;
-        printf("\tMSE %f\n", t0);
+        printf("\tMSE time%f\n", t0);
 
 
 #ifdef DEBUG
-        printf("MSE at iteration %lu: %f\n", iter, mse);
-        printf("Current size of cluster matrix (nvals): %lu\n\n", nvals);
+        printf("\tMSE at iteration %lu: %f\n", iter, mse);
+        printf("\tCurrent size of cluster matrix (nvals): %lu\n", nvals);
 #endif
 
         bool res = NULL;
@@ -173,7 +175,7 @@ int LAGr_MarkovClustering(
         if (res || iter > max_iter || mse < convergence_threshold)
         {
 #ifdef DEBUG
-            printf("Terminated after %lu iterations\n\n", iter);
+            printf("\nTerminated after %lu iterations\n\n", iter);
 #endif
             break;
         }
@@ -188,13 +190,16 @@ int LAGr_MarkovClustering(
             GRB_TRY(GrB_mxm(C_temp, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP32, C_temp, C_temp, NULL));
         }
         t0 = LAGraph_WallClockTime() - t0;
-        printf("\tExpansion %f\n", t0);
+        printf("\tExpansion time (%lu nonzeros) %f\n", nvals, t0);
 
         t0 = LAGraph_WallClockTime();
         // Inflation step
         GRB_TRY(GrB_Matrix_apply_BinaryOp2nd_FP32(C_temp, NULL, NULL, GxB_POW_FP32, C_temp, (double)i, NULL));
         t0 = LAGraph_WallClockTime() - t0;
-        printf("\tInflation %f\n\n", t0);
+        printf("\tInflation time %f\n", t0);
+
+        tt = LAGraph_WallClockTime() - tt;
+        printf("\tTotal iteration time %f\n", t0);
 
         iter++;
     }
@@ -222,6 +227,11 @@ int LAGr_MarkovClustering(
     LAGraph_Free((void*)&px, NULL);
 
     GRB_TRY(GrB_reduce(vpc, NULL, NULL, GrB_PLUS_MONOID_INT64, CC, NULL));
+
+    pt = LAGraph_WallClockTime() - pt;
+    printf("---------------------------------"
+        "Total program time %f"
+        "---------------------------------", pt);
 
 #ifdef DEBUG
     printf("Vertices per cluster\n");
