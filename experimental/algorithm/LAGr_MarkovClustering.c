@@ -199,7 +199,7 @@ int LAGr_MarkovClustering(
         printf("\tInflation time %f\n", t0);
 
         tt = LAGraph_WallClockTime() - tt;
-        printf("\tTotal iteration time %f\n", t0);
+        printf("\tTotal iteration time %f\n\n", tt);
 
         iter++;
     }
@@ -229,9 +229,9 @@ int LAGr_MarkovClustering(
     GRB_TRY(GrB_reduce(vpc, NULL, NULL, GrB_PLUS_MONOID_INT64, CC, NULL));
 
     pt = LAGraph_WallClockTime() - pt;
-    printf("---------------------------------"
+    printf("---------------------------------\n"
         "Total program time %f"
-        "---------------------------------", pt);
+        "---------------------------------\n", pt);
 
 #ifdef DEBUG
     printf("Vertices per cluster\n");
