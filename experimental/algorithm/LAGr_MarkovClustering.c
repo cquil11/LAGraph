@@ -84,15 +84,15 @@ int LAGr_MarkovClustering(
     // initializations
     //--------------------------------------------------------------------------
 
-    GRB_TRY(GrB_Matrix_new(&C, GrB_FP64, n, n));
+    GRB_TRY(GrB_Matrix_new(&C, GrB_FP32, n, n));
     GRB_TRY(GrB_Matrix_new(&CC, GrB_BOOL, n, n));
-    GRB_TRY(GrB_Matrix_new(&C_temp, GrB_FP64, n, n));
+    GRB_TRY(GrB_Matrix_new(&C_temp, GrB_FP32, n, n));
     GRB_TRY(GrB_Vector_new(&vpc, GrB_INT64, n));
-    GRB_TRY(GrB_Matrix_new(&MSE, GrB_FP64, n, n));
-    GRB_TRY(GrB_Matrix_new(&D, GrB_FP64, n, n));
-    GRB_TRY(GrB_Vector_new(&w, GrB_FP64, n));
-    GRB_TRY(GrB_Vector_new(&ones, GrB_FP64, n));
-    GRB_TRY(GrB_Vector_new(&argmax_v, GrB_FP64, n));
+    GRB_TRY(GrB_Matrix_new(&MSE, GrB_FP32, n, n));
+    GRB_TRY(GrB_Matrix_new(&D, GrB_FP32, n, n));
+    GRB_TRY(GrB_Vector_new(&w, GrB_FP32, n));
+    GRB_TRY(GrB_Vector_new(&ones, GrB_FP32, n));
+    GRB_TRY(GrB_Vector_new(&argmax_v, GrB_FP32, n));
     GRB_TRY(GrB_Vector_new(&argmax_p, GrB_INT64, n));
     GRB_TRY(GrB_Scalar_new(&zero_INT64, GrB_INT64));
     GRB_TRY(GrB_Scalar_new(&true_BOOL, GrB_BOOL));
@@ -135,24 +135,24 @@ int LAGr_MarkovClustering(
         // Normalization step: Scale each column in C_temp to add up to 1
         // w = 1 ./ sum(A(:j))
         // D = diag(w)
-        GRB_TRY(GrB_reduce(w, NULL, NULL, GrB_PLUS_MONOID_FP64, C_temp, GrB_DESC_RT0));
-        GRB_TRY(GrB_apply(w, NULL, NULL, GrB_MINV_FP64, w, GrB_DESC_R));
+        GRB_TRY(GrB_reduce(w, NULL, NULL, GrB_PLUS_MONOID_FP32, C_temp, GrB_DESC_RT0));
+        GRB_TRY(GrB_apply(w, NULL, NULL, GrB_MINV_FP32, w, GrB_DESC_R));
         GRB_TRY(GrB_Matrix_diag(&D, w, 0));
-        GRB_TRY(GrB_mxm(C_temp, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP64, C_temp, D, GrB_DESC_R));
+        GRB_TRY(GrB_mxm(C_temp, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP32, C_temp, D, GrB_DESC_R));
         t0 = LAGraph_WallClockTime() - t0;
         printf("\tNormalization %f\n", t0);
 
         t0 = LAGraph_WallClockTime();
         // Prune values less than some small threshold
-        GRB_TRY(GrB_select(C_temp, NULL, NULL, GrB_VALUEGT_FP64, C_temp, pruning_threshold, NULL));
+        GRB_TRY(GrB_select(C_temp, NULL, NULL, GrB_VALUEGT_FP32, C_temp, pruning_threshold, NULL));
         t0 = LAGraph_WallClockTime() - t0;
         printf("\tPrune %f\n", t0);
 
         t0 = LAGraph_WallClockTime();
         // Compute mean squared error between subsequent iterations
-        GRB_TRY(GxB_Matrix_eWiseUnion(MSE, NULL, NULL, GrB_MINUS_FP64, C_temp, zero_INT64, C, zero_INT64, NULL));
-        GRB_TRY(GrB_eWiseMult(MSE, NULL, NULL, GrB_TIMES_FP64, MSE, MSE, NULL));
-        GRB_TRY(GrB_reduce(&mse, NULL, GrB_PLUS_MONOID_FP64, MSE, NULL));
+        GRB_TRY(GxB_Matrix_eWiseUnion(MSE, NULL, NULL, GrB_MINUS_FP32, C_temp, zero_INT64, C, zero_INT64, NULL));
+        GRB_TRY(GrB_eWiseMult(MSE, NULL, NULL, GrB_TIMES_FP32, MSE, MSE, NULL));
+        GRB_TRY(GrB_reduce(&mse, NULL, GrB_PLUS_MONOID_FP32, MSE, NULL));
         GRB_TRY(GrB_Matrix_nvals(&nvals, C_temp));
         mse /= nvals;
         t0 = LAGraph_WallClockTime() - t0;
@@ -181,14 +181,14 @@ int LAGr_MarkovClustering(
         // Expansion step
         for (int i = 0; i < e - 1; i++)
         {
-            GRB_TRY(GrB_mxm(C_temp, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP64, C_temp, C_temp, NULL));
+            GRB_TRY(GrB_mxm(C_temp, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP32, C_temp, C_temp, NULL));
         }
         t0 = LAGraph_WallClockTime() - t0;
         printf("\tExpansion %f\n", t0);
 
         t0 = LAGraph_WallClockTime();
         // Inflation step
-        GRB_TRY(GrB_Matrix_apply_BinaryOp2nd_FP64(C_temp, NULL, NULL, GxB_POW_FP64, C_temp, (double)i, NULL));
+        GRB_TRY(GrB_Matrix_apply_BinaryOp2nd_FP32(C_temp, NULL, NULL, GxB_POW_FP32, C_temp, (double)i, NULL));
         t0 = LAGraph_WallClockTime() - t0;
         printf("\tInflation %f\n\n", t0);
 
@@ -196,11 +196,11 @@ int LAGr_MarkovClustering(
     }
 
     // argmax_v = max (C_temp) where argmax_v(j) = max (C_temp (:,j))
-    GRB_TRY(GrB_mxv(argmax_v, NULL, NULL, GrB_MAX_FIRST_SEMIRING_FP64, C_temp, ones, GrB_DESC_T0));
+    GRB_TRY(GrB_mxv(argmax_v, NULL, NULL, GrB_MAX_FIRST_SEMIRING_FP32, C_temp, ones, GrB_DESC_T0));
     // D = daig (argmax_v)
     GRB_TRY(GrB_Matrix_diag(&D, argmax_v, 0));
     // 
-    GRB_TRY(GrB_mxm(CC, NULL, NULL, GxB_ANY_EQ_FP64, C_temp, D, NULL));
+    GRB_TRY(GrB_mxm(CC, NULL, NULL, GxB_ANY_EQ_FP32, C_temp, D, NULL));
     GRB_TRY(GrB_select(CC, NULL, NULL, GrB_VALUENE_BOOL, CC, 0, NULL));
     GRB_TRY(GrB_mxv(argmax_p, NULL, NULL, GxB_MIN_SECONDI_INT64, CC, ones, GrB_DESC_T0));
 
