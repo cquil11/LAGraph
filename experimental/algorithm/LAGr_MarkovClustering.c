@@ -24,6 +24,12 @@
 #include "LG_internal.h"
 #include <LAGraphX.h>
 
+static void time_thresh(void* z, const void* x, const void* y)
+{
+    *(float*)z = ((*(float*)x) >= 0.05 && (*(float*)y) >= 0.05) ? ((*(float*)x) * (*(float*)y)) : 0.0F;
+    GrB_NO_VALUE
+}
+
 int LAGr_MarkovClustering(
     // output:
     GrB_Matrix* C_f,                // output matrix C_f(i, j) == 1 means vertex j is in cluster i
@@ -55,6 +61,9 @@ int LAGr_MarkovClustering(
 
     GrB_Scalar zero_INT64 = NULL;
     GrB_Scalar true_BOOL = NULL;
+
+    GrB_BinaryOp times_threshold = NULL;
+    GrB_Semiring PLUS_TIMES_THRESHOLD_SEMIRING_FP32 = NULL;
 
 
     //--------------------------------------------------------------------------
@@ -96,6 +105,8 @@ int LAGr_MarkovClustering(
     GRB_TRY(GrB_Vector_new(&argmax_p, GrB_INT64, n));
     GRB_TRY(GrB_Scalar_new(&zero_INT64, GrB_INT64));
     GRB_TRY(GrB_Scalar_new(&true_BOOL, GrB_BOOL));
+    GRB_TRY(GrB_BinaryOp_new(&times_threshold, time_thresh, GrB_FP32, GrB_FP32, GrB_FP32));
+    GRB_TRY(GrB_Semiring_new(&PLUS_TIMES_THRESHOLD_SEMIRING_FP32, GrB_PLUS_MONOID_FP32, times_threshold));
 
     GRB_TRY(GrB_Scalar_setElement(zero_INT64, 0));
     GRB_TRY(GrB_Scalar_setElement(true_BOOL, 1));
@@ -187,10 +198,12 @@ int LAGr_MarkovClustering(
         // Expansion step
         for (int i = 0; i < e - 1; i++)
         {
-            GRB_TRY(GrB_mxm(C_temp, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP32, C_temp, C_temp, NULL));
+            GRB_TRY(GrB_mxm(C_temp, NULL, NULL, PLUS_TIMES_THRESHOLD_SEMIRING_FP32, C_temp, C_temp, NULL));
         }
         t0 = LAGraph_WallClockTime() - t0;
         printf("\tExpansion time (%2.10f%% dense) %f\n", (nvals * 1.0) / (n * n) * 100, t0);
+
+        GxB_print(C_temp, GxB_COMPLETE);
 
         t0 = LAGraph_WallClockTime();
         // Inflation step
