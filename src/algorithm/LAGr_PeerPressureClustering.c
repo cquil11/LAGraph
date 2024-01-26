@@ -20,9 +20,6 @@
         GrB_free(&last_vpc);             \
         GrB_free(&diff_vpc);             \
         GrB_free(&zero_INT64);           \
-        LAGraph_Free((void *)&AI, NULL); \
-        LAGraph_Free((void *)&AJ, NULL); \
-        LAGraph_Free((void *)&AX, NULL); \
     }
 
 #define LG_FREE_ALL    \
@@ -70,19 +67,13 @@ int LAGr_PeerPressureClustering(
     GrB_Vector diff_vpc = NULL;
     GrB_Scalar zero_INT64 = NULL;
 
-    GrB_Matrix A_san = NULL;
-    // Arrays holding extracted tuples if the matrix needs to be copied
-    GrB_Index *AI = NULL;
-    GrB_Index *AJ = NULL;
-    double *AX = NULL;
-
     //--------------------------------------------------------------------------
     // check inputs
     //--------------------------------------------------------------------------
 
     LG_CLEAR_MSG;
 
-    GrB_Matrix A;
+    GrB_Matrix A = G->A;
 
     LG_ASSERT(C_f != NULL, GrB_NULL_POINTER);
     (*C_f) = NULL;
@@ -99,31 +90,6 @@ int LAGr_PeerPressureClustering(
     GRB_TRY(GrB_assign(ones_fp, NULL, NULL, (double)1, GrB_ALL, n, NULL));
     GRB_TRY(GrB_assign(ones_fp_nz, NULL, NULL, (double)1, GrB_ALL, nz, NULL));
 
-    // If the input adjacency matrix is not of type float, we must sanitize so that
-    // we can work with FP64 edge weights
-    LAGraph_Matrix_TypeName(&MATRIX_TYPE, G->A, msg);
-    printf("%s\n", MATRIX_TYPE);
-    if (strcmp(MATRIX_TYPE, "float") != 0)
-    {
-        LAGRAPH_TRY(LAGraph_Malloc((void **)&AI, nz, sizeof(GrB_Index), msg));
-        LAGRAPH_TRY(LAGraph_Malloc((void **)&AJ, nz, sizeof(GrB_Index), msg));
-        GRB_TRY(GrB_Matrix_extractTuples_BOOL(AI, AJ, NULL, &nz, G->A));
-
-        // Extract values from the ones_vector
-        LAGRAPH_TRY(LAGraph_Malloc((void **)&AX, nz, sizeof(double), msg));
-        GRB_TRY(GrB_Vector_extractTuples_FP64(NULL, AX, &nz, ones_fp_nz));
-
-        // Build the sanitized matrix
-        GRB_TRY(GrB_Matrix_new(&A_san, GrB_FP64, n, n));
-        GRB_TRY(GrB_Matrix_build_FP64(A_san, AI, AJ, AX, nz, GrB_PLUS_FP64));
-
-        A = A_san;
-        GxB_print(A, GxB_SHORT);
-    }
-    else
-    {
-        A = G->A;
-    }
 
     LG_ASSERT_MSG(G->out_degree != NULL, -106,
                   "G->out_degree must be defined");
@@ -211,6 +177,7 @@ int LAGr_PeerPressureClustering(
     // GxB_print(C, GxB_COMPLETE);
 
     GrB_Index last_num_changed = n;
+    GrB_Index num_changed = NULL;
     double tt, t0, t1, t2, t3, t4;
 
     //--------------------------------------------------------------------------
@@ -242,13 +209,11 @@ int LAGr_PeerPressureClustering(
         // index of T which is equal to the respective value of m, for each column
         GRB_TRY(GrB_mxv(m_index, NULL, NULL, GxB_MIN_SECONDI_INT64, E, ones_fp, GrB_DESC_RT0));
 
-        // m_index_values are ROW indices and m_index_indices are COLUMN indices
+        // m_index_values are ROW indices
         // [?] More of a C question but do these NEED to be allocated on heap? A more efficient way to do this?
-        GrB_Index *m_index_values, *m_index_indices;
+        GrB_Index *m_index_values;
         LAGRAPH_TRY(LAGraph_Malloc((void **)&m_index_values, n, sizeof(GrB_INT64), msg));
-        LAGRAPH_TRY(LAGraph_Malloc((void **)&m_index_indices, n, sizeof(GrB_Index), msg));
-
-        GRB_TRY(GrB_Vector_extractTuples_INT64(m_index_indices, m_index_values, &n, m_index));
+        GRB_TRY(GrB_Vector_extractTuples_INT64(NULL, m_index_values, &n, m_index));
 
         GRB_TRY(GrB_extract(C_temp, NULL, NULL, Identity_B, GrB_ALL, n, m_index_values, n, NULL));
 
@@ -264,11 +229,9 @@ int LAGr_PeerPressureClustering(
         LAGRAPH_TRY(GxB_eWiseUnion(diff_vpc, NULL, NULL, GrB_MINUS_INT64, verts_per_cluster, zero_INT64, last_vpc, zero_INT64, NULL));
         GRB_TRY(GrB_select(diff_vpc, NULL, NULL, GrB_VALUENE_INT64, diff_vpc, 0, GrB_DESC_R));
 
-        GrB_Index num_changed = NULL;
         GRB_TRY(GrB_Vector_nvals(&num_changed, diff_vpc));
 
         LAGraph_Free((void **)&m_index_values, NULL);
-        LAGraph_Free((void **)&m_index_indices, NULL);
 
 #ifdef DEBUG
         printf("\n--------------------------------------------------\n"

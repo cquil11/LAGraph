@@ -23,7 +23,7 @@ int main (int argc, char**argv)
 
     char *matrix_name = (argc > 1) ? argv [1] : "stdin" ;
     LAGRAPH_TRY (readproblem (&G, NULL,
-        false, false, false, NULL, true, argc, argv)) ;
+        false, false, false, GrB_FP64, true, argc, argv)) ;
 
     // compute G->out_degree
     LAGRAPH_TRY (LAGraph_Cached_OutDegree (G, msg)) ;
