@@ -27,7 +27,6 @@
 static void time_thresh(void* z, const void* x, const void* y)
 {
     *(float*)z = ((*(float*)x) >= 0.05 && (*(float*)y) >= 0.05) ? ((*(float*)x) * (*(float*)y)) : 0.0F;
-    GrB_NO_VALUE
 }
 
 int LAGr_MarkovClustering(
