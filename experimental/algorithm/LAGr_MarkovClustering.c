@@ -202,7 +202,7 @@ int LAGr_MarkovClustering(
         t0 = LAGraph_WallClockTime() - t0;
         printf("\tExpansion time (%2.10f%% dense) %f\n", (nvals * 1.0) / (n * n) * 100, t0);
 
-        GxB_print(C_temp, GxB_COMPLETE);
+        // GxB_print(C_temp, GxB_COMPLETE);
 
         t0 = LAGraph_WallClockTime();
         // Inflation step
