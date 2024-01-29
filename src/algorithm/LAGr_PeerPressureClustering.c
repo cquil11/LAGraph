@@ -272,7 +272,7 @@ int LAGr_PeerPressureClustering(
         // When no changes to the cluster matrix have been made, terminate
         bool res = NULL;
         LAGRAPH_TRY(LAGraph_Matrix_IsEqual(&res, C, C_temp, msg));
-        if (res || percent_updated < 0.00001 || count > 200)
+        if (res || percent_updated < 0.001 || count > 200)
         {
             (*C_f) = C_temp; // Set output matrix
             break;
