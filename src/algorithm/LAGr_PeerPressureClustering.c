@@ -242,6 +242,7 @@ int LAGr_PeerPressureClustering(
 
         GRB_TRY(GrB_Vector_nvals(&num_changed, diff_vpc));
         double percent_updated = num_changed * 1.0 / n;
+        printf("Percent updated %f\n", percent_updated);
 
 
         LAGraph_Free((void **)&m_index_values, NULL);
