@@ -191,6 +191,7 @@ int LAGr_PeerPressureClustering(
     {
         printf("Iteration %lu\n", count);
         tt = LAGraph_WallClockTime();
+
         t0 = LAGraph_WallClockTime();
         // Tally (vote) matrix T where T[i][j] = k means there are k votes from cluster i for vertex j
         // to be in cluster i
@@ -299,7 +300,7 @@ int LAGr_PeerPressureClustering(
            "vertex j is in cluster i:\n");
     GxB_print(C_temp, GxB_SHORT);
     printf("Number of vertices per cluster:\n");
-    GxB_print(verts_per_cluster, GxB_COMPLETE);
+    GxB_print(verts_per_cluster, GxB_SHORT);
 
     GRB_TRY(GrB_Vector_free(&ones_fp));
 
