@@ -1,1756 +1,1107 @@
-include: SuiteSparse:GraphBLAS v7.4.4 [Mar 25, 2023]
-library: SuiteSparse:GraphBLAS v7.4.4 [Mar 25, 2023]
-matrix: /home/quilicam/mat/Harvard500/Harvard500.mtx
-[.mtx]
-Reading matrix market file: /home/quilicam/mat/Harvard500/Harvard500.mtx
-read time: 0.00312646
-Input Matrix:
-
-  500x500 GraphBLAS bool matrix, sparse by row
-  G->A, 2636 entries, memory: 24.7 KB
-  iso value:   1
-
-    (0,1)   1
-    (0,2)   1
-    (0,3)   1
-    (0,6)   1
-    (0,7)   1
-    (0,8)   1
-    (0,9)   1
-    (0,10)   1
-    (0,11)   1
-    (0,13)   1
-    (0,14)   1
-    (0,15)   1
-    (0,16)   1
-    (0,17)   1
-    (0,18)   1
-    (0,19)   1
-    (0,20)   1
-    (0,21)   1
-    (0,22)   1
-    (0,24)   1
-    (0,25)   1
-    (0,28)   1
-    (0,29)   1
-    (0,40)   1
-    (0,43)   1
-    (0,44)   1
-    (0,46)   1
-    (0,50)   1
-    (0,60)   1
-    ...
-bool
-
-  500x500 GraphBLAS double matrix, sparse by row
-  A, 2636 entries, memory: 24.7 KB
-  iso value:    1
-
-    (0,1)    1
-    (0,2)    1
-    (0,3)    1
-    (0,6)    1
-    (0,7)    1
-    (0,8)    1
-    (0,9)    1
-    (0,10)    1
-    (0,11)    1
-    (0,13)    1
-    (0,14)    1
-    (0,15)    1
-    (0,16)    1
-    (0,17)    1
-    (0,18)    1
-    (0,19)    1
-    (0,20)    1
-    (0,21)    1
-    (0,22)    1
-    (0,24)    1
-    (0,25)    1
-    (0,28)    1
-    (0,29)    1
-    (0,40)    1
-    (0,43)    1
-    (0,44)    1
-    (0,46)    1
-    (0,50)    1
-    (0,60)    1
-    ...
-
-  500x500 GraphBLAS double matrix, sparse by row
-  A, 3063 entries, memory: 28.1 KB
-  iso value:    1
-
-    (0,0)    1
-    (0,1)    1
-    (0,2)    1
-    (0,3)    1
-    (0,6)    1
-    (0,7)    1
-    (0,8)    1
-    (0,9)    1
-    (0,10)    1
-    (0,11)    1
-    (0,13)    1
-    (0,14)    1
-    (0,15)    1
-    (0,16)    1
-    (0,17)    1
-    (0,18)    1
-    (0,19)    1
-    (0,20)    1
-    (0,21)    1
-    (0,22)    1
-    (0,24)    1
-    (0,25)    1
-    (0,28)    1
-    (0,29)    1
-    (0,40)    1
-    (0,43)    1
-    (0,44)    1
-    (0,46)    1
-    (0,50)    1
-    ...
-
---------------------------------------------------
-Current Values at iteration 1
---------------------------------------------------
-Number of clusters updated since last iteration: 174
-34.800 % of all cluster assignments have been updated since last iteration
-
-  500x500 GraphBLAS bool matrix, sparse by row
-  C_temp, 500 entries, memory: 8.0 KB
-  iso value:   1
-
-    (1,84)   1
-    (4,4)   1
-    (5,5)   1
-    (6,100)   1
-    (19,0)   1
-    (19,19)   1
-    (20,20)   1
-    (21,3)   1
-    (21,21)   1
-    (22,22)   1
-    (23,23)   1
-    (24,24)   1
-    (25,25)   1
-    (27,1)   1
-    (28,28)   1
-    (29,29)   1
-    (30,30)   1
-    (37,37)   1
-    (40,2)   1
-    (40,40)   1
-    (41,41)   1
-    (42,42)   1
-    (44,44)   1
-    (46,46)   1
-    (47,6)   1
-    (47,47)   1
-    (48,48)   1
-    (49,49)   1
-    (50,50)   1
-    ...
-
-  500x1 GraphBLAS int64_t vector, bitmap by col
-  verts_per_cluster, 392 entries, memory: 4.6 KB
-
-    (1,0)   1
-    (4,0)   1
-    (5,0)   1
-    (6,0)   1
-    (19,0)   2
-    (20,0)   1
-    (21,0)   2
-    (22,0)   1
-    (23,0)   1
-    (24,0)   1
-    (25,0)   1
-    (27,0)   1
-    (28,0)   1
-    (29,0)   1
-    (30,0)   1
-    (37,0)   1
-    (40,0)   2
-    (41,0)   1
-    (42,0)   1
-    (44,0)   1
-    (46,0)   1
-    (47,0)   2
-    (48,0)   1
-    (49,0)   1
-    (50,0)   1
-    (52,0)   1
-    (53,0)   1
-    (54,0)   1
-    (55,0)   1
-    ...
-
-  500x1 GraphBLAS int64_t vector, full by col
-  m_index, 500 entries, memory: 4.1 KB
-
-    (0,0)   19
-    (1,0)   27
-    (2,0)   40
-    (3,0)   21
-    (4,0)   4
-    (5,0)   5
-    (6,0)   47
-    (7,0)   59
-    (8,0)   66
-    (9,0)   92
-    (10,0)   109
-    (11,0)   114
-    (12,0)   120
-    (13,0)   121
-    (14,0)   123
-    (15,0)   179
-    (16,0)   180
-    (17,0)   187
-    (18,0)   242
-    (19,0)   19
-    (20,0)   20
-    (21,0)   21
-    (22,0)   22
-    (23,0)   23
-    (24,0)   24
-    (25,0)   25
-    (26,0)   281
-    (27,0)   282
-    (28,0)   28
-    ...
-
-  500x500 GraphBLAS double matrix, sparse by row
-  T, 3063 entries, memory: 52.0 KB
-
-    (0,0)    0.00510204
-    (0,1)    0.00510204
-    (0,2)    0.00510204
-    (0,3)    0.00510204
-    (0,6)    0.00510204
-    (0,7)    0.00510204
-    (0,8)    0.00510204
-    (0,9)    0.00510204
-    (0,10)    0.00510204
-    (0,11)    0.00510204
-    (0,13)    0.00510204
-    (0,14)    0.00510204
-    (0,15)    0.00510204
-    (0,16)    0.00510204
-    (0,17)    0.00510204
-    (0,18)    0.00510204
-    (0,19)    0.00510204
-    (0,20)    0.00510204
-    (0,21)    0.00510204
-    (0,22)    0.00510204
-    (0,24)    0.00510204
-    (0,25)    0.00510204
-    (0,28)    0.00510204
-    (0,29)    0.00510204
-    (0,40)    0.00510204
-    (0,43)    0.00510204
-    (0,44)    0.00510204
-    (0,46)    0.00510204
-    (0,50)    0.00510204
-    ...
---------------------------------------------------
-
-
-
---------------------------------------------------
-Current Values at iteration 2
---------------------------------------------------
-Number of clusters updated since last iteration: 36
-7.200 % of all cluster assignments have been updated since last iteration
-
-  500x500 GraphBLAS bool matrix, sparse by row
-  C_temp, 500 entries, memory: 8.0 KB
-  iso value:   1
-
-    (4,4)   1
-    (5,5)   1
-    (19,0)   1
-    (19,19)   1
-    (20,20)   1
-    (21,3)   1
-    (21,21)   1
-    (22,22)   1
-    (24,24)   1
-    (25,25)   1
-    (27,84)   1
-    (28,1)   1
-    (28,28)   1
-    (29,29)   1
-    (30,30)   1
-    (37,37)   1
-    (40,2)   1
-    (40,40)   1
-    (41,41)   1
-    (42,42)   1
-    (44,44)   1
-    (46,46)   1
-    (47,6)   1
-    (47,47)   1
-    (47,100)   1
-    (48,48)   1
-    (49,49)   1
-    (50,50)   1
-    (54,54)   1
-    ...
-
-  500x1 GraphBLAS int64_t vector, bitmap by col
-  verts_per_cluster, 371 entries, memory: 4.6 KB
-
-    (4,0)   1
-    (5,0)   1
-    (19,0)   2
-    (20,0)   1
-    (21,0)   2
-    (22,0)   1
-    (24,0)   1
-    (25,0)   1
-    (27,0)   1
-    (28,0)   2
-    (29,0)   1
-    (30,0)   1
-    (37,0)   1
-    (40,0)   2
-    (41,0)   1
-    (42,0)   1
-    (44,0)   1
-    (46,0)   1
-    (47,0)   3
-    (48,0)   1
-    (49,0)   1
-    (50,0)   1
-    (54,0)   1
-    (55,0)   1
-    (56,0)   1
-    (57,0)   1
-    (58,0)   1
-    (59,0)   2
-    (61,0)   1
-    ...
-
-  500x1 GraphBLAS int64_t vector, full by col
-  m_index, 500 entries, memory: 4.1 KB
-
-    (0,0)   19
-    (1,0)   28
-    (2,0)   40
-    (3,0)   21
-    (4,0)   4
-    (5,0)   5
-    (6,0)   47
-    (7,0)   59
-    (8,0)   66
-    (9,0)   92
-    (10,0)   109
-    (11,0)   114
-    (12,0)   120
-    (13,0)   121
-    (14,0)   123
-    (15,0)   168
-    (16,0)   180
-    (17,0)   187
-    (18,0)   229
-    (19,0)   19
-    (20,0)   20
-    (21,0)   21
-    (22,0)   22
-    (23,0)   264
-    (24,0)   24
-    (25,0)   25
-    (26,0)   281
-    (27,0)   282
-    (28,0)   28
-    ...
-
-  500x500 GraphBLAS double matrix, sparse (jumbled) by row
-  T, 2204 entries, memory: 38.6 KB
-
-    (1,8)    0.0909091
-    (1,14)    0.0909091
-    (1,16)    0.0909091
-    (1,79)    0.0909091
-    (1,82)    0.0909091
-    (1,83)    0.0909091
-    (1,84)    0.0909091
-    (1,87)    0.0909091
-    (1,102)    0.0909091
-    (1,129)    0.0909091
-    (1,409)    0.0909091
-    (4,0)    0.1
-    (4,4)    0.1
-    (4,52)    0.1
-    (4,53)    0.1
-    (4,54)    0.1
-    (4,55)    0.1
-    (4,60)    0.1
-    (4,84)    0.1
-    (4,108)    0.1
-    (4,341)    0.1
-    (5,0)    0.0769231
-    (5,5)    0.0769231
-    (5,52)    0.0769231
-    (5,53)    0.0769231
-    (5,54)    0.0769231
-    (5,55)    0.0769231
-    (5,84)    0.0769231
-    (5,108)    0.0769231
-    ...
---------------------------------------------------
-
-
-
---------------------------------------------------
-Current Values at iteration 3
---------------------------------------------------
-Number of clusters updated since last iteration: 22
-4.400 % of all cluster assignments have been updated since last iteration
-
-  500x500 GraphBLAS bool matrix, sparse by row
-  C_temp, 500 entries, memory: 8.0 KB
-  iso value:   1
-
-    (4,4)   1
-    (5,5)   1
-    (19,0)   1
-    (19,19)   1
-    (20,20)   1
-    (21,3)   1
-    (21,21)   1
-    (22,22)   1
-    (24,24)   1
-    (25,25)   1
-    (28,1)   1
-    (28,28)   1
-    (28,84)   1
-    (29,29)   1
-    (30,30)   1
-    (37,37)   1
-    (40,2)   1
-    (40,40)   1
-    (41,41)   1
-    (42,42)   1
-    (44,44)   1
-    (46,46)   1
-    (47,6)   1
-    (47,47)   1
-    (47,100)   1
-    (48,48)   1
-    (49,49)   1
-    (50,50)   1
-    (54,54)   1
-    ...
-
-  500x1 GraphBLAS int64_t vector, bitmap by col
-  verts_per_cluster, 362 entries, memory: 4.6 KB
-
-    (4,0)   1
-    (5,0)   1
-    (19,0)   2
-    (20,0)   1
-    (21,0)   2
-    (22,0)   1
-    (24,0)   1
-    (25,0)   1
-    (28,0)   3
-    (29,0)   1
-    (30,0)   1
-    (37,0)   1
-    (40,0)   2
-    (41,0)   1
-    (42,0)   1
-    (44,0)   1
-    (46,0)   1
-    (47,0)   3
-    (48,0)   1
-    (49,0)   1
-    (50,0)   1
-    (54,0)   1
-    (55,0)   1
-    (56,0)   1
-    (57,0)   1
-    (58,0)   1
-    (59,0)   2
-    (61,0)   1
-    (62,0)   1
-    ...
-
-  500x1 GraphBLAS int64_t vector, full by col
-  m_index, 500 entries, memory: 4.1 KB
-
-    (0,0)   19
-    (1,0)   28
-    (2,0)   40
-    (3,0)   21
-    (4,0)   4
-    (5,0)   5
-    (6,0)   47
-    (7,0)   59
-    (8,0)   74
-    (9,0)   92
-    (10,0)   109
-    (11,0)   114
-    (12,0)   120
-    (13,0)   121
-    (14,0)   123
-    (15,0)   168
-    (16,0)   180
-    (17,0)   190
-    (18,0)   229
-    (19,0)   19
-    (20,0)   20
-    (21,0)   21
-    (22,0)   22
-    (23,0)   264
-    (24,0)   24
-    (25,0)   25
-    (26,0)   281
-    (27,0)   282
-    (28,0)   28
-    ...
-
-  500x500 GraphBLAS double matrix, sparse (jumbled) by row
-  T, 2077 entries, memory: 36.6 KB
-
-    (4,0)    0.1
-    (4,4)    0.1
-    (4,52)    0.1
-    (4,53)    0.1
-    (4,54)    0.1
-    (4,55)    0.1
-    (4,60)    0.1
-    (4,84)    0.1
-    (4,108)    0.1
-    (4,341)    0.1
-    (5,0)    0.0769231
-    (5,5)    0.0769231
-    (5,52)    0.0769231
-    (5,53)    0.0769231
-    (5,54)    0.0769231
-    (5,55)    0.0769231
-    (5,84)    0.0769231
-    (5,108)    0.0769231
-    (5,178)    0.0769231
-    (5,341)    0.0769231
-    (5,377)    0.0769231
-    (5,380)    0.0769231
-    (5,383)    0.0769231
-    (19,0)    1.7462
-    (19,1)    0.00510204
-    (19,2)    0.00510204
-    (19,3)    0.00510204
-    (19,6)    0.00510204
-    (19,7)    0.00510204
-    ...
---------------------------------------------------
-
-
-
---------------------------------------------------
-Current Values at iteration 4
---------------------------------------------------
-Number of clusters updated since last iteration: 4
-0.800 % of all cluster assignments have been updated since last iteration
-
-  500x500 GraphBLAS bool matrix, sparse by row
-  C_temp, 500 entries, memory: 8.0 KB
-  iso value:   1
-
-    (4,4)   1
-    (5,5)   1
-    (19,0)   1
-    (19,19)   1
-    (20,20)   1
-    (21,3)   1
-    (21,21)   1
-    (22,22)   1
-    (24,24)   1
-    (25,25)   1
-    (28,1)   1
-    (28,28)   1
-    (28,84)   1
-    (29,29)   1
-    (30,30)   1
-    (37,37)   1
-    (40,2)   1
-    (40,40)   1
-    (41,41)   1
-    (42,42)   1
-    (44,44)   1
-    (46,46)   1
-    (47,6)   1
-    (47,47)   1
-    (47,100)   1
-    (48,48)   1
-    (49,49)   1
-    (50,50)   1
-    (54,54)   1
-    ...
-
-  500x1 GraphBLAS int64_t vector, bitmap by col
-  verts_per_cluster, 361 entries, memory: 4.6 KB
-
-    (4,0)   1
-    (5,0)   1
-    (19,0)   2
-    (20,0)   1
-    (21,0)   2
-    (22,0)   1
-    (24,0)   1
-    (25,0)   1
-    (28,0)   3
-    (29,0)   1
-    (30,0)   1
-    (37,0)   1
-    (40,0)   2
-    (41,0)   1
-    (42,0)   1
-    (44,0)   1
-    (46,0)   1
-    (47,0)   3
-    (48,0)   1
-    (49,0)   1
-    (50,0)   1
-    (54,0)   1
-    (55,0)   1
-    (56,0)   1
-    (57,0)   1
-    (58,0)   1
-    (59,0)   2
-    (61,0)   1
-    (62,0)   1
-    ...
-
-  500x1 GraphBLAS int64_t vector, full by col
-  m_index, 500 entries, memory: 4.1 KB
-
-    (0,0)   19
-    (1,0)   28
-    (2,0)   40
-    (3,0)   21
-    (4,0)   4
-    (5,0)   5
-    (6,0)   47
-    (7,0)   59
-    (8,0)   74
-    (9,0)   92
-    (10,0)   109
-    (11,0)   114
-    (12,0)   120
-    (13,0)   121
-    (14,0)   123
-    (15,0)   168
-    (16,0)   180
-    (17,0)   190
-    (18,0)   229
-    (19,0)   19
-    (20,0)   20
-    (21,0)   21
-    (22,0)   22
-    (23,0)   264
-    (24,0)   24
-    (25,0)   25
-    (26,0)   281
-    (27,0)   282
-    (28,0)   28
-    ...
-
-  500x500 GraphBLAS double matrix, sparse (jumbled) by row
-  T, 2011 entries, memory: 35.5 KB
-
-    (4,0)    0.1
-    (4,4)    0.1
-    (4,52)    0.1
-    (4,53)    0.1
-    (4,54)    0.1
-    (4,55)    0.1
-    (4,60)    0.1
-    (4,84)    0.1
-    (4,108)    0.1
-    (4,341)    0.1
-    (5,0)    0.0769231
-    (5,5)    0.0769231
-    (5,52)    0.0769231
-    (5,53)    0.0769231
-    (5,54)    0.0769231
-    (5,55)    0.0769231
-    (5,84)    0.0769231
-    (5,108)    0.0769231
-    (5,178)    0.0769231
-    (5,341)    0.0769231
-    (5,377)    0.0769231
-    (5,380)    0.0769231
-    (5,383)    0.0769231
-    (19,0)    3.25411
-    (19,1)    0.00510204
-    (19,2)    0.00510204
-    (19,3)    0.00510204
-    (19,6)    0.00510204
-    (19,7)    0.00510204
-    ...
---------------------------------------------------
-
-
-
---------------------------------------------------
-Current Values at iteration 5
---------------------------------------------------
-Number of clusters updated since last iteration: 4
-0.800 % of all cluster assignments have been updated since last iteration
-
-  500x500 GraphBLAS bool matrix, sparse by row
-  C_temp, 500 entries, memory: 8.0 KB
-  iso value:   1
-
-    (4,4)   1
-    (5,5)   1
-    (19,0)   1
-    (19,19)   1
-    (20,20)   1
-    (21,3)   1
-    (21,21)   1
-    (22,22)   1
-    (24,24)   1
-    (25,25)   1
-    (28,1)   1
-    (28,28)   1
-    (28,84)   1
-    (29,29)   1
-    (30,30)   1
-    (37,37)   1
-    (40,2)   1
-    (40,40)   1
-    (41,41)   1
-    (42,42)   1
-    (44,44)   1
-    (46,46)   1
-    (47,6)   1
-    (47,47)   1
-    (47,100)   1
-    (48,48)   1
-    (49,49)   1
-    (50,50)   1
-    (54,54)   1
-    ...
-
-  500x1 GraphBLAS int64_t vector, bitmap by col
-  verts_per_cluster, 361 entries, memory: 4.6 KB
-
-    (4,0)   1
-    (5,0)   1
-    (19,0)   2
-    (20,0)   1
-    (21,0)   2
-    (22,0)   1
-    (24,0)   1
-    (25,0)   1
-    (28,0)   3
-    (29,0)   1
-    (30,0)   1
-    (37,0)   1
-    (40,0)   2
-    (41,0)   1
-    (42,0)   1
-    (44,0)   1
-    (46,0)   1
-    (47,0)   3
-    (48,0)   1
-    (49,0)   1
-    (50,0)   1
-    (54,0)   1
-    (55,0)   1
-    (56,0)   1
-    (57,0)   1
-    (58,0)   1
-    (59,0)   2
-    (61,0)   1
-    (62,0)   1
-    ...
-
-  500x1 GraphBLAS int64_t vector, full by col
-  m_index, 500 entries, memory: 4.1 KB
-
-    (0,0)   19
-    (1,0)   28
-    (2,0)   40
-    (3,0)   21
-    (4,0)   4
-    (5,0)   5
-    (6,0)   47
-    (7,0)   59
-    (8,0)   74
-    (9,0)   92
-    (10,0)   109
-    (11,0)   114
-    (12,0)   120
-    (13,0)   121
-    (14,0)   135
-    (15,0)   168
-    (16,0)   180
-    (17,0)   190
-    (18,0)   229
-    (19,0)   19
-    (20,0)   20
-    (21,0)   21
-    (22,0)   22
-    (23,0)   264
-    (24,0)   24
-    (25,0)   25
-    (26,0)   281
-    (27,0)   282
-    (28,0)   28
-    ...
-
-  500x500 GraphBLAS double matrix, sparse (jumbled) by row
-  T, 2004 entries, memory: 35.4 KB
-
-    (4,0)    0.1
-    (4,4)    0.1
-    (4,52)    0.1
-    (4,53)    0.1
-    (4,54)    0.1
-    (4,55)    0.1
-    (4,60)    0.1
-    (4,84)    0.1
-    (4,108)    0.1
-    (4,341)    0.1
-    (5,0)    0.0769231
-    (5,5)    0.0769231
-    (5,52)    0.0769231
-    (5,53)    0.0769231
-    (5,54)    0.0769231
-    (5,55)    0.0769231
-    (5,84)    0.0769231
-    (5,108)    0.0769231
-    (5,178)    0.0769231
-    (5,341)    0.0769231
-    (5,377)    0.0769231
-    (5,380)    0.0769231
-    (5,383)    0.0769231
-    (19,0)    6.06797
-    (19,1)    0.00510204
-    (19,2)    0.00510204
-    (19,3)    0.00510204
-    (19,6)    0.00510204
-    (19,7)    0.00510204
-    ...
---------------------------------------------------
-
-
-
---------------------------------------------------
-Current Values at iteration 6
---------------------------------------------------
-Number of clusters updated since last iteration: 4
-0.800 % of all cluster assignments have been updated since last iteration
-
-  500x500 GraphBLAS bool matrix, sparse by row
-  C_temp, 500 entries, memory: 8.0 KB
-  iso value:   1
-
-    (4,4)   1
-    (5,5)   1
-    (19,0)   1
-    (19,19)   1
-    (20,20)   1
-    (21,3)   1
-    (21,21)   1
-    (22,22)   1
-    (24,24)   1
-    (25,25)   1
-    (28,1)   1
-    (28,28)   1
-    (28,84)   1
-    (28,282)   1
-    (29,29)   1
-    (30,30)   1
-    (37,37)   1
-    (40,2)   1
-    (40,40)   1
-    (41,41)   1
-    (42,42)   1
-    (44,44)   1
-    (46,46)   1
-    (47,6)   1
-    (47,47)   1
-    (47,100)   1
-    (48,48)   1
-    (49,49)   1
-    (50,50)   1
-    ...
-
-  500x1 GraphBLAS int64_t vector, bitmap by col
-  verts_per_cluster, 361 entries, memory: 4.6 KB
-
-    (4,0)   1
-    (5,0)   1
-    (19,0)   2
-    (20,0)   1
-    (21,0)   2
-    (22,0)   1
-    (24,0)   1
-    (25,0)   1
-    (28,0)   4
-    (29,0)   1
-    (30,0)   1
-    (37,0)   1
-    (40,0)   2
-    (41,0)   1
-    (42,0)   1
-    (44,0)   1
-    (46,0)   1
-    (47,0)   3
-    (48,0)   1
-    (49,0)   1
-    (50,0)   1
-    (54,0)   1
-    (55,0)   1
-    (56,0)   1
-    (57,0)   1
-    (58,0)   1
-    (59,0)   2
-    (61,0)   1
-    (62,0)   1
-    ...
-
-  500x1 GraphBLAS int64_t vector, full by col
-  m_index, 500 entries, memory: 4.1 KB
-
-    (0,0)   19
-    (1,0)   28
-    (2,0)   40
-    (3,0)   21
-    (4,0)   4
-    (5,0)   5
-    (6,0)   47
-    (7,0)   59
-    (8,0)   74
-    (9,0)   92
-    (10,0)   109
-    (11,0)   114
-    (12,0)   120
-    (13,0)   121
-    (14,0)   135
-    (15,0)   168
-    (16,0)   180
-    (17,0)   190
-    (18,0)   229
-    (19,0)   19
-    (20,0)   20
-    (21,0)   21
-    (22,0)   22
-    (23,0)   264
-    (24,0)   24
-    (25,0)   25
-    (26,0)   281
-    (27,0)   282
-    (28,0)   28
-    ...
-
-  500x500 GraphBLAS double matrix, sparse (jumbled) by row
-  T, 2003 entries, memory: 35.4 KB
-
-    (4,0)    0.1
-    (4,4)    0.1
-    (4,52)    0.1
-    (4,53)    0.1
-    (4,54)    0.1
-    (4,55)    0.1
-    (4,60)    0.1
-    (4,84)    0.1
-    (4,108)    0.1
-    (4,341)    0.1
-    (5,0)    0.0769231
-    (5,5)    0.0769231
-    (5,52)    0.0769231
-    (5,53)    0.0769231
-    (5,54)    0.0769231
-    (5,55)    0.0769231
-    (5,84)    0.0769231
-    (5,108)    0.0769231
-    (5,178)    0.0769231
-    (5,341)    0.0769231
-    (5,377)    0.0769231
-    (5,380)    0.0769231
-    (5,383)    0.0769231
-    (19,0)    11.3188
-    (19,1)    0.00510204
-    (19,2)    0.00510204
-    (19,3)    0.00510204
-    (19,6)    0.00510204
-    (19,7)    0.00510204
-    ...
---------------------------------------------------
-
-
-
---------------------------------------------------
-Current Values at iteration 7
---------------------------------------------------
-Number of clusters updated since last iteration: 2
-0.400 % of all cluster assignments have been updated since last iteration
-
-  500x500 GraphBLAS bool matrix, sparse by row
-  C_temp, 500 entries, memory: 8.0 KB
-  iso value:   1
-
-    (4,4)   1
-    (5,5)   1
-    (19,0)   1
-    (19,19)   1
-    (20,20)   1
-    (21,3)   1
-    (21,21)   1
-    (22,22)   1
-    (24,24)   1
-    (25,25)   1
-    (28,1)   1
-    (28,27)   1
-    (28,28)   1
-    (28,84)   1
-    (28,282)   1
-    (29,29)   1
-    (30,30)   1
-    (37,37)   1
-    (40,2)   1
-    (40,40)   1
-    (41,41)   1
-    (42,42)   1
-    (44,44)   1
-    (46,46)   1
-    (47,6)   1
-    (47,47)   1
-    (47,100)   1
-    (48,48)   1
-    (49,49)   1
-    ...
-
-  500x1 GraphBLAS int64_t vector, bitmap by col
-  verts_per_cluster, 360 entries, memory: 4.6 KB
-
-    (4,0)   1
-    (5,0)   1
-    (19,0)   2
-    (20,0)   1
-    (21,0)   2
-    (22,0)   1
-    (24,0)   1
-    (25,0)   1
-    (28,0)   5
-    (29,0)   1
-    (30,0)   1
-    (37,0)   1
-    (40,0)   2
-    (41,0)   1
-    (42,0)   1
-    (44,0)   1
-    (46,0)   1
-    (47,0)   3
-    (48,0)   1
-    (49,0)   1
-    (50,0)   1
-    (54,0)   1
-    (55,0)   1
-    (56,0)   1
-    (57,0)   1
-    (58,0)   1
-    (59,0)   2
-    (61,0)   1
-    (62,0)   1
-    ...
-
-  500x1 GraphBLAS int64_t vector, full by col
-  m_index, 500 entries, memory: 4.1 KB
-
-    (0,0)   19
-    (1,0)   28
-    (2,0)   40
-    (3,0)   21
-    (4,0)   4
-    (5,0)   5
-    (6,0)   47
-    (7,0)   59
-    (8,0)   74
-    (9,0)   92
-    (10,0)   109
-    (11,0)   114
-    (12,0)   120
-    (13,0)   121
-    (14,0)   135
-    (15,0)   168
-    (16,0)   180
-    (17,0)   190
-    (18,0)   229
-    (19,0)   19
-    (20,0)   20
-    (21,0)   21
-    (22,0)   22
-    (23,0)   264
-    (24,0)   24
-    (25,0)   25
-    (26,0)   281
-    (27,0)   28
-    (28,0)   28
-    ...
-
-  500x500 GraphBLAS double matrix, sparse (jumbled) by row
-  T, 2000 entries, memory: 35.4 KB
-
-    (4,0)    0.1
-    (4,4)    0.1
-    (4,52)    0.1
-    (4,53)    0.1
-    (4,54)    0.1
-    (4,55)    0.1
-    (4,60)    0.1
-    (4,84)    0.1
-    (4,108)    0.1
-    (4,341)    0.1
-    (5,0)    0.0769231
-    (5,5)    0.0769231
-    (5,52)    0.0769231
-    (5,53)    0.0769231
-    (5,54)    0.0769231
-    (5,55)    0.0769231
-    (5,84)    0.0769231
-    (5,108)    0.0769231
-    (5,178)    0.0769231
-    (5,341)    0.0769231
-    (5,377)    0.0769231
-    (5,380)    0.0769231
-    (5,383)    0.0769231
-    (19,0)    21.1172
-    (19,1)    0.00510204
-    (19,2)    0.00510204
-    (19,3)    0.00510204
-    (19,6)    0.00510204
-    (19,7)    0.00510204
-    ...
---------------------------------------------------
-
-
-
---------------------------------------------------
-Current Values at iteration 8
---------------------------------------------------
-Number of clusters updated since last iteration: 0
-0.000 % of all cluster assignments have been updated since last iteration
-
-  500x500 GraphBLAS bool matrix, sparse by row
-  C_temp, 500 entries, memory: 8.0 KB
-  iso value:   1
-
-    (4,4)   1
-    (5,5)   1
-    (19,0)   1
-    (19,19)   1
-    (20,20)   1
-    (21,3)   1
-    (21,21)   1
-    (22,22)   1
-    (24,24)   1
-    (25,25)   1
-    (28,1)   1
-    (28,27)   1
-    (28,28)   1
-    (28,84)   1
-    (28,282)   1
-    (29,29)   1
-    (30,30)   1
-    (37,37)   1
-    (40,2)   1
-    (40,40)   1
-    (41,41)   1
-    (42,42)   1
-    (44,44)   1
-    (46,46)   1
-    (47,6)   1
-    (47,47)   1
-    (47,100)   1
-    (48,48)   1
-    (49,49)   1
-    ...
-
-  500x1 GraphBLAS int64_t vector, bitmap by col
-  verts_per_cluster, 360 entries, memory: 4.6 KB
-
-    (4,0)   1
-    (5,0)   1
-    (19,0)   2
-    (20,0)   1
-    (21,0)   2
-    (22,0)   1
-    (24,0)   1
-    (25,0)   1
-    (28,0)   5
-    (29,0)   1
-    (30,0)   1
-    (37,0)   1
-    (40,0)   2
-    (41,0)   1
-    (42,0)   1
-    (44,0)   1
-    (46,0)   1
-    (47,0)   3
-    (48,0)   1
-    (49,0)   1
-    (50,0)   1
-    (54,0)   1
-    (55,0)   1
-    (56,0)   1
-    (57,0)   1
-    (58,0)   1
-    (59,0)   2
-    (61,0)   1
-    (62,0)   1
-    ...
-
-  500x1 GraphBLAS int64_t vector, full by col
-  m_index, 500 entries, memory: 4.1 KB
-
-    (0,0)   19
-    (1,0)   28
-    (2,0)   40
-    (3,0)   21
-    (4,0)   4
-    (5,0)   5
-    (6,0)   47
-    (7,0)   59
-    (8,0)   74
-    (9,0)   92
-    (10,0)   109
-    (11,0)   114
-    (12,0)   120
-    (13,0)   121
-    (14,0)   135
-    (15,0)   168
-    (16,0)   180
-    (17,0)   190
-    (18,0)   229
-    (19,0)   19
-    (20,0)   20
-    (21,0)   21
-    (22,0)   22
-    (23,0)   264
-    (24,0)   24
-    (25,0)   25
-    (26,0)   281
-    (27,0)   28
-    (28,0)   28
-    ...
-
-  500x500 GraphBLAS double matrix, sparse (jumbled) by row
-  T, 1997 entries, memory: 35.3 KB
-
-    (4,0)    0.1
-    (4,4)    0.1
-    (4,52)    0.1
-    (4,53)    0.1
-    (4,54)    0.1
-    (4,55)    0.1
-    (4,60)    0.1
-    (4,84)    0.1
-    (4,108)    0.1
-    (4,341)    0.1
-    (5,0)    0.0769231
-    (5,5)    0.0769231
-    (5,52)    0.0769231
-    (5,53)    0.0769231
-    (5,54)    0.0769231
-    (5,55)    0.0769231
-    (5,84)    0.0769231
-    (5,108)    0.0769231
-    (5,178)    0.0769231
-    (5,341)    0.0769231
-    (5,377)    0.0769231
-    (5,380)    0.0769231
-    (5,383)    0.0769231
-    (19,0)    39.4017
-    (19,1)    0.00510204
-    (19,2)    0.00510204
-    (19,3)    0.00510204
-    (19,6)    0.00510204
-    (19,7)    0.00510204
-    ...
---------------------------------------------------
-
-
---------------------------------------------------
-Final Information
---------------------------------------------------
-Final tally matrix T where T[i][j] = k means there are k votes from cluster i for vertex j to be in cluster i:
-
-  500x500 GraphBLAS double matrix, sparse (jumbled) by row
-  T, 1997 entries, memory: 35.3 KB
-
-    (4,0)    0.1
-    (4,4)    0.1
-    (4,52)    0.1
-    (4,53)    0.1
-    (4,54)    0.1
-    (4,55)    0.1
-    (4,60)    0.1
-    (4,84)    0.1
-    (4,108)    0.1
-    (4,341)    0.1
-    (5,0)    0.0769231
-    (5,5)    0.0769231
-    (5,52)    0.0769231
-    (5,53)    0.0769231
-    (5,54)    0.0769231
-    (5,55)    0.0769231
-    (5,84)    0.0769231
-    (5,108)    0.0769231
-    (5,178)    0.0769231
-    (5,341)    0.0769231
-    (5,377)    0.0769231
-    (5,380)    0.0769231
-    (5,383)    0.0769231
-    (19,0)    39.4017
-    (19,1)    0.00510204
-    (19,2)    0.00510204
-    (19,3)    0.00510204
-    (19,6)    0.00510204
-    (19,7)    0.00510204
-    ...
-Final cluster matrix C_temp where C_temp[i][j] == 1 means vertex j is in cluster i:
-
-  500x500 GraphBLAS bool matrix, sparse by row
-  C_temp, 500 entries, memory: 8.0 KB
-  iso value:   1
-
-    (4,4)   1
-    (5,5)   1
-    (19,0)   1
-    (19,19)   1
-    (20,20)   1
-    (21,3)   1
-    (21,21)   1
-    (22,22)   1
-    (24,24)   1
-    (25,25)   1
-    (28,1)   1
-    (28,27)   1
-    (28,28)   1
-    (28,84)   1
-    (28,282)   1
-    (29,29)   1
-    (30,30)   1
-    (37,37)   1
-    (40,2)   1
-    (40,40)   1
-    (41,41)   1
-    (42,42)   1
-    (44,44)   1
-    (46,46)   1
-    (47,6)   1
-    (47,47)   1
-    (47,100)   1
-    (48,48)   1
-    (49,49)   1
-    ...
-Number of vertices per cluster:
-
-  500x1 GraphBLAS int64_t vector, bitmap by col
-  verts_per_cluster, 360 entries, memory: 4.6 KB
-
-    (4,0)   1
-    (5,0)   1
-    (19,0)   2
-    (20,0)   1
-    (21,0)   2
-    (22,0)   1
-    (24,0)   1
-    (25,0)   1
-    (28,0)   5
-    (29,0)   1
-    (30,0)   1
-    (37,0)   1
-    (40,0)   2
-    (41,0)   1
-    (42,0)   1
-    (44,0)   1
-    (46,0)   1
-    (47,0)   3
-    (48,0)   1
-    (49,0)   1
-    (50,0)   1
-    (54,0)   1
-    (55,0)   1
-    (56,0)   1
-    (57,0)   1
-    (58,0)   1
-    (59,0)   2
-    (61,0)   1
-    (62,0)   1
-    (63,0)   1
-    (64,0)   1
-    (65,0)   1
-    (66,0)   1
-    (67,0)   1
-    (68,0)   1
-    (69,0)   1
-    (70,0)   1
-    (71,0)   1
-    (72,0)   2
-    (73,0)   1
-    (74,0)   4
-    (77,0)   1
-    (78,0)   1
-    (79,0)   1
-    (80,0)   1
-    (81,0)   1
-    (82,0)   1
-    (85,0)   1
-    (87,0)   2
-    (88,0)   1
-    (89,0)   1
-    (90,0)   1
-    (91,0)   2
-    (92,0)   2
-    (93,0)   1
-    (94,0)   1
-    (95,0)   1
-    (96,0)   2
-    (97,0)   1
-    (98,0)   1
-    (99,0)   1
-    (102,0)   2
-    (103,0)   1
-    (104,0)   1
-    (106,0)   1
-    (107,0)   1
-    (108,0)   1
-    (109,0)   2
-    (110,0)   1
-    (111,0)   1
-    (112,0)   1
-    (113,0)   1
-    (114,0)   2
-    (115,0)   1
-    (116,0)   1
-    (117,0)   1
-    (118,0)   1
-    (119,0)   1
-    (120,0)   2
-    (121,0)   2
-    (122,0)   2
-    (123,0)   1
-    (124,0)   1
-    (126,0)   2
-    (127,0)   1
-    (128,0)   2
-    (131,0)   1
-    (133,0)   1
-    (134,0)   1
-    (135,0)   4
-    (136,0)   1
-    (138,0)   1
-    (139,0)   1
-    (140,0)   1
-    (141,0)   2
-    (142,0)   1
-    (145,0)   1
-    (146,0)   1
-    (148,0)   1
-    (150,0)   1
-    (151,0)   1
-    (152,0)   3
-    (153,0)   1
-    (154,0)   2
-    (155,0)   1
-    (156,0)   1
-    (157,0)   1
-    (158,0)   1
-    (159,0)   1
-    (160,0)   1
-    (161,0)   1
-    (162,0)   1
-    (163,0)   1
-    (164,0)   1
-    (165,0)   1
-    (166,0)   1
-    (167,0)   1
-    (168,0)   11
-    (174,0)   1
-    (180,0)   2
-    (182,0)   1
-    (183,0)   1
-    (187,0)   1
-    (188,0)   1
-    (189,0)   1
-    (190,0)   9
-    (192,0)   1
-    (193,0)   5
-    (194,0)   1
-    (195,0)   1
-    (196,0)   1
-    (201,0)   1
-    (203,0)   1
-    (204,0)   1
-    (206,0)   2
-    (210,0)   2
-    (212,0)   1
-    (214,0)   1
-    (215,0)   1
-    (216,0)   1
-    (217,0)   1
-    (218,0)   1
-    (220,0)   1
-    (223,0)   1
-    (224,0)   1
-    (225,0)   1
-    (226,0)   2
-    (227,0)   6
-    (229,0)   19
-    (245,0)   1
-    (248,0)   1
-    (249,0)   1
-    (250,0)   1
-    (251,0)   1
-    (252,0)   1
-    (253,0)   1
-    (254,0)   1
-    (255,0)   1
-    (256,0)   1
-    (257,0)   1
-    (258,0)   1
-    (259,0)   1
-    (260,0)   1
-    (261,0)   2
-    (262,0)   10
-    (264,0)   9
-    (281,0)   2
-    (283,0)   2
-    (284,0)   1
-    (285,0)   2
-    (288,0)   1
-    (290,0)   1
-    (291,0)   1
-    (292,0)   2
-    (293,0)   2
-    (294,0)   2
-    (295,0)   1
-    (296,0)   1
-    (297,0)   1
-    (298,0)   2
-    (299,0)   1
-    (300,0)   2
-    (301,0)   2
-    (302,0)   1
-    (303,0)   1
-    (304,0)   2
-    (305,0)   1
-    (306,0)   1
-    (307,0)   2
-    (308,0)   1
-    (309,0)   2
-    (310,0)   1
-    (311,0)   1
-    (312,0)   1
-    (313,0)   1
-    (314,0)   1
-    (315,0)   16
-    (329,0)   1
-    (330,0)   1
-    (333,0)   1
-    (334,0)   1
-    (335,0)   1
-    (336,0)   1
-    (337,0)   1
-    (338,0)   1
-    (339,0)   1
-    (340,0)   1
-    (342,0)   1
-    (343,0)   4
-    (344,0)   1
-    (345,0)   1
-    (346,0)   1
-    (347,0)   2
-    (348,0)   1
-    (349,0)   1
-    (350,0)   1
-    (351,0)   1
-    (352,0)   1
-    (353,0)   1
-    (354,0)   1
-    (355,0)   1
-    (356,0)   1
-    (358,0)   1
-    (359,0)   1
-    (361,0)   1
-    (363,0)   1
-    (364,0)   1
-    (365,0)   3
-    (366,0)   1
-    (367,0)   1
-    (368,0)   1
-    (369,0)   1
-    (370,0)   1
-    (371,0)   1
-    (372,0)   1
-    (373,0)   1
-    (374,0)   1
-    (375,0)   1
-    (376,0)   1
-    (377,0)   1
-    (378,0)   1
-    (379,0)   1
-    (380,0)   1
-    (381,0)   1
-    (382,0)   1
-    (383,0)   1
-    (384,0)   4
-    (385,0)   1
-    (386,0)   1
-    (387,0)   1
-    (388,0)   1
-    (389,0)   1
-    (390,0)   1
-    (391,0)   1
-    (392,0)   1
-    (393,0)   1
-    (394,0)   1
-    (395,0)   1
-    (396,0)   1
-    (397,0)   1
-    (398,0)   1
-    (399,0)   1
-    (400,0)   1
-    (401,0)   1
-    (402,0)   1
-    (403,0)   1
-    (404,0)   1
-    (405,0)   1
-    (406,0)   2
-    (407,0)   1
-    (408,0)   1
-    (409,0)   1
-    (410,0)   1
-    (411,0)   1
-    (412,0)   1
-    (413,0)   1
-    (414,0)   1
-    (415,0)   1
-    (416,0)   2
-    (417,0)   1
-    (418,0)   1
-    (419,0)   1
-    (421,0)   1
-    (422,0)   1
-    (423,0)   1
-    (424,0)   1
-    (425,0)   1
-    (426,0)   1
-    (427,0)   1
-    (428,0)   1
-    (429,0)   1
-    (430,0)   1
-    (431,0)   1
-    (432,0)   1
-    (433,0)   1
-    (434,0)   1
-    (435,0)   1
-    (436,0)   1
-    (438,0)   1
-    (439,0)   1
-    (440,0)   1
-    (441,0)   1
-    (442,0)   1
-    (443,0)   1
-    (444,0)   1
-    (445,0)   1
-    (446,0)   1
-    (447,0)   1
-    (448,0)   1
-    (449,0)   1
-    (450,0)   1
-    (451,0)   1
-    (452,0)   1
-    (453,0)   1
-    (454,0)   1
-    (455,0)   1
-    (456,0)   1
-    (457,0)   1
-    (458,0)   1
-    (459,0)   1
-    (460,0)   1
-    (461,0)   1
-    (462,0)   3
-    (463,0)   1
-    (464,0)   1
-    (465,0)   1
-    (466,0)   1
-    (467,0)   1
-    (468,0)   1
-    (469,0)   1
-    (470,0)   1
-    (471,0)   1
-    (472,0)   1
-    (473,0)   1
-    (474,0)   1
-    (475,0)   1
-    (476,0)   1
-    (477,0)   1
-    (478,0)   1
-    (479,0)   1
-    (480,0)   1
-    (481,0)   1
-    (482,0)   1
-    (483,0)   1
-    (484,0)   1
-    (485,0)   1
-    (486,0)   1
-    (487,0)   1
-    (488,0)   1
-    (489,0)   1
-    (490,0)   1
-    (491,0)   1
-    (492,0)   1
-    (493,0)   1
-    (494,0)   1
-    (495,0)   1
-    (496,0)   1
-    (497,0)   1
-    (498,0)   1
-    (499,0)   1
-
-
-  500x500 GraphBLAS bool matrix, sparse by row
-  C_f, 500 entries, memory: 8.0 KB
-  iso value:   1
-
-    (4,4)   1
-    (5,5)   1
-    (19,0)   1
-    (19,19)   1
-    (20,20)   1
-    (21,3)   1
-    (21,21)   1
-    (22,22)   1
-    (24,24)   1
-    (25,25)   1
-    (28,1)   1
-    (28,27)   1
-    (28,28)   1
-    (28,84)   1
-    (28,282)   1
-    (29,29)   1
-    (30,30)   1
-    (37,37)   1
-    (40,2)   1
-    (40,40)   1
-    (41,41)   1
-    (42,42)   1
-    (44,44)   1
-    (46,46)   1
-    (47,6)   1
-    (47,47)   1
-    (47,100)   1
-    (48,48)   1
-    (49,49)   1
-    ...
+src/benchmark/LAGraph_demo.h:904:        if      (pref == GrB_BOOL  ) op = GrB_IDENTITY_BOOL ;
+src/benchmark/LAGraph_demo.h:905:        else if (pref == GrB_INT8  ) op = GrB_IDENTITY_INT8 ;
+src/benchmark/LAGraph_demo.h:906:        else if (pref == GrB_INT16 ) op = GrB_IDENTITY_INT16 ;
+src/benchmark/LAGraph_demo.h:907:        else if (pref == GrB_INT32 ) op = GrB_IDENTITY_INT32 ;
+src/benchmark/LAGraph_demo.h:908:        else if (pref == GrB_INT64 ) op = GrB_IDENTITY_INT64 ;
+src/benchmark/LAGraph_demo.h:909:        else if (pref == GrB_UINT8 ) op = GrB_IDENTITY_UINT8 ;
+src/benchmark/LAGraph_demo.h:910:        else if (pref == GrB_UINT16) op = GrB_IDENTITY_UINT16 ;
+src/benchmark/LAGraph_demo.h:911:        else if (pref == GrB_UINT32) op = GrB_IDENTITY_UINT32 ;
+src/benchmark/LAGraph_demo.h:912:        else if (pref == GrB_UINT64) op = GrB_IDENTITY_UINT64 ;
+src/benchmark/LAGraph_demo.h:913:        else if (pref == GrB_FP32  ) op = GrB_IDENTITY_FP32 ;
+src/benchmark/LAGraph_demo.h:914:        else if (pref == GrB_FP64  ) op = GrB_IDENTITY_FP64 ;
+src/benchmark/LAGraph_demo.h:916:        else if (pref == GxB_FC32  ) op = GxB_IDENTITY_FC32 ;
+src/benchmark/LAGraph_demo.h:917:        else if (pref == GxB_FC64  ) op = GxB_IDENTITY_FC64 ;
+src/algorithm/LAGr_PeerPressureClustering.c:17:        GrB_free(&Identity_B);           \
+src/algorithm/LAGr_PeerPressureClustering.c:18:        GrB_free(&Identity_F);           \
+src/algorithm/LAGr_PeerPressureClustering.c:60:    // The identity matrix of type GrB_BOOL
+src/algorithm/LAGr_PeerPressureClustering.c:61:    GrB_Matrix Identity_B = NULL;
+src/algorithm/LAGr_PeerPressureClustering.c:62:    GrB_Matrix Identity_F = NULL;
+src/algorithm/LAGr_PeerPressureClustering.c:107:    GRB_TRY(GrB_Matrix_new(&Identity_B, GrB_BOOL, n, n));
+src/algorithm/LAGr_PeerPressureClustering.c:108:    GRB_TRY(GrB_Matrix_new(&Identity_F, GrB_FP64, n, n)); // [?] Is this necessary?
+src/algorithm/LAGr_PeerPressureClustering.c:123:    // [?] Is there a way to combine this call with the creation of the identity matrix creation
+src/algorithm/LAGr_PeerPressureClustering.c:128:    GRB_TRY(GrB_Matrix_diag(&Identity_F, ones, 0)); // Identity FP Matrix
+src/algorithm/LAGr_PeerPressureClustering.c:134:        GRB_TRY(GrB_assign(A, A, NULL, Identity_F, GrB_ALL, n, GrB_ALL, n, GrB_DESC_SC));
+src/algorithm/LAGr_PeerPressureClustering.c:166:    GRB_TRY(GrB_Matrix_diag(&C, ones, 0)); // Initial cluster C_i (this is the same as Identity with UINT_64 instead)
+src/algorithm/LAGr_PeerPressureClustering.c:169:    // Create identity matrix of type boolean for later
+src/algorithm/LAGr_PeerPressureClustering.c:173:    GRB_TRY(GrB_Matrix_diag(&Identity_B, trues, 0));
+src/algorithm/LAGr_PeerPressureClustering.c:218:        GRB_TRY(GrB_extract(C_temp, NULL, NULL, Identity_B, GrB_ALL, n, m_index_values, n, NULL));
+src/algorithm/cam_bfs.c:49:        GrB_apply(*parents, GrB_NULL, GrB_PLUS_UINT64, GrB_IDENTITY_INT64, wavefront, GrB_NULL);
+CODE_OF_CONDUCT.md:9:identity and expression, level of experience, education, socio-economic status,
+CODE_OF_CONDUCT.md:11:identity and orientation.
+Binary file papers/WAHEED-FINALTHESIS-2022.pdf matches
+experimental/algorithm/LAGraph_BF_full2.c:213:    BF2_Tuple3_struct BF_identity = (BF2_Tuple3_struct) { .w = INFINITY,
+experimental/algorithm/LAGraph_BF_full2.c:216:        &BF_identity));
+experimental/algorithm/LAGraph_BF_full.c:193:    BF_Tuple3_struct BF_identity = (BF_Tuple3_struct) { .w = INFINITY,
+experimental/algorithm/LAGraph_BF_full.c:196:        &BF_identity));
+experimental/algorithm/LAGraph_BF_full_mxv.c:216:    BF_Tuple3_struct BF_identity = (BF_Tuple3_struct) { .w = INFINITY,
+experimental/algorithm/LAGraph_BF_full_mxv.c:219:        &BF_identity));
+experimental/algorithm/LAGr_MarkovClustering.c:49:    GrB_Vector ones = NULL;      // Vector of all 1's, used primarily to create identity
+experimental/algorithm/LAGr_MarkovClustering.c:103:    // Create identity
+experimental/algorithm/LAGraph_BF_full1a.c:215:    BF_Tuple3_struct BF_identity = (BF_Tuple3_struct) { .w = INFINITY,
+experimental/algorithm/LAGraph_BF_full1a.c:218:        &BF_identity));
+experimental/algorithm/LAGraph_BF_full1a.c:286:    GRB_TRY (GrB_Vector_assign_UDT(d, NULL, NULL, (void*)&BF_identity,
+experimental/algorithm/LAGraph_BF_full1a.c:323:            //GRB_TRY (GrB_apply(d, dless, NULL, BF_Identity_Tuple3,
+experimental/algorithm/LAGraph_BF_full1a.c:329:            //GRB_TRY (GrB_apply(dmasked, dless, NULL, BF_Identity_Tuple3,
+experimental/algorithm/LAGraph_BF_full1.c:129:void BF1_Identity
+experimental/algorithm/LAGraph_BF_full1.c:180:    GrB_UnaryOp BF_Identity_Tuple3;
+experimental/algorithm/LAGraph_BF_full1.c:212:    GRB_TRY (GrB_UnaryOp_new(&BF_Identity_Tuple3,
+experimental/algorithm/LAGraph_BF_full1.c:213:        (void*) (&BF1_Identity), BF_Tuple3, BF_Tuple3));
+experimental/algorithm/LAGraph_BF_full1.c:223:    BF1_Tuple3_struct BF_identity = (BF1_Tuple3_struct) { .w = INFINITY,
+experimental/algorithm/LAGraph_BF_full1.c:226:        &BF_identity));
+experimental/algorithm/LAGraph_BF_full1.c:268:    GRB_TRY (GrB_Vector_assign_UDT(d, NULL, NULL, (void*)&BF_identity,
+experimental/algorithm/LAGraph_BF_full1.c:306:            GRB_TRY (GrB_apply(d, dless, NULL, BF_Identity_Tuple3, dmasked, NULL));
+experimental/algorithm/LAGraph_BF_full1.c:310:            GRB_TRY (GrB_apply(dmasked, dless, NULL, BF_Identity_Tuple3, d, NULL));
+rtdocs/introduction.rst:28:corresponding to addition, (2) the identity of that operator, (3) an operator corresponding to multiplication,
+rtdocs/introduction.rst:29:and (4) the identity of that operator.  We are all familiar with the semiring used with real numbers
+Binary file build/liblagraph.so.1.0.2 matches
+Binary file build/src/benchmark/peer_pressure_demo matches
+Binary file build/src/benchmark/markov_clustering_2_demo matches
+Binary file build/src/benchmark/sssp_demo matches
+build/src/benchmark/CMakeFiles/sssp_demo.dir/compiler_depend.make:88:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/sssp_demo.dir/compiler_depend.make:191:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/benchmark/CMakeFiles/sssp_demo.dir/compiler_depend.internal:89: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+Binary file build/src/benchmark/CMakeFiles/sssp_demo.dir/sssp_demo.c.o matches
+build/src/benchmark/CMakeFiles/sssp_demo.dir/sssp_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/bc_demo.dir/compiler_depend.make:88:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/bc_demo.dir/compiler_depend.make:205:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/benchmark/CMakeFiles/bc_demo.dir/compiler_depend.internal:89: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/benchmark/CMakeFiles/bc_demo.dir/bc_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/FW_cam_demo.dir/compiler_depend.make:88:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/FW_cam_demo.dir/compiler_depend.make:195:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/benchmark/CMakeFiles/FW_cam_demo.dir/compiler_depend.internal:89: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/benchmark/CMakeFiles/FW_cam_demo.dir/FW_cam_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/cam_bfs_demo.dir/compiler_depend.make:88:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/cam_bfs_demo.dir/compiler_depend.make:197:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/benchmark/CMakeFiles/cam_bfs_demo.dir/compiler_depend.internal:89: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/benchmark/CMakeFiles/cam_bfs_demo.dir/cam_bfs_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/bfs_demo.dir/compiler_depend.make:88:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/bfs_demo.dir/compiler_depend.make:201:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/benchmark/CMakeFiles/bfs_demo.dir/compiler_depend.internal:89: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/benchmark/CMakeFiles/bfs_demo.dir/bfs_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/ss2_demo.dir/compiler_depend.make:89:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/ss2_demo.dir/compiler_depend.make:200:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/benchmark/CMakeFiles/ss2_demo.dir/compiler_depend.internal:90: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/benchmark/CMakeFiles/ss2_demo.dir/ss2_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/mtx2bin_demo.dir/compiler_depend.make:88:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/mtx2bin_demo.dir/compiler_depend.make:195:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/benchmark/CMakeFiles/mtx2bin_demo.dir/compiler_depend.internal:89: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/benchmark/CMakeFiles/mtx2bin_demo.dir/mtx2bin_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/tc_demo.dir/compiler_depend.make:88:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/tc_demo.dir/compiler_depend.make:195:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/benchmark/CMakeFiles/tc_demo.dir/tc_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/tc_demo.dir/compiler_depend.internal:89: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/benchmark/CMakeFiles/gappagerank_demo.dir/compiler_depend.make:88:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/gappagerank_demo.dir/compiler_depend.make:195:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/benchmark/CMakeFiles/gappagerank_demo.dir/compiler_depend.internal:89: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/benchmark/CMakeFiles/gappagerank_demo.dir/gappagerank_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/peer_pressure_demo.dir/compiler_depend.make:88:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/peer_pressure_demo.dir/compiler_depend.make:195:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+Binary file build/src/benchmark/CMakeFiles/peer_pressure_demo.dir/peer_pressure_demo.c.o matches
+build/src/benchmark/CMakeFiles/peer_pressure_demo.dir/compiler_depend.internal:89: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/benchmark/CMakeFiles/peer_pressure_demo.dir/peer_pressure_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/bc_simple_demo.dir/compiler_depend.make:88:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/bc_simple_demo.dir/compiler_depend.make:193:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/benchmark/CMakeFiles/bc_simple_demo.dir/bc_simple_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/bc_simple_demo.dir/compiler_depend.internal:89: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/benchmark/CMakeFiles/cc_demo.dir/cc_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/cc_demo.dir/compiler_depend.make:92:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/cc_demo.dir/compiler_depend.make:213:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/benchmark/CMakeFiles/cc_demo.dir/compiler_depend.internal:93: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/benchmark/CMakeFiles/markov_clustering_2_demo.dir/compiler_depend.make:88:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/markov_clustering_2_demo.dir/compiler_depend.make:197:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/benchmark/CMakeFiles/markov_clustering_2_demo.dir/compiler_depend.internal:89: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/benchmark/CMakeFiles/markov_clustering_2_demo.dir/markov_clustering_2_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+Binary file build/src/benchmark/CMakeFiles/markov_clustering_2_demo.dir/markov_clustering_2_demo.c.o matches
+build/src/benchmark/CMakeFiles/cam_VC_demo.dir/compiler_depend.make:88:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/benchmark/CMakeFiles/cam_VC_demo.dir/compiler_depend.make:195:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/benchmark/CMakeFiles/cam_VC_demo.dir/compiler_depend.internal:89: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/benchmark/CMakeFiles/cam_VC_demo.dir/cam_VC_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_MMRead.dir/compiler_depend.make:130:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_MMRead.dir/compiler_depend.make:324:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_MMRead.dir/compiler_depend.internal:131: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_MMRead.dir/test_MMRead.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Init.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Init.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_Init.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_Init.dir/test_Init.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_acutest.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_acutest.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_acutest.dir/test_acutest.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_acutest.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_ConnectedComponents.dir/test_ConnectedComponents.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_ConnectedComponents.dir/compiler_depend.make:132:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_ConnectedComponents.dir/compiler_depend.make:324:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_ConnectedComponents.dir/compiler_depend.internal:133: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_Sort.dir/compiler_depend.make:130:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Sort.dir/compiler_depend.make:324:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_Sort.dir/test_Sort.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Sort.dir/compiler_depend.internal:131: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_Multiply_size_t.dir/compiler_depend.make:130:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Multiply_size_t.dir/compiler_depend.make:290:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_Multiply_size_t.dir/test_Multiply_size_t.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Multiply_size_t.dir/compiler_depend.internal:131: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_WallClockTime.dir/test_WallClockTime.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_WallClockTime.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_WallClockTime.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_WallClockTime.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_Vector_Structure.dir/test_Vector_Structure.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Vector_Structure.dir/compiler_depend.make:130:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Vector_Structure.dir/compiler_depend.make:324:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_Vector_Structure.dir/compiler_depend.internal:131: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_Xinit.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Xinit.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_Xinit.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_Xinit.dir/test_Xinit.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_IsEqual.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_IsEqual.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_IsEqual.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_IsEqual.dir/test_IsEqual.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Init_errors.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Init_errors.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_Init_errors.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_Init_errors.dir/test_Init_errors.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_TriangleCount.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_TriangleCount.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_TriangleCount.dir/test_TriangleCount.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_TriangleCount.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_BreadthFirstSearch.dir/test_BreadthFirstSearch.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_BreadthFirstSearch.dir/compiler_depend.make:131:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_BreadthFirstSearch.dir/compiler_depend.make:321:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_BreadthFirstSearch.dir/compiler_depend.internal:132: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_DisplayGraph.dir/compiler_depend.make:130:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_DisplayGraph.dir/compiler_depend.make:326:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_DisplayGraph.dir/compiler_depend.internal:131: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_DisplayGraph.dir/test_DisplayGraph.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_New.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_New.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_New.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_New.dir/test_New.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Malloc.dir/test_Malloc.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Malloc.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Malloc.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_Malloc.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_Betweenness.dir/test_Betweenness.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Betweenness.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Betweenness.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_Betweenness.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_CheckGraph.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_CheckGraph.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_CheckGraph.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_CheckGraph.dir/test_CheckGraph.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_fopen.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_fopen.dir/compiler_depend.make:326:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_fopen.dir/test_fopen.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_fopen.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_SingleSourceShortestPath.dir/compiler_depend.make:130:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_SingleSourceShortestPath.dir/compiler_depend.make:326:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_SingleSourceShortestPath.dir/compiler_depend.internal:131: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_SingleSourceShortestPath.dir/test_SingleSourceShortestPath.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Matrix_Structure.dir/test_Matrix_Structure.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Matrix_Structure.dir/compiler_depend.make:130:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Matrix_Structure.dir/compiler_depend.make:324:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_Matrix_Structure.dir/compiler_depend.internal:131: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_KindName.dir/compiler_depend.make:130:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_KindName.dir/compiler_depend.make:322:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_KindName.dir/test_KindName.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_KindName.dir/compiler_depend.internal:131: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_Cached_Degree.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Cached_Degree.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_Cached_Degree.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_Cached_Degree.dir/test_Cached_Degree.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_NumThreads.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_NumThreads.dir/compiler_depend.make:330:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_NumThreads.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_NumThreads.dir/test_NumThreads.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Cached_NDiag.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Cached_NDiag.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_Cached_NDiag.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_Cached_NDiag.dir/test_Cached_NDiag.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest.dir/LG_brutal_malloc.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest.dir/LG_brutal_teardown.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest.dir/compiler_depend.make:88:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest.dir/compiler_depend.make:191:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest.dir/compiler_depend.make:294:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest.dir/compiler_depend.make:397:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest.dir/compiler_depend.make:500:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest.dir/compiler_depend.make:603:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest.dir/compiler_depend.make:707:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest.dir/compiler_depend.make:810:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest.dir/compiler_depend.make:913:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest.dir/compiler_depend.make:1040:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/lagraphtest.dir/LG_check_bfs.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest.dir/LG_check_tri.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest.dir/LG_brutal_setup.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest.dir/LG_check_sssp.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest.dir/compiler_depend.internal:89: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/lagraphtest.dir/compiler_depend.internal:193: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/lagraphtest.dir/compiler_depend.internal:297: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/lagraphtest.dir/compiler_depend.internal:401: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/lagraphtest.dir/compiler_depend.internal:505: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/lagraphtest.dir/compiler_depend.internal:609: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/lagraphtest.dir/compiler_depend.internal:714: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/lagraphtest.dir/compiler_depend.internal:818: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/lagraphtest.dir/compiler_depend.internal:922: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/lagraphtest.dir/LG_check_vector.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest.dir/LG_check_export.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest.dir/LG_check_cc.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_PageRank.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_PageRank.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_PageRank.dir/test_PageRank.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_PageRank.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_export.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_export.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_export.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_export.dir/test_export.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Vector_Print.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Vector_Print.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_Vector_Print.dir/test_Vector_Print.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Vector_Print.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_Cached_AT.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Cached_AT.dir/compiler_depend.make:326:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_Cached_AT.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_Cached_AT.dir/test_Cached_AT.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_SampleDegree.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_SampleDegree.dir/compiler_depend.make:326:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_SampleDegree.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_SampleDegree.dir/test_SampleDegree.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest_static.dir/LG_brutal_malloc.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest_static.dir/LG_brutal_teardown.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest_static.dir/compiler_depend.make:88:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest_static.dir/compiler_depend.make:191:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest_static.dir/compiler_depend.make:294:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest_static.dir/compiler_depend.make:397:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest_static.dir/compiler_depend.make:500:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest_static.dir/compiler_depend.make:603:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest_static.dir/compiler_depend.make:707:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest_static.dir/compiler_depend.make:810:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest_static.dir/compiler_depend.make:913:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest_static.dir/compiler_depend.make:1040:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/lagraphtest_static.dir/LG_check_bfs.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest_static.dir/LG_check_tri.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest_static.dir/LG_brutal_setup.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest_static.dir/LG_check_sssp.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest_static.dir/compiler_depend.internal:89: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/lagraphtest_static.dir/compiler_depend.internal:193: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/lagraphtest_static.dir/compiler_depend.internal:297: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/lagraphtest_static.dir/compiler_depend.internal:401: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/lagraphtest_static.dir/compiler_depend.internal:505: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/lagraphtest_static.dir/compiler_depend.internal:609: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/lagraphtest_static.dir/compiler_depend.internal:714: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/lagraphtest_static.dir/compiler_depend.internal:818: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/lagraphtest_static.dir/compiler_depend.internal:922: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/lagraphtest_static.dir/LG_check_vector.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest_static.dir/LG_check_export.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/lagraphtest_static.dir/LG_check_cc.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_vector.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_vector.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_vector.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_vector.dir/test_vector.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Cached_SymmetricStructure.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Cached_SymmetricStructure.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_Cached_SymmetricStructure.dir/test_Cached_SymmetricStructure.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Cached_SymmetricStructure.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_SortByDegree.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_SortByDegree.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_SortByDegree.dir/test_SortByDegree.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_SortByDegree.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_minmax.dir/compiler_depend.make:130:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_minmax.dir/compiler_depend.make:326:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_minmax.dir/compiler_depend.internal:131: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_minmax.dir/test_minmax.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Type.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Type.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_Type.dir/test_Type.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_Type.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/test/CMakeFiles/test_DeleteCached.dir/compiler_depend.make:128:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_DeleteCached.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/test/CMakeFiles/test_DeleteCached.dir/test_DeleteCached.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/test/CMakeFiles/test_DeleteCached.dir/compiler_depend.internal:129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:88:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:190:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:293:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:396:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:498:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:600:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:703:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:805:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:907:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:1010:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:1112:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:1214:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:1316:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:1418:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:1520:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:1622:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:1724:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:1826:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:1928:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:2030:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:2132:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:2234:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:2336:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:2438:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:2540:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:2642:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:2744:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:2846:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:2948:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:3050:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:3152:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:3254:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:3356:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:3458:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:3560:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:3662:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:3764:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:3866:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:3968:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:4070:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:4172:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:4274:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:4376:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:4478:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:4580:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:4682:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:4784:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:4886:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:4988:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:5090:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:5192:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:5294:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:5396:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:5498:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:5600:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:5702:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:5804:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:5906:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:6008:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:6110:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:6212:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:6314:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:6416:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:6518:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:6621:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:6724:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:6827:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.make:7044:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Cached_EMax.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGr_SortByDegree.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Free.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_MMWrite.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_MMRead.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Matrix_Structure.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LG_msort3.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LG_qsort_1a.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_SizeOfType.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_WallClockTime.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Graph_Print.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Cached_OutDegree.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LG_qsort_3.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_CheckGraph.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Calloc.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LG_nself_edges.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LG_qsort_2.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Init.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LG_msort2.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Delete.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_DeleteSelfEdges.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Malloc.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_TypeFromName.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Vector_Print.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_GetNumThreads.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LG_msort1.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGr_Init.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_New.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Version.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LG_KindName.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGr_SampleDegree.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LG_Random.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Vector_IsEqual.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_DeleteCached.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Realloc.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Cached_NSelfEdges.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Cached_EMin.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Cached_AT.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Global.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Vector_Structure.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Matrix_Print.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Cached_InDegree.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_SetNumThreads.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Matrix_IsEqualOp.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Cached_IsSymmetricStructure.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Finalize.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Matrix_IsEqual.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_Vector_IsEqualOp.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_NameOfType.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/utility/LAGraph_TypeName.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:89: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:192: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:296: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:400: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:503: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:606: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:710: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:813: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:916: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:1020: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:1123: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:1226: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:1329: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:1432: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:1535: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:1638: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:1741: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:1844: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:1947: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:2050: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:2153: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:2256: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:2359: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:2462: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:2565: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:2668: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:2771: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:2874: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:2977: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:3080: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:3183: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:3286: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:3389: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:3492: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:3595: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:3698: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:3801: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:3904: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:4007: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:4110: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:4213: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:4316: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:4419: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:4522: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:4625: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:4728: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:4831: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:4934: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:5037: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:5140: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:5243: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:5346: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:5449: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:5552: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:5655: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:5758: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:5861: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:5964: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:6067: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:6170: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:6273: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:6376: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:6479: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:6582: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:6686: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:6790: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/compiler_depend.internal:6894: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph_static.dir/algorithm/LG_CC_Boruvka.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/algorithm/LAGr_SingleSourceShortestPath.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/algorithm/LAGr_BreadthFirstSearch.c.o.d:53: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/algorithm/cam_bfs.c.o.d:28: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/algorithm/cam_FW.c.o.d:28: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/algorithm/LAGr_PageRankGAP.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/algorithm/LAGr_Betweenness.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/algorithm/cam_VC.c.o.d:28: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/algorithm/LAGr_Betweenness_Brandes.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/algorithm/LAGr_MarkovClustering.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/algorithm/LAGr_PageRank.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/algorithm/LG_BreadthFirstSearch_SSGrB.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/algorithm/LAGr_TriangleCount.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/algorithm/LG_BreadthFirstSearch_vanilla.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/algorithm/LAGr_PeerPressureClustering.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/algorithm/LAGr_ConnectedComponents.c.o.d:53: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph_static.dir/algorithm/LG_CC_FastSV6.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+Binary file build/src/CMakeFiles/lagraph_static.dir/algorithm/cam_bfs.c.o matches
+build/src/CMakeFiles/lagraph_static.dir/algorithm/LAGraph_TriangleCount.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:88:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:190:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:293:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:396:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:498:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:600:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:703:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:805:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:907:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:1010:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:1112:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:1214:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:1316:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:1418:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:1520:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:1622:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:1724:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:1826:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:1928:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:2030:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:2132:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:2234:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:2336:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:2438:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:2540:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:2642:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:2744:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:2846:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:2948:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:3050:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:3152:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:3254:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:3356:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:3458:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:3560:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:3662:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:3764:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:3866:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:3968:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:4070:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:4172:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:4274:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:4376:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:4478:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:4580:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:4682:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:4784:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:4886:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:4988:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:5090:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:5192:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:5294:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:5396:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:5498:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:5600:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:5702:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:5804:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:5906:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:6008:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:6110:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:6212:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:6314:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:6416:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:6518:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:6621:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:6724:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:6827:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.make:7044:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Cached_EMax.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGr_SortByDegree.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Free.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_MMWrite.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_MMRead.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Matrix_Structure.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LG_msort3.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LG_qsort_1a.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_SizeOfType.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_WallClockTime.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Graph_Print.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Cached_OutDegree.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LG_qsort_3.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_CheckGraph.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Calloc.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LG_nself_edges.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LG_qsort_2.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Init.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LG_msort2.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Delete.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_DeleteSelfEdges.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Malloc.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_TypeFromName.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Vector_Print.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_GetNumThreads.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LG_msort1.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGr_Init.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_New.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Version.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LG_KindName.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGr_SampleDegree.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LG_Random.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Vector_IsEqual.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_DeleteCached.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Realloc.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Cached_NSelfEdges.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Cached_EMin.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Cached_AT.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Global.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Vector_Structure.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Matrix_Print.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Cached_InDegree.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_SetNumThreads.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Matrix_IsEqualOp.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Cached_IsSymmetricStructure.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Finalize.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Matrix_IsEqual.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_Vector_IsEqualOp.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_NameOfType.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/utility/LAGraph_TypeName.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:89: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:192: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:296: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:400: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:503: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:606: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:710: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:813: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:916: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:1020: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:1123: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:1226: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:1329: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:1432: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:1535: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:1638: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:1741: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:1844: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:1947: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:2050: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:2153: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:2256: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:2359: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:2462: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:2565: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:2668: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:2771: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:2874: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:2977: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:3080: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:3183: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:3286: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:3389: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:3492: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:3595: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:3698: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:3801: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:3904: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:4007: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:4110: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:4213: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:4316: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:4419: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:4522: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:4625: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:4728: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:4831: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:4934: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:5037: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:5140: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:5243: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:5346: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:5449: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:5552: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:5655: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:5758: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:5861: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:5964: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:6067: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:6170: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:6273: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:6376: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:6479: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:6582: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:6686: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:6790: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/compiler_depend.internal:6894: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/src/CMakeFiles/lagraph.dir/algorithm/LG_CC_Boruvka.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/algorithm/LAGr_SingleSourceShortestPath.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/algorithm/LAGr_BreadthFirstSearch.c.o.d:53: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/algorithm/cam_bfs.c.o.d:28: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/algorithm/cam_FW.c.o.d:28: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/algorithm/LAGr_PageRankGAP.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/algorithm/LAGr_Betweenness.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/algorithm/cam_VC.c.o.d:28: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/algorithm/LAGr_Betweenness_Brandes.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/algorithm/LAGr_MarkovClustering.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/algorithm/LAGr_PageRank.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/algorithm/LG_BreadthFirstSearch_SSGrB.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/algorithm/LAGr_TriangleCount.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/algorithm/LG_BreadthFirstSearch_vanilla.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/algorithm/LAGr_PeerPressureClustering.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/algorithm/LAGr_ConnectedComponents.c.o.d:53: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/src/CMakeFiles/lagraph.dir/algorithm/LG_CC_FastSV6.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+Binary file build/src/CMakeFiles/lagraph.dir/algorithm/cam_bfs.c.o matches
+build/src/CMakeFiles/lagraph.dir/algorithm/LAGraph_TriangleCount.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+Binary file build/liblagraphx.a matches
+build/experimental/benchmark/CMakeFiles/cdlp_demo.dir/compiler_depend.make:88:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/cdlp_demo.dir/compiler_depend.make:193:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/benchmark/CMakeFiles/cdlp_demo.dir/cdlp_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/cdlp_demo.dir/compiler_depend.internal:89: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/benchmark/CMakeFiles/mis_demo.dir/compiler_depend.make:90:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/mis_demo.dir/compiler_depend.make:215:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/benchmark/CMakeFiles/mis_demo.dir/compiler_depend.internal:91: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/benchmark/CMakeFiles/mis_demo.dir/mis_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/tcc_demo.dir/compiler_depend.make:89:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/tcc_demo.dir/compiler_depend.make:208:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/benchmark/CMakeFiles/tcc_demo.dir/compiler_depend.internal:90: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/benchmark/CMakeFiles/tcc_demo.dir/tcc_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/dnn_demo.dir/dnn_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/dnn_demo.dir/compiler_depend.make:89:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/dnn_demo.dir/compiler_depend.make:204:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/benchmark/CMakeFiles/dnn_demo.dir/compiler_depend.internal:90: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/benchmark/CMakeFiles/helloworld2_demo.dir/compiler_depend.make:86:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/helloworld2_demo.dir/compiler_depend.make:195:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/benchmark/CMakeFiles/helloworld2_demo.dir/compiler_depend.internal:87: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/benchmark/CMakeFiles/helloworld2_demo.dir/helloworld2_demo.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/AllKCore_demo.dir/compiler_depend.make:89:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/AllKCore_demo.dir/compiler_depend.make:208:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/benchmark/CMakeFiles/AllKCore_demo.dir/AllKCore_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/AllKCore_demo.dir/compiler_depend.internal:90: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/benchmark/CMakeFiles/KCore_demo.dir/compiler_depend.make:89:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/KCore_demo.dir/compiler_depend.make:204:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/benchmark/CMakeFiles/KCore_demo.dir/compiler_depend.internal:90: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/benchmark/CMakeFiles/KCore_demo.dir/KCore_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+Binary file build/experimental/benchmark/CMakeFiles/markov_clustering_demo.dir/markov_clustering_demo.c.o matches
+build/experimental/benchmark/CMakeFiles/markov_clustering_demo.dir/compiler_depend.make:90:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/markov_clustering_demo.dir/compiler_depend.make:213:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/benchmark/CMakeFiles/markov_clustering_demo.dir/compiler_depend.internal:91: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/benchmark/CMakeFiles/markov_clustering_demo.dir/markov_clustering_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/fglt_demo.dir/fglt_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/fglt_demo.dir/compiler_depend.make:90:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/fglt_demo.dir/compiler_depend.make:215:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/benchmark/CMakeFiles/fglt_demo.dir/compiler_depend.internal:91: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/benchmark/CMakeFiles/helloworld_demo.dir/compiler_depend.make:91:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/helloworld_demo.dir/compiler_depend.make:210:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/benchmark/CMakeFiles/helloworld_demo.dir/helloworld_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/helloworld_demo.dir/compiler_depend.internal:92: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/benchmark/CMakeFiles/VertexCover_demo.dir/VertexCover_demo.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/VertexCover_demo.dir/compiler_depend.make:92:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/benchmark/CMakeFiles/VertexCover_demo.dir/compiler_depend.make:225:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/benchmark/CMakeFiles/VertexCover_demo.dir/compiler_depend.internal:93: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+Binary file build/experimental/benchmark/markov_clustering_demo matches
+build/experimental/test/CMakeFiles/test_AllKCore.dir/compiler_depend.make:130:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_AllKCore.dir/compiler_depend.make:322:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_AllKCore.dir/test_AllKCore.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_AllKCore.dir/compiler_depend.internal:131: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/test_Random_Matrix.dir/compiler_depend.make:129:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_Random_Matrix.dir/compiler_depend.make:329:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_Random_Matrix.dir/compiler_depend.internal:130: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/test_Random_Matrix.dir/test_Random_Matrix.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_scc.dir/compiler_depend.make:129:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_scc.dir/compiler_depend.make:329:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_scc.dir/compiler_depend.internal:130: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/test_scc.dir/test_scc.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_TriangleCentrality.dir/compiler_depend.make:129:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_TriangleCentrality.dir/compiler_depend.make:329:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_TriangleCentrality.dir/compiler_depend.internal:130: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/test_TriangleCentrality.dir/test_TriangleCentrality.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_FastGraphletTransform.dir/compiler_depend.make:130:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_FastGraphletTransform.dir/compiler_depend.make:324:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_FastGraphletTransform.dir/compiler_depend.internal:131: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/test_FastGraphletTransform.dir/test_FastGraphletTransform.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_SSaveSet.dir/compiler_depend.make:129:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_SSaveSet.dir/compiler_depend.make:329:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_SSaveSet.dir/compiler_depend.internal:130: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/test_SSaveSet.dir/test_SSaveSet.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_KTruss.dir/compiler_depend.make:130:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_KTruss.dir/compiler_depend.make:328:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_KTruss.dir/test_KTruss.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_KTruss.dir/compiler_depend.internal:131: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/test_AllKtruss.dir/compiler_depend.make:130:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_AllKtruss.dir/compiler_depend.make:324:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_AllKtruss.dir/compiler_depend.internal:131: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/test_AllKtruss.dir/test_AllKtruss.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_cdlp.dir/compiler_depend.make:129:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_cdlp.dir/compiler_depend.make:265:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_cdlp.dir/compiler_depend.internal:130: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/test_cdlp.dir/test_cdlp.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_Random.dir/compiler_depend.make:129:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_Random.dir/compiler_depend.make:329:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_Random.dir/compiler_depend.internal:130: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/test_Random.dir/test_Random.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_lcc.dir/compiler_depend.make:129:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_lcc.dir/compiler_depend.make:329:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_lcc.dir/compiler_depend.internal:130: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/test_lcc.dir/test_lcc.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_msf.dir/compiler_depend.make:129:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_msf.dir/compiler_depend.make:329:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_msf.dir/compiler_depend.internal:130: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/test_msf.dir/test_msf.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_BF.dir/compiler_depend.make:130:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_BF.dir/compiler_depend.make:336:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_BF.dir/compiler_depend.internal:131: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/test_BF.dir/test_BF.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_SquareClustering.dir/compiler_depend.make:130:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_SquareClustering.dir/compiler_depend.make:324:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_SquareClustering.dir/test_SquareClustering.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_SquareClustering.dir/compiler_depend.internal:131: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/test_SWrite.dir/compiler_depend.make:129:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_SWrite.dir/compiler_depend.make:329:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_SWrite.dir/compiler_depend.internal:130: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/test_SWrite.dir/test_SWrite.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_KCoreDecompose.dir/compiler_depend.make:130:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_KCoreDecompose.dir/compiler_depend.make:324:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_KCoreDecompose.dir/test_KCoreDecompose.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_KCoreDecompose.dir/compiler_depend.internal:131: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/lagraphxtest.dir/LG_check_mis.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/lagraphxtest.dir/compiler_depend.make:91:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/lagraphxtest.dir/compiler_depend.make:196:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/lagraphxtest.dir/compiler_depend.make:299:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/lagraphxtest.dir/compiler_depend.make:402:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/lagraphxtest.dir/compiler_depend.make:527:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/lagraphxtest.dir/LG_check_kcoredecompose.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/lagraphxtest.dir/LG_check_ktruss.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/lagraphxtest.dir/compiler_depend.internal:92: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/lagraphxtest.dir/compiler_depend.internal:198: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/lagraphxtest.dir/compiler_depend.internal:302: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/lagraphxtest.dir/compiler_depend.internal:406: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/lagraphxtest.dir/LG_check_kcore.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/lagraphxtest_static.dir/LG_check_mis.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/lagraphxtest_static.dir/compiler_depend.make:91:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/lagraphxtest_static.dir/compiler_depend.make:196:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/lagraphxtest_static.dir/compiler_depend.make:299:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/lagraphxtest_static.dir/compiler_depend.make:402:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/lagraphxtest_static.dir/compiler_depend.make:527:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/lagraphxtest_static.dir/LG_check_kcoredecompose.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/lagraphxtest_static.dir/LG_check_ktruss.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/lagraphxtest_static.dir/compiler_depend.internal:92: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/lagraphxtest_static.dir/compiler_depend.internal:198: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/lagraphxtest_static.dir/compiler_depend.internal:302: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/lagraphxtest_static.dir/compiler_depend.internal:406: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/lagraphxtest_static.dir/LG_check_kcore.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_KCore.dir/compiler_depend.make:130:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_KCore.dir/compiler_depend.make:324:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_KCore.dir/compiler_depend.internal:131: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/test_KCore.dir/test_KCore.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_MaximalIndependentSet.dir/test_MaximalIndependentSet.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_MaximalIndependentSet.dir/compiler_depend.make:130:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_MaximalIndependentSet.dir/compiler_depend.make:324:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_MaximalIndependentSet.dir/compiler_depend.internal:131: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/test_dnn.dir/compiler_depend.make:132:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_dnn.dir/compiler_depend.make:326:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_dnn.dir/compiler_depend.internal:133: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/test_dnn.dir/test_dnn.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_HelloWorld.dir/compiler_depend.make:130:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/test/CMakeFiles/test_HelloWorld.dir/compiler_depend.make:324:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/test/CMakeFiles/test_HelloWorld.dir/compiler_depend.internal:131: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/test/CMakeFiles/test_HelloWorld.dir/test_HelloWorld.c.o.d:42: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:89:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:191:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:294:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:397:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:500:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:603:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:706:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:809:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:912:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:1015:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:1118:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:1221:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:1324:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:1427:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:1530:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:1632:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:1734:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:1837:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:1940:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:2043:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:2145:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:2248:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:2351:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:2454:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:2557:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:2660:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:2763:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:2866:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:2968:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:3071:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:3174:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:3277:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:3380:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:3483:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:3587:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:3690:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:3793:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.make:3912:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/CMakeFiles/lagraphx.dir/utility/LAGraph_SLoadSet.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/utility/LAGraph_SFreeContents.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/utility/LAGraph_Random.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/utility/LAGraph_SWrite.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/utility/LAGraph_SRead.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/utility/LAGraph_Random_Matrix.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/utility/LAGraph_SFreeSet.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/utility/LAGraph_SSaveSet.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:90: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:193: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:297: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:401: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:505: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:609: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:713: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:817: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:921: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:1025: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:1129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:1233: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:1337: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:1441: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:1545: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:1648: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:1751: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:1855: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:1959: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:2063: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:2166: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:2270: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:2374: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:2478: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:2582: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:2686: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:2790: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:2894: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:2997: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:3101: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:3205: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:3309: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:3413: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:3517: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:3622: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:3726: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/compiler_depend.internal:3830: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_dnn.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_KCoreDecompose.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_BF_full1.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_BF_basic_mxv.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_AllKCore.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_BF_basic_pushpull.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_msf.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_AllKTruss.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_HelloWorld.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_KCore.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_BF_basic.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_VertexCover.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_BF_full.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_VertexCentrality_Triangle.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LG_CC_FastSV5.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_BF_full_mxv.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGr_MarkovClustering.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_KTruss.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_BF_full1a.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_FastGraphletTransform.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_SquareClustering.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+Binary file build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_BF_full1.c.o matches
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_cc_lacc.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_BF_pure_c_double.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_BF_full2.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_scc.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_cdlp.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_MaximalIndependentSet.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_BF_pure_c.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx.dir/algorithm/LAGraph_lcc.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:89:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:191:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:294:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:397:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:500:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:603:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:706:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:809:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:912:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:1015:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:1118:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:1221:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:1324:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:1427:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:1530:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:1632:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:1734:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:1837:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:1940:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:2043:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:2145:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:2248:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:2351:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:2454:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:2557:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:2660:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:2763:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:2866:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:2968:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:3071:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:3174:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:3277:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:3380:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:3483:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:3587:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:3690:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:3793:  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.make:3912:/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+build/experimental/CMakeFiles/lagraphx_static.dir/utility/LAGraph_SLoadSet.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/utility/LAGraph_SFreeContents.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/utility/LAGraph_Random.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/utility/LAGraph_SWrite.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/utility/LAGraph_SRead.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/utility/LAGraph_Random_Matrix.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/utility/LAGraph_SFreeSet.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/utility/LAGraph_SSaveSet.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:90: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:193: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:297: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:401: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:505: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:609: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:713: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:817: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:921: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:1025: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:1129: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:1233: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:1337: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:1441: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:1545: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:1648: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:1751: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:1855: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:1959: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:2063: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:2166: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:2270: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:2374: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:2478: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:2582: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:2686: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:2790: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:2894: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:2997: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:3101: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:3205: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:3309: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:3413: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:3517: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:3622: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:3726: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/compiler_depend.internal:3830: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_dnn.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_KCoreDecompose.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_BF_full1.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_BF_basic_mxv.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_AllKCore.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_BF_basic_pushpull.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_msf.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_AllKTruss.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_HelloWorld.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_KCore.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_BF_basic.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_VertexCover.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_BF_full.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_VertexCentrality_Triangle.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LG_CC_FastSV5.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_BF_full_mxv.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGr_MarkovClustering.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_KTruss.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_BF_full1a.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_FastGraphletTransform.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_SquareClustering.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+Binary file build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_BF_full1.c.o matches
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_cc_lacc.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_BF_pure_c_double.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_BF_full2.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_scc.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_cdlp.c.o.d:51: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_MaximalIndependentSet.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_BF_pure_c.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+build/experimental/CMakeFiles/lagraphx_static.dir/algorithm/LAGraph_lcc.c.o.d:52: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+Binary file build/liblagraphx.so.1.0.2 matches
+Binary file build/liblagraph.a matches

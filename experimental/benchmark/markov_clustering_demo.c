@@ -44,7 +44,7 @@ int main(int argc, char** argv)
     // GxB_print (G->A, GxB_SHORT);
 
     // Run Markov Clustering algorithm
-    GRB_TRY(LAGr_MarkovClustering(&C_f, 2, 2, 0.01, 1.0e-8, 250, G, msg));
+    GRB_TRY(LAGr_MarkovClustering(&C_f, 2, 2, 0.0001, 1.0e-8, 250, G, msg));
 
     GxB_print(C_f, GxB_SHORT);
 

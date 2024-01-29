@@ -73,6 +73,8 @@ int LAGr_PeerPressureClustering(
 
     LG_CLEAR_MSG;
 
+    GxB_set(GxB_PRINT_1BASED, true);
+
     GrB_Matrix A = G->A;
 
     LG_ASSERT(C_f != NULL, GrB_NULL_POINTER);
@@ -215,6 +217,7 @@ int LAGr_PeerPressureClustering(
         LAGRAPH_TRY(LAGraph_Malloc((void **)&m_index_values, n, sizeof(GrB_INT64), msg));
         GRB_TRY(GrB_Vector_extractTuples_INT64(NULL, m_index_values, &n, m_index));
 
+
         GRB_TRY(GrB_extract(C_temp, NULL, NULL, Identity_B, GrB_ALL, n, m_index_values, n, NULL));
 
         // Adds up the total number of vertices in each cluster, i.e., the number of nonzero entries in each
@@ -243,10 +246,12 @@ int LAGr_PeerPressureClustering(
 
         printf("Number of clusters updated since last iteration: %i\n", num_changed);
         printf("%2.3f %% of all cluster assignments have been updated since last iteration\n", percent_updated * 100);
-        GxB_print(C_temp, GxB_SHORT);
-        GxB_print(verts_per_cluster, GxB_SHORT);
-        GxB_print(m_index, GxB_SHORT);
-        GxB_print(T, GxB_SHORT);
+        GxB_print(C, GxB_COMPLETE);
+        GxB_print(A, GxB_COMPLETE);
+        GxB_print(C_temp, GxB_COMPLETE);
+        // GxB_print(verts_per_cluster, GxB_SHORT);
+        // GxB_print(m_index, GxB_SHORT);
+        GxB_print(T, GxB_COMPLETE);
         printf("--------------------------------------------------\n\n\n");
 #endif
 
