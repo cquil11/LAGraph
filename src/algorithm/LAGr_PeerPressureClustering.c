@@ -180,7 +180,7 @@ int LAGr_PeerPressureClustering(
 
     GrB_Index last_num_changed = n;
     GrB_Index num_changed = NULL;
-    double tt, t0, t1, t2, t3, t4;
+    double tt, t0;
 
     //--------------------------------------------------------------------------
     // main algorithm logic

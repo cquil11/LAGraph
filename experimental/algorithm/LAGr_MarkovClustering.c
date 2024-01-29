@@ -1,16 +1,16 @@
-#define LG_FREE_WORK                     \
-    {                                    \
-        GrB_free(&C);                    \
-        GrB_free(&C_temp);               \
-        GrB_free(&vpc);                  \
-        GrB_free(&w);                    \
-        GrB_free(&D);                    \
-        GrB_free(&ones);                 \
-        GrB_free(&MSE);                  \
-        GrB_free(&argmax_v);             \
-        GrB_free(&argmax_p);             \
-        GrB_free(&zero_INT64);           \
-        GrB_free(&true_BOOL);            \
+#define LG_FREE_WORK           \
+    {                          \
+        GrB_free(&C);          \
+        GrB_free(&C_temp);     \
+        GrB_free(&vpc);        \
+        GrB_free(&w);          \
+        GrB_free(&D);          \
+        GrB_free(&ones);       \
+        GrB_free(&MSE);        \
+        GrB_free(&argmax_v);   \
+        GrB_free(&argmax_p);   \
+        GrB_free(&zero_INT64); \
+        GrB_free(&true_BOOL);  \
     }
 
 #define LG_FREE_ALL    \
@@ -26,29 +26,29 @@
 
 int LAGr_MarkovClustering(
     // output:
-    GrB_Matrix* C_f,                // output matrix C_f(i, j) == 1 means vertex j is in cluster i
+    GrB_Matrix *C_f, // output matrix C_f(i, j) == 1 means vertex j is in cluster i
     // input
-    int e,                          // expansion coefficient
-    int i,                          // inflation coefficient
-    double pruning_threshold,       // threshold for pruning values
-    double convergence_threshold,   // MSE threshold for convergence
-    int max_iter,                   // maximum iterations
-    LAGraph_Graph G,                // input graph
-    char* msg)
+    int e,                        // expansion coefficient
+    int i,                        // inflation coefficient
+    double pruning_threshold,     // threshold for pruning values
+    double convergence_threshold, // MSE threshold for convergence
+    int max_iter,                 // maximum iterations
+    LAGraph_Graph G,              // input graph
+    char *msg)
 {
     char MATRIX_TYPE[LAGRAPH_MSG_LEN];
 
-    GrB_Matrix C = NULL;         // Cluster workspace matrix
-    GrB_Matrix C_temp = NULL;    // The newly computed cluster matrix at the end of each loop
+    GrB_Matrix C = NULL;      // Cluster workspace matrix
+    GrB_Matrix C_temp = NULL; // The newly computed cluster matrix at the end of each loop
     GrB_Matrix CC = NULL;
-    GrB_Vector vpc = NULL;       // vertices per cluster
+    GrB_Vector vpc = NULL; // vertices per cluster
 
-    GrB_Vector w = NULL;         // weight vector to normalize C matrix
+    GrB_Vector w = NULL; // weight vector to normalize C matrix
 
-    GrB_Matrix D = NULL;         // Diagonal workspace matrix
-    GrB_Vector ones = NULL;      // Vector of all 1's, used primarily to create identity
+    GrB_Matrix D = NULL;    // Diagonal workspace matrix
+    GrB_Vector ones = NULL; // Vector of all 1's, used primarily to create identity
 
-    GrB_Matrix MSE = NULL;       // Mean squared error between C and C_temp (between subsequent iterations)
+    GrB_Matrix MSE = NULL; // Mean squared error between C and C_temp (between subsequent iterations)
 
     GrB_Vector argmax_v = NULL;
     GrB_Vector argmax_p = NULL;
@@ -56,15 +56,14 @@ int LAGr_MarkovClustering(
     GrB_Scalar zero_INT64 = NULL;
     GrB_Scalar true_BOOL = NULL;
 
-
     //--------------------------------------------------------------------------
     // check inputs
     //--------------------------------------------------------------------------
 
     LG_CLEAR_MSG;
 
-    GrB_Matrix A = G->A; // Adjacency matrix of G
-    GrB_Index n, nrows, ncols;         // Dimension of A
+    GrB_Matrix A = G->A;       // Adjacency matrix of G
+    GrB_Index n, nrows, ncols; // Dimension of A
     GRB_TRY(GrB_Matrix_nrows(&nrows, A));
     GRB_TRY(GrB_Matrix_nrows(&ncols, A));
 
@@ -73,10 +72,10 @@ int LAGr_MarkovClustering(
     LG_TRY(LAGraph_CheckGraph(G, msg));
 
     LG_ASSERT_MSG(G->out_degree != NULL, -106,
-        "G->out_degree must be defined");
+                  "G->out_degree must be defined");
 
     LG_ASSERT_MSG(nrows == ncols, -1002,
-        "Input matrix must be square");
+                  "Input matrix must be square");
 
     n = nrows;
 
@@ -123,19 +122,11 @@ int LAGr_MarkovClustering(
     GrB_Index iter = 0;
     GrB_Index nvals;
 
-    double pt, tt, t0;
-
-    pt = LAGraph_WallClockTime();
-
-
     while (true)
     {
-        tt = LAGraph_WallClockTime();
-
         printf("Iteration %lu\n", iter);
         GxB_print(C_temp, GxB_SUMMARY);
 
-        t0 = LAGraph_WallClockTime();
         // Normalization step: Scale each column in C_temp to add up to 1
         // w = 1 ./ sum(A(:j))
         // D = diag(w)
@@ -143,27 +134,16 @@ int LAGr_MarkovClustering(
         GRB_TRY(GrB_apply(w, NULL, NULL, GrB_MINV_FP32, w, GrB_DESC_R));
         GRB_TRY(GrB_Matrix_diag(&D, w, 0));
         GRB_TRY(GrB_mxm(C_temp, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP32, C_temp, D, GrB_DESC_R));
-        t0 = LAGraph_WallClockTime() - t0;
-        printf("\tNormalization time %f\n", t0);
 
-
-        t0 = LAGraph_WallClockTime();
         // Prune values less than some small threshold
         GRB_TRY(GrB_select(C_temp, NULL, NULL, GrB_VALUEGT_FP32, C_temp, pruning_threshold, NULL));
-        t0 = LAGraph_WallClockTime() - t0;
-        printf("\tPruning time %f\n", t0);
 
-
-        t0 = LAGraph_WallClockTime();
         // Compute mean squared error between subsequent iterations
         GRB_TRY(GxB_Matrix_eWiseUnion(MSE, NULL, NULL, GrB_MINUS_FP32, C_temp, zero_INT64, C, zero_INT64, NULL));
         GRB_TRY(GrB_eWiseMult(MSE, NULL, NULL, GrB_TIMES_FP32, MSE, MSE, NULL));
         GRB_TRY(GrB_reduce(&mse, NULL, GrB_PLUS_MONOID_FP32, MSE, NULL));
         GRB_TRY(GrB_Matrix_nvals(&nvals, C_temp));
         mse /= nvals;
-        t0 = LAGraph_WallClockTime() - t0;
-        printf("\tMSE time %f\n", t0);
-
 
 #ifdef DEBUG
         printf("\tMSE at iteration %lu: %f\n", iter, mse);
@@ -183,23 +163,14 @@ int LAGr_MarkovClustering(
         // Set C to the previous iteration
         GRB_TRY(GrB_Matrix_dup(&C, C_temp));
 
-        t0 = LAGraph_WallClockTime();
         // Expansion step
         for (int i = 0; i < e - 1; i++)
         {
             GRB_TRY(GrB_mxm(C_temp, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP32, C_temp, C_temp, NULL));
         }
-        t0 = LAGraph_WallClockTime() - t0;
-        printf("\tExpansion time (%2.10f%% dense) %f\n", (nvals * 1.0) / (n * n) * 100, t0);
 
-        t0 = LAGraph_WallClockTime();
         // Inflation step
         GRB_TRY(GrB_Matrix_apply_BinaryOp2nd_FP32(C_temp, NULL, NULL, GxB_POW_FP32, C_temp, (double)i, NULL));
-        t0 = LAGraph_WallClockTime() - t0;
-        printf("\tInflation time %f\n", t0);
-
-        tt = LAGraph_WallClockTime() - tt;
-        printf("\tTotal iteration time %f\n\n", tt);
 
         iter++;
     }
@@ -208,31 +179,25 @@ int LAGr_MarkovClustering(
     GRB_TRY(GrB_mxv(argmax_v, NULL, NULL, GrB_MAX_FIRST_SEMIRING_FP32, C_temp, ones, GrB_DESC_T0));
     // D = daig (argmax_v)
     GRB_TRY(GrB_Matrix_diag(&D, argmax_v, 0));
-    // 
+    //
     GRB_TRY(GrB_mxm(CC, NULL, NULL, GxB_ANY_EQ_FP32, C_temp, D, NULL));
     GRB_TRY(GrB_select(CC, NULL, NULL, GrB_VALUENE_BOOL, CC, 0, NULL));
     GRB_TRY(GrB_mxv(argmax_p, NULL, NULL, GxB_MIN_SECONDI_INT64, CC, ones, GrB_DESC_T0));
 
     // pi := array of argmax_p indices, px := array of argmax_p values
-    GrB_Index* pi, * px = NULL;
+    GrB_Index *pi, *px = NULL;
     GrB_Index p_nvals;
     GRB_TRY(GrB_Vector_nvals(&p_nvals, argmax_p));
-    LAGRAPH_TRY(LAGraph_Malloc((void**)&pi, n, sizeof(GrB_Index), msg));
-    LAGRAPH_TRY(LAGraph_Malloc((void**)&px, n, sizeof(GrB_Index), msg));
+    LAGRAPH_TRY(LAGraph_Malloc((void **)&pi, n, sizeof(GrB_Index), msg));
+    LAGRAPH_TRY(LAGraph_Malloc((void **)&px, n, sizeof(GrB_Index), msg));
     GRB_TRY(GrB_Vector_extractTuples_INT64(pi, px, &n, argmax_p));
     // Can reuse CC matrix, this will hold the final clustering result
     GRB_TRY(GrB_Matrix_clear(CC));
     GRB_TRY(GxB_Matrix_build_Scalar(CC, px, pi, true_BOOL, p_nvals));
-    LAGraph_Free((void*)&pi, NULL);
-    LAGraph_Free((void*)&px, NULL);
+    LAGraph_Free((void *)&pi, NULL);
+    LAGraph_Free((void *)&px, NULL);
 
     GRB_TRY(GrB_reduce(vpc, NULL, NULL, GrB_PLUS_MONOID_INT64, CC, NULL));
-
-    pt = LAGraph_WallClockTime() - pt;
-    printf("---------------------------------\n"
-        "Total program time %f\n"
-        "---------------------------------\n", pt);
-
 
 #ifdef DEBUG
     printf("Vertices per cluster\n");
