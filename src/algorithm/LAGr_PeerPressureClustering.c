@@ -28,7 +28,7 @@
         GrB_free(C_f); \
     }
 
-#define DEBUG
+// #define DEBUG
 
 #include "LG_internal.h"
 #include <LAGraphX.h>
@@ -175,8 +175,6 @@ int LAGr_PeerPressureClustering(
     GRB_TRY(GrB_Matrix_diag(&Identity_B, trues, 0));
     GRB_TRY(GrB_Vector_free(&trues));
 
-    // GxB_print(W, GxB_COMPLETE);
-    // GxB_print(C, GxB_COMPLETE);
 
     GrB_Index last_num_changed = n;
     GrB_Index num_changed = NULL;
@@ -191,9 +189,8 @@ int LAGr_PeerPressureClustering(
     GrB_Index count = 0;
     while (true)
     {
+        printf("Iteration %lu\n", count);
         tt = LAGraph_WallClockTime();
-        count++;
-
         t0 = LAGraph_WallClockTime();
         // Tally (vote) matrix T where T[i][j] = k means there are k votes from cluster i for vertex j
         // to be in cluster i
@@ -287,7 +284,9 @@ int LAGr_PeerPressureClustering(
         GRB_TRY(GrB_Matrix_clear(T));
 
         tt = LAGraph_WallClockTime() - tt;
-        printf("\tIteration time %f\n", tt);
+        printf("\tIteration %lu time %f\n\n", count, tt);
+        
+        count++;
     }
 
     printf("--------------------------------------------------\n"
