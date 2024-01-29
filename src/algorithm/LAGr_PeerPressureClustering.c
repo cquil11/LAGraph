@@ -180,7 +180,10 @@ int LAGr_PeerPressureClustering(
 
     GrB_Index last_num_changed = n;
     GrB_Index num_changed = NULL;
-    double tt, t0, t1, t2, t3, t4;
+
+    double pt, tt, t0;
+
+    pt = LAGraph_WallClockTime();
 
     //--------------------------------------------------------------------------
     // main algorithm logic
@@ -188,13 +191,18 @@ int LAGr_PeerPressureClustering(
     GrB_Index count = 0;
     while (true)
     {
+        tt = LAGraph_WallClockTime();
         count++;
 
+        t0 = LAGraph_WallClockTime();
         // Tally (vote) matrix T where T[i][j] = k means there are k votes from cluster i for vertex j
         // to be in cluster i
         // T = C_i x A
         GRB_TRY(GrB_mxm(T, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_FP64, C, A, GrB_DESC_R));
+        t0 = LAGraph_WallClockTime() - t0;
+        printf("\tTally time %f\n", t0);
 
+        t0 = LAGraph_WallClockTime();
         // Maximum value vector where m[k] = l means l is the maximum fp value in column
         // k of the matrix T. In other words, the vector m holds the maximum number of votes that each
         // vertex got.
@@ -217,8 +225,10 @@ int LAGr_PeerPressureClustering(
         LAGRAPH_TRY(LAGraph_Malloc((void **)&m_index_values, n, sizeof(GrB_INT64), msg));
         GRB_TRY(GrB_Vector_extractTuples_INT64(NULL, m_index_values, &n, m_index));
 
-
         GRB_TRY(GrB_extract(C_temp, NULL, NULL, Identity_B, GrB_ALL, n, m_index_values, n, NULL));
+        t0 = LAGraph_WallClockTime() - t0;
+        printf("\tArgmax time %f\n", t0);
+
 
         // Adds up the total number of vertices in each cluster, i.e., the number of nonzero entries in each
         // row of the current iteration of the cluster matrix
@@ -233,6 +243,8 @@ int LAGr_PeerPressureClustering(
         GRB_TRY(GrB_select(diff_vpc, NULL, NULL, GrB_VALUENE_INT64, diff_vpc, 0, GrB_DESC_R));
 
         GRB_TRY(GrB_Vector_nvals(&num_changed, diff_vpc));
+        double percent_updated = num_changed * 1.0 / n;
+
 
         LAGraph_Free((void **)&m_index_values, NULL);
 
@@ -242,16 +254,12 @@ int LAGr_PeerPressureClustering(
                "--------------------------------------------------\n",
                count);
 
-        double percent_updated = num_changed * 1.0 / n;
 
         printf("Number of clusters updated since last iteration: %i\n", num_changed);
         printf("%2.3f %% of all cluster assignments have been updated since last iteration\n", percent_updated * 100);
-        GxB_print(C, GxB_COMPLETE);
-        GxB_print(A, GxB_COMPLETE);
-        GxB_print(C_temp, GxB_COMPLETE);
-        // GxB_print(verts_per_cluster, GxB_SHORT);
-        // GxB_print(m_index, GxB_SHORT);
-        GxB_print(T, GxB_COMPLETE);
+        GxB_print(C, GxB_SHORT);
+        GxB_print(C_temp, GxB_SHORT);
+        GxB_print(T, GxB_SHORT);
         printf("--------------------------------------------------\n\n\n");
 #endif
 
@@ -265,7 +273,7 @@ int LAGr_PeerPressureClustering(
         // When no changes to the cluster matrix have been made, terminate
         bool res = NULL;
         LAGRAPH_TRY(LAGraph_Matrix_IsEqual(&res, C, C_temp, msg));
-        if (res || count > 200)
+        if (res || percent_updated < 0.1 || count > 200)
         {
             (*C_f) = C_temp; // Set output matrix
             break;
@@ -277,6 +285,9 @@ int LAGr_PeerPressureClustering(
         GRB_TRY(GrB_Matrix_dup(&C, C_temp));
         GRB_TRY(GrB_Matrix_clear(C_temp));
         GRB_TRY(GrB_Matrix_clear(T));
+
+        tt = LAGraph_WallClockTime() - tt;
+        printf("\tIteration time %f\n", tt);
     }
 
     printf("--------------------------------------------------\n"
@@ -292,6 +303,9 @@ int LAGr_PeerPressureClustering(
     GxB_print(verts_per_cluster, GxB_COMPLETE);
 
     GRB_TRY(GrB_Vector_free(&ones_fp));
+
+    pt = LAGraph_WallClockTime() - pt;
+    printf("Total program time %f\n", pt);
 
     LG_FREE_WORK;
 
