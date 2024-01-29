@@ -302,6 +302,13 @@ int LAGr_PeerPressureClustering(
     printf("Number of vertices per cluster:\n");
     GxB_print(verts_per_cluster, GxB_SHORT);
 
+    GrB_Vector vpc_sorted = NULL;
+    GRB_TRY(GrB_Vector_new(&vpc_sorted, GrB_INT64, n));
+    LAGRAPH_TRY(GxB_sort(vpc_sorted, NULL, GrB_GT_INT64, verts_per_cluster, NULL));
+    GxB_print(vpc_sorted, GxB_SHORT);
+
+    GrB_free(&vpc_sorted);
+
     GRB_TRY(GrB_Vector_free(&ones_fp));
 
     pt = LAGraph_WallClockTime() - pt;
