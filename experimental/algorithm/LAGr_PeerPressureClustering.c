@@ -160,6 +160,7 @@ int LAGr_PeerPressureClustering(
     GrB_Index iter = 0;
     while (true)
     {
+        printf("iter: %ld\n", iter);
         // Tally (vote) matrix T where T[i][j] = k means there are k votes from cluster i for vertex j
         // to be in cluster i
         // T = C_i x A

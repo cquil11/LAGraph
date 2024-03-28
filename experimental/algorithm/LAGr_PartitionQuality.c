@@ -77,12 +77,8 @@ int LAGr_PartitionQuality(
 
     // Calculate actual number of intra-cluster edges
     GRB_TRY(GrB_mxm(CA, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_INT64, C, A, NULL));
-    GxB_print(CA, GxB_COMPLETE);
     GRB_TRY(GrB_mxm(CA, NULL, NULL, GrB_PLUS_TIMES_SEMIRING_INT64, CA, C, GrB_DESC_RT1));
-    GxB_print(CA, GxB_COMPLETE);
     GRB_TRY(GxB_Vector_diag(trace, CA, 0, NULL));
-
-    GxB_print(trace, GxB_SHORT);
 
     GRB_TRY(GrB_reduce(&n_intraEdges, NULL, GrB_PLUS_MONOID_INT64, trace, NULL));
 
