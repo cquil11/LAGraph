@@ -28,11 +28,16 @@
 #define NTHREAD_LIST 1
 #define THREAD_LIST 0
 
-#define LG_FREE_ALL                 \
-{                                   \
-    LAGraph_Delete (&G, NULL) ;     \
-    GrB_free (&c) ;                 \
-    GrB_free (&C) ;                 \
+#define LG_FREE_ALL                     \
+{                                       \
+    LAGraph_Delete (&G, NULL) ;         \
+    GrB_free (&c) ;                     \
+    GrB_free (&C) ;                     \
+    GrB_free (&vpc) ;                   \
+    GrB_free (&vpc_sorted) ;            \
+    GrB_free (&TRUE_BOOL) ;             \
+    LAGraph_Free((void **)&cI, NULL);   \
+    LAGraph_Free((void **)&cX, NULL);   \
 }
 
 int main (int argc, char **argv)
@@ -45,8 +50,12 @@ int main (int argc, char **argv)
     char msg [LAGRAPH_MSG_LEN] ;
 
     GrB_Vector c = NULL ;
+    GrB_Vector vpc, vpc_sorted = NULL ;
     GrB_Matrix C = NULL ;
+    GrB_Scalar TRUE_BOOL = NULL ;
     LAGraph_Graph G = NULL ;
+
+    GrB_Index *cI, *cX = NULL;
 
     // start GraphBLAS and LAGraph
     bool burble = false ;
@@ -68,8 +77,12 @@ int main (int argc, char **argv)
     // initializations 
     //--------------------------------------------------------------------------
 
-    GRB_TRY(GrB_Matrix_new(&C, GrB_BOOL, n, n));
+    GRB_TRY(GrB_Matrix_new(&C, GrB_BOOL, n, n)) ;
+    GRB_TRY(GrB_Vector_new(&vpc, GrB_INT64, n)) ;
+    GRB_TRY(GrB_Vector_new(&vpc_sorted, GrB_INT64, n)) ;
+    GRB_TRY(GrB_Scalar_new(&TRUE_BOOL, GrB_BOOL)) ;
 
+    GRB_TRY(GrB_Scalar_setElement_BOOL(TRUE_BOOL, (bool)1)) ;
 
     //--------------------------------------------------------------------------
     // run peer pressure clustering algorithm
@@ -93,6 +106,23 @@ int main (int argc, char **argv)
     LAGRAPH_TRY (LAGr_Modularity(&mod, (double)1, c, G->A, msg)) ;
     tt = LAGraph_WallClockTime() - tt ;
     printf ("modularity run time %g sec\n\tmodularity  = %f\n", tt, mod) ;
+
+    GrB_Index nclusters ;
+    GRB_TRY(GrB_Vector_nvals(&nclusters, c)) ;
+
+    //--------------------------------------------------------------------------
+    // calculate vertices per cluster by constructing cluster matrix
+    //--------------------------------------------------------------------------
+
+    LAGRAPH_TRY(LAGraph_Malloc((void **)&cI, nclusters, sizeof(GrB_Index), msg)) ; 
+    LAGRAPH_TRY(LAGraph_Malloc((void **)&cX, nclusters, sizeof(GrB_Index), msg)) ; 
+    GRB_TRY(GrB_Vector_extractTuples_INT64(cI, cX, &nclusters, c)) ;
+    GRB_TRY(GxB_Matrix_build_Scalar(C, cX, cI, TRUE_BOOL, nclusters)) ;
+
+    GRB_TRY(GrB_reduce(vpc, NULL, NULL, GrB_PLUS_MONOID_INT64, C, NULL)); 
+    GRB_TRY(GxB_Vector_sort(vpc_sorted, NULL, GrB_GT_FP64, vpc, NULL));
+
+    GxB_print(vpc_sorted, GxB_SHORT);
 
     //--------------------------------------------------------------------------
     // write cluster vector and adjacency matrix to files
