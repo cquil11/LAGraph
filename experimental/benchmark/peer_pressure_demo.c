@@ -32,6 +32,7 @@
 {                                   \
     LAGraph_Delete (&G, NULL) ;     \
     GrB_free (&c) ;                 \
+    GrB_free (&C) ;                 \
 }
 
 int main (int argc, char **argv)
@@ -44,6 +45,7 @@ int main (int argc, char **argv)
     char msg [LAGRAPH_MSG_LEN] ;
 
     GrB_Vector c = NULL ;
+    GrB_Matrix C = NULL ;
     LAGraph_Graph G = NULL ;
 
     // start GraphBLAS and LAGraph
@@ -63,12 +65,19 @@ int main (int argc, char **argv)
     GRB_TRY (GrB_Matrix_nvals (&nvals, G->A)) ;
 
     //--------------------------------------------------------------------------
+    // initializations 
+    //--------------------------------------------------------------------------
+
+    GRB_TRY(GrB_Matrix_new(&C, GrB_BOOL, n, n));
+
+
+    //--------------------------------------------------------------------------
     // run peer pressure clustering algorithm
     //--------------------------------------------------------------------------
 
     // compute check result
     double tt = LAGraph_WallClockTime ( ) ;
-    LAGRAPH_TRY (LAGr_PeerPressureClustering(&c, false, false, 0.0001, 50, G, msg)) ;
+    LAGRAPH_TRY (LAGr_PeerPressureClustering(&c, true, false, 0.0001, 50, G, msg)) ;
     tt = LAGraph_WallClockTime() - tt ;
     printf ("peer pressure run time %g sec\n", tt) ;
 
@@ -84,6 +93,21 @@ int main (int argc, char **argv)
     LAGRAPH_TRY (LAGr_Modularity(&mod, (double)1, c, G->A, msg)) ;
     tt = LAGraph_WallClockTime() - tt ;
     printf ("modularity run time %g sec\n\tmodularity  = %f\n", tt, mod) ;
+
+    //--------------------------------------------------------------------------
+    // write cluster vector and adjacency matrix to files
+    //--------------------------------------------------------------------------
+
+    char *fn = "data/cluster_matrix.mtx";
+    FILE *f = fopen(fn, "w");
+    if (f == NULL) {
+        fprintf(stderr, "Error opening file '%s' for writing\n", fn);
+        return -1;
+    }
+    
+    LAGRAPH_TRY(LAGraph_MMWrite((GrB_Matrix)c, f, NULL, msg));
+
+    fclose(f);
 
 
     LG_FREE_ALL ;
